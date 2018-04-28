@@ -1,12 +1,18 @@
-import React from 'react';
 
-import './App.css';
+import React from "react";
+// import "./nav.css";
+import AppBar from 'material-ui/AppBar';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
+const AppBarExampleIcon = () => (
 
-const App = () => (
-    <div>
+  <MuiThemeProvider>
+  <AppBar
+    title="Progression"
+    iconClassNameRight="muidocs-icon-navigation-expand-more"
+  />
+    </MuiThemeProvider>
 
-    </div>
 );
 
-export default App;
+export default AppBarExampleIcon;
