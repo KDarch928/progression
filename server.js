@@ -6,6 +6,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const passport = require("passport")
 const session = require("expres-session")
+const LocalStrategy = require("passport-local-mongoose")
 // Configure body parser for AJAX requests
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -25,6 +26,8 @@ mongoose.connect(
     process.env.MONGODB_URI || "mongodb://localhost/progressiondb"
 );
 
+// require("./routes/html-routes.js")(app,passport);
+// require("./routes/api-routes.js")(app,passport);
 // Start the API server
 app.listen(PORT, function() {
     console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
