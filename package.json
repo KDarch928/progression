@@ -22,7 +22,9 @@
     "axios": "^0.16.2",
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
+    "material-ui": "^0.20.0",
     "mongoose": "^5.0.11"
+<<<<<<< HEAD
   },
   "repository": {
     "type": "git",
@@ -33,4 +35,7 @@
     "url": "https://github.com/KDarch928/progression/issues"
   },
   "homepage": "https://github.com/KDarch928/progression#readme"
+=======
+  }
+>>>>>>> aa555b877378a5b0ed7046425b29087af21d4cd3
 }
