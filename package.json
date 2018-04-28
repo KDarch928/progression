@@ -1,7 +1,7 @@
 {
   "name": "progression",
   "version": "1.0.0",
-  "description": "",
+  "description": "## About This Boilerplate",
   "main": "server.js",
   "scripts": {
     "server": "node server.js",
@@ -23,5 +23,14 @@
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
     "mongoose": "^5.0.11"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KDarch928/progression.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/KDarch928/progression/issues"
+  },
+  "homepage": "https://github.com/KDarch928/progression#readme"
 }
