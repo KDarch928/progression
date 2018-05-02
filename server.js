@@ -1,10 +1,17 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+var logger = require("morgan"); // logger
+
 // const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// Use morgan logger for logging requests
+app.use(logger("dev"));
+
+// Requiring our models for syncing
+var db = require("./models");
 // Configure body parser for AJAX requests
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
