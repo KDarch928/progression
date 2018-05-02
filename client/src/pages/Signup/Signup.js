@@ -1,6 +1,9 @@
-import React from "react";
+import React, { Component} from "react";
+
+
+
 import ReactDom from "react-dom"
-//import "./Signup.css";
+import "./Signup.css";
 import {link} from "react-router-dom"
 import axios from "axios";
 
@@ -35,11 +38,11 @@ class Signup extends Component {
   
   
   render(){
-   
+    // const { userName, password} = this.state;
     return(
-      <div id="id01" className="staic-modal">
-      {/* {span needs onclick} */}
-      <span  className="close" title="Close Modal" onClick={props.closeModal}>&times;</span>
+      <div id="id01" className="static-modal">
+      {/* {span needs onclick}  onClick={props.closeModal}*/}
+      <span  className="close" title="Close Modal" >&times;</span>
       <form className="modal-content" action="/action_page.php" onSubmit ={this.onSubmit}>
       <div className="container">
       <img src="img_avatar2.png" alt="Avatar" className="avatar"/>
@@ -49,9 +52,9 @@ class Signup extends Component {
       <p>Please fill in this form to create an account.</p>
       <hr />
       <label htmlFor="email"><b>First Name</b></label>
-      <input type="text" placeholder="Enter FirstName" name="firstName" required />
-      
+      <input type="text" placeholder="Enter FirstName" name="firstName"required />
       <label htmlFor="email"><b>Last Name</b></label>
+      
       <input type="text" placeholder="Enter Last Name" name="lastName" required />
       
       <label htmlFor="email"><b>Email</b></label>
@@ -68,8 +71,8 @@ class Signup extends Component {
       
       
       <div className="clearfix">
-      {/* {needs onclick on button} */}
-      <button type="button"  className="cancelbtn" onClick={props.closeModal}>Cancel</button>
+      {/* {needs onclick on button} onClick={props.closeModal}*/ }
+      <button type="button"  className="cancelbtn" >Cancel</button>
       <button type="submit" className="signupbtn">Sign Up</button>
       </div>
       </div>
@@ -79,3 +82,4 @@ class Signup extends Component {
   }
 };
 export default Signup;
+

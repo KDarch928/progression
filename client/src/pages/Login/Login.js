@@ -1,8 +1,9 @@
-import React, {component} from "react";
+import React, {Component} from "react";
 import "./Login.css";
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+
 class Login extends Component {
 
     constructor() {
@@ -43,14 +44,14 @@ class Login extends Component {
 
         const { username, password, message } = this.state;
         return (
-            <div id="id01" className="static-modal">
+            <div id="id01" className="stati-modal">
                 <form className="modal-content animate" onSubmit={this.onSubmit}>
                     <div className="imgcontainer">
-                        {/* //span needs onlcik button */}
-                        <span className="close" title="Close Modal" onClick={props.closeModal}>&times;</span>
+                        {/* //span needs onlcik button onClick={props.closeModal} */}
+                        <span className="close" title="Close Modal" >&times;</span>
                         <img src="img_avatar2.png" alt="Avatar" className="avatar" />
-                        <h1> Progression Log In</h1>
-                        <h2>Sign in to your Progression account to access all your Goal.</h2>
+                        <h1> Progression Sign up</h1>
+                        <h2>Sign up to your Progression account to access all your Goal.</h2>
                     </div>
                     <div className="container">
                         <label ><b>Username</b></label>
@@ -61,8 +62,8 @@ class Login extends Component {
                     </div>
                     {/* /div needs style that background */}
                     <div className="container">
-                        {/* //onclick needs button */}
-                        <button type="button" className="cancelbtn" onClick={props.closeModal}>Cancel</button>
+                        {/* //onclick needs button onClick={props.closeModal}*/}
+                        <button type="button" className="cancelbtn" >Cancel</button>
                     </div>
                 </form>
             </div>

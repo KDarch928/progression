@@ -88,13 +88,11 @@ module.exports = function(passport, user) {
             }
             
             User.findOne({
-                where: {
-                    username: username
-                }
+                "username":username
             }).then(function(user) {
                 if (!user) {
                     return done(null, false, {
-                        message: 'Email does not exist, please signup first'
+                        message: ' Username does not exist, please signup first'
                     });
                 }
                 

@@ -1,33 +1,49 @@
+import React from "react";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup"
 
-<<<<<<< HEAD
-import Home from "./pages/Home"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-const App = () => (
-<Router>
-  <div>
-    <Switch>
-    <Route path="/" component={Home} />
-    
-  </Switch>
-  </div>
-</Router>
-=======
-import React from "react";
-// import "./nav.css";
 import AppBar from 'material-ui/AppBar';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import IconButton from 'material-ui/IconButton';
+import NavigationClose from 'material-ui/svg-icons/navigation/close';
+import FlatButton from 'material-ui/FlatButton';
 
-const AppBarExampleIcon = () => (
+function handleClick() {
+  alert('onClick triggered on the title component');
+}
 
-  <MuiThemeProvider>
-  <AppBar
+const styles = {
+  title: {
+    cursor: 'pointer',
+  },
+};
+
+const App = () => (
+  <Router>
+    
+    <div>
+    <MuiThemeProvider>
+    <AppBar
     title="Progression"
-    iconClassNameRight="muidocs-icon-navigation-expand-more"
-  />
+    onLeftIconButtonClick={handleClick}
+    iconElementRight={<FlatButton label="SignUp / Login" />}
+    onRightIconButtonClick={handleClick}
+    />
     </MuiThemeProvider>
-
->>>>>>> aa555b877378a5b0ed7046425b29087af21d4cd3
+   
+    <Switch>
+    
+    <Route path="/Login" component={Login}/>
+    <Route path="/Signup" component={Signup}/>
+    <Route path="/" component={Home} />
+  
+    
+    </Switch>
+    </div>
+  </Router>
 );
 
-export default AppBarExampleIcon;
+export default App;
