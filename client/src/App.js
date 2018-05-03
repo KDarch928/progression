@@ -26,7 +26,7 @@ const AppBarExampleIcon = () => (
     iconElementRight={<FlatButton label="SignUp / Login" />}
     onRightIconButtonClick={handleClick}
   />
-    </MuiThemeProvider>
+  </MuiThemeProvider>
 
 );
 
