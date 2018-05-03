@@ -38,7 +38,7 @@ const AppBarExampleIconButton = () => (
     iconElementRight={<FlatButton label="SignUp / Login" />}
     onRightIconButtonClick={handleClick}
   />
-<div style={stylejumbo} class="jumbotron">
+<div style={stylejumbo} className="jumbotron">
 <h1>Set Your Goals!</h1>
 <p>Congratulations on taking the first step!</p>
 <p> You are one step closer to your goal!</p>
