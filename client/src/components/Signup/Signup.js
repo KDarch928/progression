@@ -1,8 +1,9 @@
 import React from "react";
 import ReactDom from "react-dom"
-//import "./Signup.css";
+import "./Signup.css";
 import {link} from "react-router-dom"
 import axios from "axios";
+import API from "../utils/API"
 
 class Signup extends Component {
   
@@ -24,11 +25,29 @@ class Signup extends Component {
   onSubmit=(e) => {
     e.preventDefault();
     
-    const{ username, password}= this.state
-    
-    axios.post("api/auth/register",{ username, password})
-    .then((result) =>{
-      this.props.history.push("/login")
+    //const{ username, password}= this.state
+
+        //make post rquest here to /login
+        API.submitSignup({
+          //put value from fields here. 
+          username: this.state.username,
+          password: this.state.password,
+          email: this.state.email,
+          firstName: this.state.firstName,
+          lastName: this.state.lastName
+        })
+        .then(res => {
+          console.log("response.data: " + res); 
+          
+        })
+        .catch(err => console.log(err));
+
+
+
+
+    // axios.post("api/auth/register",{ username, password})
+    // .then((result) =>{
+    //   this.props.history.push("/login")
     })
   }
   
