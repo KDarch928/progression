@@ -4,8 +4,16 @@ const mongoose = require("mongoose");
 const AWS = require("aws-sdk");
 const fileUpload = require("express-fileupload");
 const routes = require("./routes");
+var logger = require("morgan"); // logger
+
 const app = express();
 const PORT = process.env.PORT || 3001;
+
+// Use morgan logger for logging requests
+app.use(logger("dev"));
+
+// Requiring our models for syncing
+var db = require("./models");
 
 // Configure body parser for AJAX requests
 app.use(bodyParser.urlencoded({ extended: true }));
