@@ -1,4 +1,6 @@
 import React from "react";
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import FlatButton from 'material-ui/FlatButton';
 
 const Goalform = props => (
   <div>
@@ -21,11 +23,13 @@ const Goalform = props => (
            </div>
             <button type="submit" className="btn btn-primary" id="run-search"> Create Goal</button>
            </form>
+
           </div>
         </div>
       </div>
    </div>
  </div>
+
 );
 
 export default Goalform;
