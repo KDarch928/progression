@@ -1,21 +1,22 @@
 import React, { Component } from "react";
 import "./style.css";
 import AppBar from 'material-ui/AppBar';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import Userhome from './pages/Userhome';
+// import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import FlatButton from 'material-ui/FlatButton';
+import MenuItem from 'material-ui/MenuItem';
 
-import Divider from 'material-ui/Divider';
-import Paper from 'material-ui/Paper';
-import TextField from 'material-ui/TextField';
-import image from './images/sun.jpg';
 import RaisedButton from 'material-ui/RaisedButton';
 import Goalform from "./components/Goalform";
+import Drawer from 'material-ui/Drawer';
 
-function handleClick() {
-  alert('onClick triggered on the title component');
+
+function handleClick(e) {
+  e.preventDefault();
 }
 
 const styles = {
@@ -24,28 +25,34 @@ const styles = {
   },
 };
 
-const stylejumbo = {
-  backgroundImage: 'url('+image+')'
-}
 
+const buttonStyle = {
+  backgroundColor: 'transparent',
+  color: 'white'
+};
 
-
-const AppBarExampleIconButton = () => (
-<MuiThemeProvider>
-  <AppBar
-    title="Progression"
-    onLeftIconButtonClick={handleClick}
-    iconElementRight={<FlatButton label="SignUp / Login" />}
-    onRightIconButtonClick={handleClick}
-  />
-<div style={stylejumbo} className="jumbotron">
-<h1>Set Your Goals!</h1>
-<p>Congratulations on taking the first step!</p>
-<p> You are one step closer to your goal!</p>
-  <Goalform />
+const rightButtons = (
+  <div>
+    <FlatButton label="Sign Up" style={buttonStyle} to="/">
+    </FlatButton>
+    <FlatButton label="Log In" style={buttonStyle} to="/" />
   </div>
-
- </MuiThemeProvider>
 );
 
-export default AppBarExampleIconButton;
+
+const App = () => (
+  <MuiThemeProvider>
+    
+    <AppBar
+    title="Progression"
+    onLeftIconButtonClick={handleClick}
+    iconElementRight={rightButtons}
+    onRightIconButtonClick={handleClick}
+    />
+    
+    <Userhome />
+
+  </MuiThemeProvider>
+);
+
+export default App;
