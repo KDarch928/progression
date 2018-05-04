@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const AWS = require("aws-sdk");
 const fileUpload = require("express-fileupload");
-// const routes = require("./routes");
+const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -15,7 +15,7 @@ app.use(fileUpload());
 // Serve up static assets
 app.use(express.static("client/build"));
 // Add routes, both API and view
-// app.use(routes);
+app.use(routes);
 
 AWS.config.loadFromPath('./config.json');
 var s3Bucket = new AWS.S3({params: {Bucket: "progressionapp"}});
