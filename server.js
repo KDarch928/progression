@@ -4,7 +4,11 @@ const mongoose = require("mongoose");
 const AWS = require("aws-sdk");
 const fileUpload = require("express-fileupload");
 const routes = require("./routes");
+<<<<<<< HEAD
 var logger = require("morgan"); // logger 
+=======
+var logger = require("morgan"); // logger 
+>>>>>>> maryann
 
 const app = express();
 const PORT = process.env.PORT || 3001;
