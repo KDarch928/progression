@@ -39,6 +39,7 @@ class Signup extends Component {
     // .then((result) =>{
     // //   this.props.history.push("/login")
     //   console.log("post happened")
+    console.log(this.state.username)
     API.submitSignup({
         //put value from fields here. 
         username: this.state.username,

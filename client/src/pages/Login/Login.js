@@ -3,6 +3,7 @@ import "./Login.css";
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import API from "../../utils/API"
 
 class Login extends Component {
 
@@ -13,30 +14,55 @@ class Login extends Component {
             password: "",
             message: ""
         };
+        this.onSubmit = this.onSubmit.bind(this);
+    this.onChange = this.onChange.bind(this);
     };
     onChange = (e) => {
-        const state = this.state
-        state[e.target.name] = e.target.value;
-        this.setState(state);
-    }
+    //     const state = this.state
+    //     state[e.target.name] = e.target.value;
+    //     this.setState(state);
+    const { name, value } = e.target;
 
+    // Set the state for the appropriate input field
+    this.setState({
+    [name]: value
+    });
+    // }
+    }
     onSubmit = (e) => {
         e.preventDefault();
 
         const { username, password } = this.state;
 
-        axios.post('/api/auth/login', { username, password })
-            .then((result) => {
+        // axios.post('/api/auth/login', { username, password })
+        //     .then((result) => {
                 
-                this.setState({ message: '' });
-                this.props.history.push('/')
-            })
-            .catch((error) => {
-                if (error.response.status === 401) {
-                    this.setState({ message: 'Login failed. Username or password not match' });
-                }
-            });
-    }
+        //         this.setState({ message: '' });
+        //         this.props.history.push('/')
+        //     })
+        //     .catch((error) => {
+        //         if (error.response.status === 401) {
+        //             this.setState({ message: 'Login failed. Username or password not match' });
+        //         }
+        //     });
+
+        API.submitLogin({
+            //put value from fields here. 
+            username: this.state.username,
+            password: this.state.password,
+          })
+          .then(res => {
+            console.log("response from server at login.");
+            // TODO add code to redirect 
+            console.log(res)
+  
+            // other stuff to make login true. 
+            
+            
+          })
+          .catch(err => console.log(err));
+        }
+    
 
 
 
@@ -55,9 +81,9 @@ class Login extends Component {
                     </div>
                     <div className="container">
                         <label ><b>Username</b></label>
-                        <input type="text" placeholder="Enter Username" name="uname" required />
+                        <input type="text" value ={this.state.username} placeholder="Enter Username" name="username" onChange ={this.onChange} required />
                         <label><b>Password</b></label>
-                        <input type="password" placeholder="Enter Password" name="psw" required />
+                        <input type="password" placeholder="Enter Password" value ={this.state.password} name="password" onChange={this.onChange} required />
                         <button type="submit">Login</button>
                     </div>
                     {/* /div needs style that background */}

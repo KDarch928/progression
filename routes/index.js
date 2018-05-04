@@ -45,35 +45,38 @@ const LocalStrategy = require('passport-local').Strategy;
 // Route for registration 
 router.post('/signup', function(req, res) {
 	// handle user information when they sign up
-	console.log(req.body);
-	
+    console.log("error"+ req.body);
+    // console.log(req)
+	console.log(req.body.username)
 	//validation example. 
 	var username = req.body.username;
 	var password = req.body.password;
 	var confirmpassword = req.body.confirmpassword;
 	var firstName = req.body.firstName;
-	var lastName = req.body.lastName;
+    var lastName = req.body.lastName;
+    var email = req.body.email
 	
 	// if fields are empty it will make an obect called 'errors' with the error message. 
 	//{field: error message}
-	req.checkBody('username', 'Name is required').notEmpty();
-	req.checkBody('password', 'Password is required').notEmpty();
-	req.checkBody('confirmpassword', 'confirmpassword does not match password').equals(req.body.password);
-	req.checkBody('firstName', 'Name is required').notEmpty();
-	req.checkBody('lastName', 'Last Name is required').notEmpty();
-	var errors = req.validationErrors();
-	if(errors){
-	  console.log('There was a validation error');
-	  // respond with the errors object? - not working 
-	  // need to bundle the errors into one bigger object. 
-	  console.log("errors:" + errors);
-	  res.json(errors);
-	} else{
+	// req.checkBody('username', 'Name is required').notEmpty();
+	// req.checkBody('password', 'Password is required').notEmpty();
+	// req.checkBody('confirmpassword', 'confirmpassword does not match password').equals(req.body.password);
+	// req.checkBody('firstName', 'Name is required').notEmpty();
+	// req.checkBody('lastName', 'Last Name is required').notEmpty();
+	// var errors = req.validationErrors();
+	// if(errors){
+	//   console.log('There was a validation error');
+	//   // respond with the errors object? - not working 
+	//   // need to bundle the errors into one bigger object. 
+	//   console.log("errors:" + errors);
+	//   res.json(errors);
+	// } else{
 		var newUser = new User({
 			username: username,
 			password: password,
 			firstName: firstName,
-			lastName: lastName
+            lastName: lastName,
+            email: email
 		});
 
 		// need to look to see if the username exists already here.. use the controller function and see if it returns anything. 
@@ -91,7 +94,7 @@ router.post('/signup', function(req, res) {
 				res.json({registrationSuccess: true});
 			}
 		})
-	  }
+	//   }
 });
 
 // this is the passport local strategy. 
@@ -124,13 +127,15 @@ passport.use(new LocalStrategy(
 ));
 
 passport.serializeUser(function(user, done) {
-	done(null, user.id);
+    done(null, user.id);
+    console.log("serialize")
 });
 	
 passport.deserializeUser(function(id, done) {
 	User.getUserById(id, function(err, user) {
 		done(err, user);
-	});
+    });
+    console.log("deserialize")
 });
 
 router.post('/login', passport.authenticate('local'), function(req, res) {

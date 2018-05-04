@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const passportLocalMongoose = require("passport-local-mongoose")
 const bcrypt = require("bcryptjs")
+// const bcrypt = require('bcrypt-nodejs');
 
 const userSchema = new Schema({
     
@@ -50,12 +51,13 @@ module.exports = User;
 
 
 module.exports.createUser = function (newUser, callback){
-    bcrpyt.genSalt(10, function(err, salt){
-        bcrpyt.hash(newUser.password, salt, function(err, hash){
+    bcrypt.genSalt(10, function(err, salt){
+        bcrypt.hash(newUser.password, salt, function(err, hash){
             newUser.password = hash;
             newUser.save(callback);
         });
     });
+    console.log("1")
 }
 
 // gets a user by the username
@@ -63,17 +65,20 @@ module.exports.getUserByUsername = function(username, callback){
     console.log("getting user by username");
     var query = {username: username};
     User.findOne(query, callback);
+    console.log("2")
 }
 
 module.exports.getUserById = function(id, callback){
     User.findbyid(id, callback);
+    console.log("3")
 }
 
 module.exports.comparePassword = function(candidatePassword, hash, callback){
     // usebycrpt to check pw 
     console.log("comparing passsword - modals");
-    bcrpyt.compare(candidatePassword, hash, function(err, isMatch){
+    bcrypt.compare(candidatePassword, hash, function(err, isMatch){
         if(err) throw err;
         callback(null, isMatch);
     })
+    console.log("4")
 }

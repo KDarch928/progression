@@ -11,7 +11,8 @@ export default {
 
 	submitSignup: function(userInfo) {
 		// this will respond with error if there was an error
-		// or respond with registered if registered.
+        // or respond with registered if registered.
+        console.log("submit"+userInfo)
 		return axios.post('/signup', userInfo)
 			.then(function (response) {
 				console.log("api"+ response.data);
