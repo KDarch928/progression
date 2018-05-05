@@ -38,11 +38,24 @@ const AppBarExampleIconButton = () => (
     iconElementRight={<FlatButton label="SignUp / Login" />}
     onRightIconButtonClick={handleClick}
   />
-<div style={stylejumbo} className="jumbotron">
-<h1>Set Your Goals!</h1>
-<p>Congratulations on taking the first step!</p>
-<p> You are one step closer to your goal!</p>
-  <Goalform />
+  <div style={stylejumbo} className="jumbotron">
+    <h1>Set Your Goals!</h1>
+    <p>Congratulations on taking the first step!</p>
+    <p> You are one step closer to your goal!</p>
+    <Goalform />
+  </div>
+
+  <div>
+    <input type="file" id="file-input">
+    <p id="status">Please select a file</p>
+    <img id="preview" src="/images/default.png">
+
+    <form method="POST" action="/save-details">
+      <input type="hidden" id="avatar-url" name="avatar-url" value="/images/default.png">
+      <input type="text" name="username" placeholder="Username"><br>
+      <input type="text" name="full-name" placeholder="Full name"><br><br>
+      <input type="submit" value="Update profile">
+    </form>
   </div>
 
  </MuiThemeProvider>

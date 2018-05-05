@@ -22,6 +22,7 @@
     "aws-sdk": "^2.230.1",
     "axios": "^0.16.2",
     "body-parser": "^1.17.2",
+    "ejs": "^2.5.9",
     "express": "^4.15.4",
     "express-fileupload": "^0.4.0",
     "material-ui": "^0.20.0",
