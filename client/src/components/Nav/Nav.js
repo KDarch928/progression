@@ -1,11 +1,23 @@
 import React from 'react';
 import AppBar from 'material-ui/AppBar';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
+function handleClick(e) {
+  e.preventDefault();
+}
+
 
 const AppBarExampleIcon = () => (
-  <AppBar
+
+    <MuiThemeProvider>
+    
+    <AppBar
     title="Progression"
-    iconClassNameRight="muidocs-icon-navigation-expand-more"
-  />
+    onLeftIconButtonClick={handleClick}
+    onRightIconButtonClick={handleClick}
+    />
+
+  </MuiThemeProvider>
 );
 
 export default AppBarExampleIcon;
