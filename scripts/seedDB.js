@@ -40,23 +40,6 @@ const goalsSeed = [
   }
 ];
 
-const user= [
-    {
-     username:"daniel",
-     password:"123456",
-     firstName:"daniel",
-     lastName:"sim",
-     email:"dansim76@gmail.com"
-     },
-    {
-        username:"kayle",
-     password:"123456",
-     firstName:"kayle",
-     lastName:"sim",
-     email:"dansim7e6@gmail.com"
-    }
-  ];
-
 db.Goals
   .remove({})
   .then(() => db.Goals.collection.insertMany(goalsSeed))
@@ -68,16 +51,3 @@ db.Goals
     console.error(err);
     process.exit(1);
   });
-
-  
-db.Users
-.remove({})
-.then(() => db.users.collection.insertMany(user))
-.then(data => {
-  console.log("records inserted!");
-  process.exit(0)
-})
-.catch(err => {
-  console.error(err);
-  process.exit(1);
-});

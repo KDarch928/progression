@@ -61,7 +61,7 @@ class Signup extends Component {
       <span  className="close" title="Close Modal" onClick={props.closeModal}>&times;</span>
       <form className="modal-content" action="/action_page.php" onSubmit ={this.onSubmit}>
       <div className="container">
-      <img src="img_avatar2.png" alt="Avatar" className="avatar"/>
+      <img src="" alt="Avatar" className="avatar"/>
       <h1> Progression Log In</h1>
       <h2>Sign in to your Progression account to access all your Goal.</h2>
       <h1>Sign Up</h1>

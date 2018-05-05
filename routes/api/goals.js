@@ -1,29 +1,24 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+/////////////////////////////////////////////////////////
+// routes/api/goals.js                M Jordan
+/////////////////////////////////////////////////////////
+const router = require("express").Router();
+const Controller = require("../../controllers/Controller");
 
-var GoalsSchema = new Schema({
-  date: {
-    type: Date,
-    default: Date.now
-  },
-  guser: {
-    type: String,
-    trim: true
-  },
-  goal: {
-    type: String
-  },
-  gcategory: {
-    type: String
-  },
-  gpercent: {
-    type: Number,
-    default: 0
-  }
-});
+// Matches with "/api/goals"
 
-// Create the Goals model with the GoalsSchema
-var Goals = mongoose.model("Goals", GoalsSchema);
+router.route("/")
+  .get(Controller.findAll)
+  .post(Controller.create);
 
-// Export the model
-module.exports = Goals;
+router.route("/")
+  .get(Controller.findAll)
+  .post(Controller.create);
+  
+// Matches with "/api//:id"
+router
+  .route("/:id")
+  .get(Controller.findById)
+  .put(Controller.update)
+  .delete(Controller.remove);
+
+module.exports = router;
