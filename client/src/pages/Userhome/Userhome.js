@@ -12,9 +12,20 @@ import Toggle from 'material-ui/Toggle';
 
 import RaisedButton from 'material-ui/RaisedButton';
 import Goalform from "../../components/Goalform";
+import Goalheader from "../../components/Goalheader";
+import Goalsfollowing from "../../components/Goalsfollowing";
+// import Nav from "../../components/Nav";
 
 const stylejumbo = {
   backgroundImage: 'url('+image+')'
+}
+
+const color = {
+  backgroundColor: '#00b4ce'
+}
+
+const color2 = {
+  backgroundColor: '#A9A9A9'
 }
 
 function handleClick(e) {
@@ -58,8 +69,8 @@ class UserHome extends Component  {
         <Goalform />
 
       </div>
-
-      <Card expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
+      <Goalheader />
+      <Card style={color} expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
         <CardHeader
           title="Goal Name"
           subtitle="Fitness"
@@ -87,9 +98,9 @@ class UserHome extends Component  {
         </CardText>
         </Card>
         <br />
-        
+        <Goalsfollowing />
         <div>
-          <Card expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
+          <Card style={color2} expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
           <CardHeader
             title="Goal Name"
             subtitle="Diet"
