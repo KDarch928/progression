@@ -15,9 +15,9 @@ export default {
     return axios.get("/api/goals/" + id);
   },
   // Gets the goal with the given id
-  getGoalsCategory: function(id) {
+  getGoalsCategory: function(category) {
     console.log("API axios.GET(/api/goals/category category "+category)
-    return axios.get("/api/goals/category" + category);
+    return axios.get("/api/goals/category/" + category);
   },
   // Deletes the goal with the given id
   deleteGoal: function(id) {
