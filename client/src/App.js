@@ -13,6 +13,7 @@ import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import Goalform from "./components/Goalform";
 import Drawer from 'material-ui/Drawer';
+import Search from './pages/Search';
 
 
 function handleClick(e) {
@@ -51,6 +52,7 @@ const App = () => (
     />
     
     <Userhome />
+
 
   </MuiThemeProvider>
 );
