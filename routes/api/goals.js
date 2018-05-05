@@ -21,4 +21,9 @@ router
   .put(Controller.update)
   .delete(Controller.remove);
 
+router
+  .route("/category/:category")
+  .get(Controller.findByCategory)
+  .put(Controller.update)
+  .delete(Controller.remove);
 module.exports = router;
