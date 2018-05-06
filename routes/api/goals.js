@@ -21,7 +21,15 @@ router
   .put(Controller.update)
   .delete(Controller.remove);
 
+<<<<<<< HEAD
 router.route("/uploads")
   .post(Controller.s3upload);
 
+=======
+router
+  .route("/category/:category")
+  .get(Controller.findByCategory)
+  .put(Controller.update)
+  .delete(Controller.remove);
+>>>>>>> 32c204c94b5ed076842726f66309612132f1ad78
 module.exports = router;
