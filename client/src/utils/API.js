@@ -16,13 +16,8 @@ export default {
   },
   // Gets the goal with the given id
   getGoalsCategory: function(category) {
-<<<<<<< HEAD
     console.log("API axios.GET(/api/goals/category category " + category);
     return axios.get("/api/goals/category" + category);
-=======
-    console.log("API axios.GET(/api/goals/category category "+category)
-    return axios.get("/api/goals/category/" + category);
->>>>>>> 32c204c94b5ed076842726f66309612132f1ad78
   },
   // Deletes the goal with the given id
   deleteGoal: function(id) {
@@ -36,6 +31,13 @@ export default {
   },
   fileUpload: function(fileData) {
     console.log(fileData);
-    return axios.post("/api/goals/uploads", fileData);
+
+    return axios.get("/api/goals/uploads")
+      .then(res => {
+        console.log(res)
+      })
+      .catch(err => {
+        console.log(err)
+      });
   }
 };

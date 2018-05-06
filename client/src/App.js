@@ -65,7 +65,6 @@ const App = () => (
           onRightIconButtonClick={handleClick}
         />
 
-<<<<<<< HEAD
       </MuiThemeProvider>
       <Switch>
         <Route exact path="/" component={Userhome} />
@@ -74,10 +73,6 @@ const App = () => (
       </Switch>
     </div>
   </Router>
-=======
-
-  </MuiThemeProvider>
->>>>>>> 32c204c94b5ed076842726f66309612132f1ad78
 );
 
 export default App;

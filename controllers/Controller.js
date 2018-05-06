@@ -2,8 +2,11 @@
 // controllers/Controller.js                M Jordan
 /////////////////////////////////////////////////////////
 require("dotenv").config();
-const s3 = require("react-s3");
+// const s3 = require("react-s3");
 const db = require("../models");
+const aws = require("aws-sdk");
+
+aws.config.region = "us-east-2";
 
 
 // Defining methods for the Controller
@@ -49,12 +52,37 @@ module.exports  = {
       .catch(err => res.status(422).json(err));
   },
   s3upload: function(req, res) {
-    const config = {
-      bucketName: "progressionapp",
-      region: "us-east-2",
-      accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
-    }
+
+    console.log("I made to sign s3");
+    const s3 = new aws.S3();
+    const fileName = req.query['file-name'];
+    const fileType = req.query['file-type'];
+    const s3Params = {
+      Bucket: process.env.S3_BUCKET,
+      Key: fileName,
+      Expires: 60,
+      ContentType: fileType,
+      ACL: 'public-read'
+    };
+
+    s3.getSignedUrl('putObject', s3Params, (err, data) => {
+      if(err){
+        console.log(err);
+        return res.end();
+      }
+      const returnData = {
+        signedRequest: data,
+        url: `https://${process.env.S3_BUCKET}.s3.amazonaws.com/${fileName}`
+      };
+      res.write(JSON.stringify(returnData));
+      res.end();
+    });
+    // const config = {
+    //   bucketName: "progressionapp",
+    //   region: "us-east-2",
+    //   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    //   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+    // }
     console.log("I made to sign s3");
     console.log(req.body);
     console.log(req.query);
