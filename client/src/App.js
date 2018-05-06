@@ -1,21 +1,22 @@
 import React, { Component } from "react";
 import "./style.css";
 import AppBar from 'material-ui/AppBar';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import Userhome from './pages/Userhome';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Fileupload from "./pages/Fileuploader";
 
 import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import FlatButton from 'material-ui/FlatButton';
+import MenuItem from 'material-ui/MenuItem';
 
-import Divider from 'material-ui/Divider';
-import Paper from 'material-ui/Paper';
-import TextField from 'material-ui/TextField';
-import image from './images/sun.jpg';
 import RaisedButton from 'material-ui/RaisedButton';
-import Goalform from "./components/Goalform";
+import Drawer from 'material-ui/Drawer';
 
-function handleClick() {
-  alert('onClick triggered on the title component');
+
+function handleClick(e) {
+  e.preventDefault();
 }
 
 const styles = {
@@ -24,41 +25,53 @@ const styles = {
   },
 };
 
-const stylejumbo = {
-  backgroundImage: 'url('+image+')'
-}
 
+const buttonStyle = {
+  backgroundColor: 'transparent',
+  color: 'white'
+};
 
-
-const AppBarExampleIconButton = () => (
-<MuiThemeProvider>
-  <AppBar
-    title="Progression"
-    onLeftIconButtonClick={handleClick}
-    iconElementRight={<FlatButton label="SignUp / Login" />}
-    onRightIconButtonClick={handleClick}
-  />
-  <div style={stylejumbo} className="jumbotron">
-    <h1>Set Your Goals!</h1>
-    <p>Congratulations on taking the first step!</p>
-    <p> You are one step closer to your goal!</p>
-    <Goalform />
-  </div>
-
+const rightButtons = (
   <div>
-    <input type="file" id="file-input">
-    <p id="status">Please select a file</p>
-    <img id="preview" src="/images/default.png">
-
-    <form method="POST" action="/save-details">
-      <input type="hidden" id="avatar-url" name="avatar-url" value="/images/default.png">
-      <input type="text" name="username" placeholder="Username"><br>
-      <input type="text" name="full-name" placeholder="Full name"><br><br>
-      <input type="submit" value="Update profile">
-    </form>
+    <FlatButton label="Sign Up" style={buttonStyle} to="/">
+    </FlatButton>
+    <FlatButton label="Log In" style={buttonStyle} to="/" />
   </div>
-
- </MuiThemeProvider>
 );
 
-export default AppBarExampleIconButton;
+
+const App = () => (
+  // <MuiThemeProvider>
+    
+  //   <AppBar
+  //   title="Progression"
+  //   onLeftIconButtonClick={handleClick}
+  //   iconElementRight={rightButtons}
+  //   onRightIconButtonClick={handleClick}
+  //   />
+
+  //   {/* <Userhome /> */}
+
+  // </MuiThemeProvider>
+  <Router>
+    <div>
+      <MuiThemeProvider>
+    
+        <AppBar
+          title="Progression"
+          onLeftIconButtonClick={handleClick}
+          iconElementRight={rightButtons}
+          onRightIconButtonClick={handleClick}
+        />
+
+      </MuiThemeProvider>
+      <Switch>
+        <Route exact path="/" component={Userhome} />
+        <Route exact path="/userhome" component={Userhome} />
+        <Route exact path="/upload" component={Fileupload} />
+      </Switch>
+    </div>
+  </Router>
+);
+
+export default App;
