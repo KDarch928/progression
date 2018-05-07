@@ -3,7 +3,7 @@ import "./style.css";
 import AppBar from 'material-ui/AppBar';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Userhome from './pages/Userhome';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch,Link } from "react-router-dom";
 
 import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
@@ -11,12 +11,12 @@ import FlatButton from 'material-ui/FlatButton';
 import MenuItem from 'material-ui/MenuItem';
 import Login from "./pages/Login";
 import Signup from "./pages/Signup"
-
+//import injectTapEventPlugin from 'react-tap-event-plugin';
 import RaisedButton from 'material-ui/RaisedButton';
 import Goalform from "./components/Goalform";
 import Drawer from 'material-ui/Drawer';
 
-
+//injectTapEventPlugin();
 function handleClick(e) {
  
 }
@@ -43,11 +43,18 @@ const rightButtons = (
 
 
 const App = () => (
-  <Router>
+ <Router>
     
     <div>
-    <MuiThemeProvider>
-
+    <Switch>
+    
+    <Route path="/Login" component={Login}/>
+    <Route path="/Signup" component={Signup}/>
+    <Route path="/" component={Userhome} /> 
+  
+   
+    </Switch>
+  <MuiThemeProvider>
     
     <AppBar
     title="Progression"
@@ -55,18 +62,15 @@ const App = () => (
     iconElementRight={rightButtons}
     onRightIconButtonClick={handleClick}
     />
-    </MuiThemeProvider>
-   
-    <Switch>
     
-    <Route path="/Login" component={Login}/>
-    <Route path="/Signup" component={Signup}/>
-    {/* //<Route path="/" component={Home} /> */}
-  
-    <Userhome />
-    </Switch>
+
+
+  </MuiThemeProvider>
+  <Userhome />
+
+    
     </div>
-  </Router>
+ </Router> 
 );
 
 export default App;

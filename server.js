@@ -1,34 +1,25 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-
 const app = express();
 const PORT = process.env.PORT || 3001;
-
 const passport = require("passport")
 const session = require("express-session")
 const LocalStrategy = require("passport-local-mongoose")
 const logger = require("morgan")
 const cookieParser = require('cookie-parser');
-//const models = require("./models")
+const models = require("./models")
 const routes= require("./routes");
 var db = require("./models")
 // Configure body parser for AJAX requests
-
+// const AWS = require("aws-sdk");
+// const fileUpload = require("express-fileupload");
+// const routes = require("./routes");
 // Serve up static assets
 app.use(express.static("client/build"));
 // Add routes, both API and view
 
-// const AWS = require("aws-sdk");
-// const fileUpload = require("express-fileupload");
-// const routes = require("./routes");
 
-
-
-// Use morgan logger for logging requests
-
-
-// Requiring our models for syncing
 
 app.use(cookieParser());
 // Configure body parser for AJAX requests
@@ -49,9 +40,6 @@ app.use(express.static("client/build"));
 
 app.use(logger("dev"));
 
-
-
- // session secret
 
 app.use(passport.session()); // persistent login sessions
 //load passport strategies
