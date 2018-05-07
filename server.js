@@ -6,7 +6,6 @@ var logger = require("morgan"); // logger
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-const S3_BUCKET = process.env.S3_BUCKET;
 
 // Use morgan logger for logging requests
 app.use(logger("dev"));
