@@ -1,14 +1,26 @@
 /////////////////////////////////////////////////////////
 // routes/api/index.js                M Jordan
 /////////////////////////////////////////////////////////
+require("dotenv").config();
 const router = require("express").Router();
 const goalsRoutes = require("./goals");
-const uploaderRoutes = require("./fileupload");
+const data = require("./key");
+
 
 console.log("--- routes/api/index.js")
 // goals routes
 router.use("/goals", goalsRoutes);
 
-router.use("/s3uploads", uploaderRoutes);
+router.get("/getdata", function(req,res) {
+    console.log("I made it to get");
+    
+    let getData = {
+        bucket: data.s3Data.bucket,
+        key: data.s3Data.key,
+        secret: data.s3Data.secret
+      }
+      console.log(getData);
+      res.json(getData);
+});
 
 module.exports = router;

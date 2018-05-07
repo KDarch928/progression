@@ -21,9 +21,6 @@ router
   .put(Controller.update)
   .delete(Controller.remove);
 
-router.route("/uploads/:name")
-  .get(Controller.s3upload);
-
 router
   .route("/category/:category")
   .get(Controller.findByCategory)
