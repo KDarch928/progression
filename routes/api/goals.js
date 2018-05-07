@@ -27,9 +27,5 @@ router
   .put(Controller.update)
   .delete(Controller.remove);
 
-router
-  .route("/data")
-  .get(Controller.data);
-
 
 module.exports = router;

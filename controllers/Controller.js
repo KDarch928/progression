@@ -1,10 +1,7 @@
 /////////////////////////////////////////////////////////
 // controllers/Controller.js                M Jordan
 /////////////////////////////////////////////////////////
-require("dotenv").config();
-// const s3 = require("react-s3");
 const db = require("../models");
-const data = require("./key");
 
 
 
@@ -12,6 +9,7 @@ const data = require("./key");
 module.exports  = {
 
   findAll: function(req, res) {
+    console.log("Im in find it all");
     db.Goals
       .find(req.query)
       .sort({ date: -1 })
@@ -49,14 +47,5 @@ module.exports  = {
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
-  },
-  data: function(req,res){
-    let getData = {
-      bucket: data.s3Data.bucket,
-      key: data.s3Data.key,
-      secret: data.s3Data.secret
-    }
-    console.log(getData);
-    res.json(getData);
   }
 };

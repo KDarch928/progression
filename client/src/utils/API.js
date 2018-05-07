@@ -32,7 +32,7 @@ export default {
   },
   fileUpload: function(fileData) {
     
-    axios.get("/api/goals/data", {header:{"Content-Type":"application/json", "Host":"localhost:3001"}})
+    axios.get("/api/getdata")
       .then(data => console.log(data))
       .catch(err => {
         if(err.respsone) {
