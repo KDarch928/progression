@@ -26,4 +26,6 @@ router
   .get(Controller.findByCategory)
   .put(Controller.update)
   .delete(Controller.remove);
+
+
 module.exports = router;

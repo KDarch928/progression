@@ -1,13 +1,15 @@
 /////////////////////////////////////////////////////////
 // controllers/Controller.js                M Jordan
 /////////////////////////////////////////////////////////
-
 const db = require("../models");
+
+
 
 // Defining methods for the Controller
 module.exports  = {
 
   findAll: function(req, res) {
+    console.log("Im in find it all");
     db.Goals
       .find(req.query)
       .sort({ date: -1 })

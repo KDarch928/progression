@@ -7,6 +7,13 @@
 	text-align: center;
 }
 
+.jumbotronabout {
+	color: white;
+	text-align: center;
+	padding: 14em 2em;
+	color: black;
+}
+
 #header, #header2 {
 	text-align: center;
 }
