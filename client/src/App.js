@@ -5,6 +5,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Userhome from './pages/Userhome';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Fileupload from "./pages/Fileuploader";
+import About from "./pages/About";
 
 import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
@@ -42,18 +43,7 @@ const rightButtons = (
 
 
 const App = () => (
-  // <MuiThemeProvider>
-    
-  //   <AppBar
-  //   title="Progression"
-  //   onLeftIconButtonClick={handleClick}
-  //   iconElementRight={rightButtons}
-  //   onRightIconButtonClick={handleClick}
-  //   />
 
-  //   {/* <Userhome /> */}
-
-  // </MuiThemeProvider>
   <Router>
     <div>
       <MuiThemeProvider>
@@ -69,6 +59,8 @@ const App = () => (
       <Switch>
         <Route exact path="/" component={Userhome} />
         <Route exact path="/userhome" component={Userhome} />
+        <Route exact path="/about" component={About} />
+        <Route exact path="/search" component={Search} />
         <Route exact path="/upload" component={Fileupload} />
       </Switch>
     </div>

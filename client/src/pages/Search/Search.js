@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import "../../style.css";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-
+import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import image from '../../images/write-593333_1920.jpg';
+import Drawer from 'material-ui/Drawer';
+import MenuItem from 'material-ui/MenuItem';
 
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
@@ -38,7 +40,16 @@ class Search extends Component  {
     super(props);
     this.state = {
       expanded: false,
+      open: false
     };
+  }
+
+  handleOpen = () => {
+    this.setState({open: !this.state.open});
+  }
+
+  handleClose = () => {
+    this.setState({open: false});
   }
 
   handleExpandChange = (expanded) => {
@@ -60,7 +71,16 @@ class Search extends Component  {
   render() {
     return (
       <MuiThemeProvider>
-      <Nav />
+    <AppBar
+    title="Progression"
+    onLeftIconButtonClick={this.handleOpen}
+    onRightIconButtonClick={handleClick}
+    />
+    <Drawer open={this.state.open} close={this.handleClose}>
+      <MenuItem>Menu Item 1</MenuItem>
+      <MenuItem>Menu Item 2</MenuItem>
+      <IconButton onClick={this.handleClose}/>
+    </Drawer>
       <div style={stylejumbo} className="jumbotron">
         <h1>Search Goals</h1>
         <Goalsearchform/>
