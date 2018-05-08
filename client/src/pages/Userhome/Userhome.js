@@ -38,13 +38,9 @@ class UserHome extends Component  {
   constructor(props) {
     super(props);
     this.state = {
-      expanded: false,
+      expanded: false
     };
   }
-
-  handleExpandChange = (expanded) => {
-    this.setState({expanded: expanded});
-  };
 
   handleToggle = (event, toggle) => {
     this.setState({expanded: toggle});
@@ -59,8 +55,10 @@ class UserHome extends Component  {
   };
 
   render() {
+
     return (
       <MuiThemeProvider>
+
       <div style={stylejumbo} className="jumbotron">
         <h1>Set Your Goals!</h1>
         <p>Congratulations on taking the first step!</p>
