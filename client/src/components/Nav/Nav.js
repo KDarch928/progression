@@ -2,10 +2,12 @@ import React, {Component} from 'react';
 import AppBar from 'material-ui/AppBar';
 import FlatButton from 'material-ui/FlatButton';
 import {Tabs, Tab} from 'material-ui'
+import { Link } from 'react-router-dom';
 
 export default class NavBar extends Component {
-  handleLoginButton = () =>{
-    window.location="/login"
+  handleLoginButton = (e) =>{
+    e.preventDefault();
+   window.location="/login"
   }
  handleSignupButton=()=>{
     window.location="/signup"

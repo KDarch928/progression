@@ -3,7 +3,7 @@ import API from "../../utils/API"
 import ReactDom from "react-dom"
 import "./Signup.css";
 import {link} from "react-router-dom"
-import Userhome from "../Userhome/Userhome" 
+import Home from "../Home/Home" 
 import image from '../../images/wallpaper.jpg';
 import axios from "axios";
 const stylejumbo = {
@@ -63,7 +63,7 @@ class Signup extends Component {
     
     render(){
         // const { userName, password} = this.state;
-        const homePage = (<Userhome/>)
+        const homePage = (<Home/>)
         const registrationForm = (
             <div style={stylejumbo}>
             <div id="id01" className="static-modal">
@@ -106,7 +106,7 @@ class Signup extends Component {
             </div>
             </div>
         )
-        return this.state.isRegistered ? Userhome : registrationForm
+        return this.state.isRegistered ? homePage : registrationForm
     }
 };
 export default Signup;

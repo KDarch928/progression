@@ -11,6 +11,10 @@ const cookieParser = require('cookie-parser');
 const models = require("./models")
 const routes= require("./routes");
 var db = require("./models")
+
+
+
+// const io = require("socket.io")
 // Configure body parser for AJAX requests
 // const AWS = require("aws-sdk");
 // const fileUpload = require("express-fileupload");
@@ -53,6 +57,30 @@ app.use(function (req, res, next){
 	next();
 });
 
+// io.on('connection', function (client) {
+//     client.on('register', handleRegister)
+  
+//     client.on('join', handleJoin)
+  
+//     client.on('leave', handleLeave)
+  
+//     client.on('message', handleMessage)
+  
+//     client.on('chatrooms', handleGetChatrooms)
+  
+//     client.on('availableUsers', handleGetAvailableUsers)
+  
+//     client.on('disconnect', function () {
+//       console.log('client disconnect...', client.id)
+//       handleDisconnect()
+//     })
+  
+//     client.on('error', function (err) {
+//       console.log('received error from client:', client.id)
+//       console.log(err)
+//     })
+//   })
+// // 
 
 app.use(routes);
 // Connect to the Mongo DB
