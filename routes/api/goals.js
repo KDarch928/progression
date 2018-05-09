@@ -10,10 +10,10 @@ router.route("/")
   .get(Controller.findAll)
   .post(Controller.create);
 
-router.route("/")
+router.route("/goals")
   .get(Controller.findAll)
   .post(Controller.create);
-  
+
 // Matches with "/api//:id"
 router
   .route("/:id")
@@ -27,5 +27,10 @@ router
   .put(Controller.update)
   .delete(Controller.remove);
 
+router
+  .route("/user/:user")
+  .get(Controller.findByUser)
+  .put(Controller.update)
+  .delete(Controller.remove);
 
 module.exports = router;
