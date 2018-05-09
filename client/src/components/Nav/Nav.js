@@ -1,16 +1,56 @@
-import React from 'react';
+import React, {Component} from 'react';
 import AppBar from 'material-ui/AppBar';
 import FlatButton from 'material-ui/FlatButton';
-const AppBarExampleIcon = () => (
+import {Tabs, Tab} from 'material-ui'
 
-  <AppBar title="Progression" iconClassNameRight="muidocs-icon-navigation-expand-more"/>
-    <FlatButton label="Default" >Log In</FlatButton>
-    <FlatButton label="Default" >Sign up</FlatButton>
-    
-
+export default class NavBar extends Component {
+  handleLoginButton = () =>{
+    window.location="/login"
+  }
+ handleSignupButton=()=>{
+    window.location="/signup"
+  }
   
-  );
+  // const styles = {
+  //   title: {
+  //     cursor: 'pointer',
+  //   },
+  // };
+  
+  
+  // const buttonStyle = {
+  //   backgroundColor: 'transparent',
+  //   color: 'white'
+  // };
+  
+  // const rightButtons = (
+  //   <div>
+  //     <FlatButton label="Sign Up" style={buttonStyle} to="/signup">
+  //     </FlatButton>
+  //     <FlatButton label="Log In" style={buttonStyle} to="/login" />
+  //   </div>
+  // );
 
-export default AppBarExampleIcon;
+  render(){
+    return(
+    <AppBar
+    title="Progression"
+    // onLeftIconButtonClick={handleClick}
+    // iconElementRight={rightButtons}
+    // onRightIconButtonClick={handleClick}
+    >
+    <div>
+    <Tabs>
+            <Tab label="Sign Up" to="/signup" onClick={this.handleLoginButton}/>
+            <Tab label="Log In"  to="/login"onClick={this.handleSignupButton}/>
+        </Tabs>
+    </div>
+    </AppBar>
+    
+    )
+  }
+}
+
+
 
 

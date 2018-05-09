@@ -1,0 +1,45 @@
+*{      font-family:sans-serif;
+
+
+}
+.image{
+    background-image: url("../../images/wallpaper.jpg");
+    background-size:contain;
+    max-width: 2000px;
+}
+.jumbotron{
+background:white;
+
+}
+.jumbocontainer{
+    
+}
+h5{
+    
+    color: black;
+    
+    font-family:sans-serif;
+    font-size: 40px;
+}
+h6{
+    padding-top:50px;
+    font-size:30px;
+    color:black;
+}
+.landingRotating {
+    font-size: 2em !important;
+    font-weight: 400 !important;
+    color: black !important;
+    opacity: 0.5 !important;
+  }
+.show-grid{
+    background:white;
+}
+.intro{
+    height:180px;
+    width:180px;
+}
+.button{
+    float:left;
+    width:200px;
+}

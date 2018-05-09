@@ -8,6 +8,7 @@ import image from '../../images/wallpaper.jpg';
 import Userhome from "../Userhome/Userhome"
 const background = {
     backgroundImage: 'url('+image+')'
+
   }
 class Login extends Component {
 
@@ -63,7 +64,7 @@ class Login extends Component {
         const homePage=(<Userhome/>)
         const loginForm =(
             <div style={background}>
-            <div id="id01" className="stati-modal">
+            <div id="id01" className="static-modal">
                 <form className="modal-content animate" onSubmit={this.onSubmit}>
                     <div className="imgcontainer">
                         {/* //span needs onlcik button onClick={props.closeModal} */}
