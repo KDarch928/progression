@@ -5,19 +5,23 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Userhome from './pages/Userhome';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Fileupload from "./pages/Fileuploader";
+import About from "./pages/About";
 
 import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import FlatButton from 'material-ui/FlatButton';
-import MenuItem from 'material-ui/MenuItem';
 
 import RaisedButton from 'material-ui/RaisedButton';
 import Drawer from 'material-ui/Drawer';
 import Search from './pages/Search';
+import Toggle from 'material-ui/Toggle';
+import { MenuList, MenuItem } from 'material-ui/Menu';
+import Nav from "./components/Nav"
 
 
 function handleClick(e) {
   e.preventDefault();
+  window.location.replace("./search");
 }
 
 const styles = {
@@ -34,33 +38,21 @@ const buttonStyle = {
 
 const rightButtons = (
   <div>
-    <FlatButton label="Sign Up" style={buttonStyle} to="/">
+    <FlatButton label="Sign Up" style={buttonStyle} to="/Search">
     </FlatButton>
-    <FlatButton label="Log In" style={buttonStyle} to="/" />
+    <FlatButton label="Log In" style={buttonStyle} to="/Userhome" />
   </div>
 );
 
-
 const App = () => (
-  // <MuiThemeProvider>
-    
-  //   <AppBar
-  //   title="Progression"
-  //   onLeftIconButtonClick={handleClick}
-  //   iconElementRight={rightButtons}
-  //   onRightIconButtonClick={handleClick}
-  //   />
 
-  //   {/* <Userhome /> */}
-
-  // </MuiThemeProvider>
   <Router>
     <div>
       <MuiThemeProvider>
-    
         <AppBar
           title="Progression"
-          onLeftIconButtonClick={handleClick}
+          onTitleClick={handleClick}
+          iconElementLeft={<IconButton><NavigationClose /></IconButton>}
           iconElementRight={rightButtons}
           onRightIconButtonClick={handleClick}
         />
@@ -69,10 +61,13 @@ const App = () => (
       <Switch>
         <Route exact path="/" component={Userhome} />
         <Route exact path="/userhome" component={Userhome} />
+        <Route exact path="/about" component={About} />
+        <Route exact path="/search" component={Search} />
         <Route exact path="/upload" component={Fileupload} />
       </Switch>
     </div>
   </Router>
+
 );
 
 export default App;
