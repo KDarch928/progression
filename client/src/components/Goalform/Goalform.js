@@ -17,13 +17,29 @@ const Goalform = props => (
             <form role="form">
               <div className="form-group">
                 <label for="goalCategory">Goal Category:</label>
-                <input type="text" className="form-control" id="goalCategory" />
+                <input
+                 type="text" 
+                 className="form-control" 
+                 id="goalCategory"
+                 onChange={props.handleInputChange}
+                 required
+                  />
               </div>
               <div className="form-group">
                 <label for="Goal">Goal Description:</label>
-                <input type="text" className="form-control" id="Goal"/>
+                <input 
+                type="text" 
+                className="form-control" 
+                id="Goal"
+                onChange={props.handleInputChange}
+                required
+                />
               </div>
-              <button type="submit" className="btn btn-info" id="run-search"> Create Goal</button>
+              <button
+              onClick={props.handleFormSubmit}
+              type="submit" 
+              className="btn btn-info" 
+              id="run-search"> Create Goal</button>
             </form>
           </div>
         </div>
