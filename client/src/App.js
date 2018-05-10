@@ -19,6 +19,7 @@ import Search from './pages/Search';
 
 function handleClick(e) {
   e.preventDefault();
+  window.location.replace("./search");
 }
 
 const styles = {
