@@ -35,6 +35,7 @@ app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true}))
 // app.use(fileUpload());
 // Serve up static assets
 app.use(express.static("client/build"));
+
 // Add routes, both API and view
 
 

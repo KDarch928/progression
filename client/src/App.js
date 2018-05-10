@@ -6,6 +6,10 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Userhome from './pages/Userhome';
 import { BrowserRouter as Router, Route, Switch,Link } from "react-router-dom";
 import NavBar from "./components/Nav"
+
+import Fileupload from "./pages/Fileuploader";
+import About from "./pages/About";
+
 import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import FlatButton from 'material-ui/FlatButton';
@@ -14,14 +18,14 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup"
 //import injectTapEventPlugin from 'react-tap-event-plugin';
 import RaisedButton from 'material-ui/RaisedButton';
-import Goalform from "./components/Goalform";
 import Drawer from 'material-ui/Drawer';
 import Home from "./pages/Home"
+import Search from './pages/Search';
 
 //injectTapEventPlugin();
-// function handleClick(e) {
- 
-// }
+function handleClick(e) {
+  e.preventDefault();
+}
 // function handleLoginButton = () =>{
 //   window.location="/login"
 // }
@@ -29,52 +33,52 @@ import Home from "./pages/Home"
 //   window.location="/signup"
 // }
 
-// const styles = {
-//   title: {
-//     cursor: 'pointer',
-//   },
-// };
+const styles = {
+  title: {
+    cursor: 'pointer',
+  },
+};
 
 
-// const buttonStyle = {
-//   backgroundColor: 'transparent',
-//   color: 'white'
-// };
+const buttonStyle = {
+  backgroundColor: 'transparent',
+  color: 'white'
+};
 
-// const rightButtons = (
-//   <div>
-//     <FlatButton label="Sign Up" style={buttonStyle} to="/signup">
-//     </FlatButton>
-//     <FlatButton label="Log In" style={buttonStyle} to="/login" />
-//   </div>
-// );
 
+const rightButtons = (
+  <div>
+    <FlatButton label="Sign Up" style={buttonStyle} to="/">
+    </FlatButton>
+    <FlatButton label="Log In" style={buttonStyle} to="/" />
+  </div>
+);
 
 const App = () => (
- <Router>
-    
+
+  <Router>
     <div>
-   
-  <MuiThemeProvider>
+      <MuiThemeProvider>
     
-    <NavBar/>
-    
+        <AppBar
+          title="Progression"
+          onLeftIconButtonClick={handleClick}
+          iconElementRight={rightButtons}
+          onRightIconButtonClick={handleClick}
+        />
 
-
-  </MuiThemeProvider>
-
-  <Switch>
-    
-    <Route exact path="/Login" component={Login}/>
+      </MuiThemeProvider>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/userhome" component={Userhome} />
+        <Route exact path="/about" component={About} />
+        <Route exact path="/search" component={Search} />
+        <Route exact path="/upload" component={Fileupload} />
+        <Route exact path="/Login" component={Login}/>
     <Route exact path="/Signup" component={Signup}/>
-    <Route exact path="/" component={Home} /> 
-  
-   
-    </Switch>
-
-    
+      </Switch>
     </div>
- </Router> 
+  </Router>
 );
 
 export default App;

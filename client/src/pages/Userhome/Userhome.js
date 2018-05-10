@@ -12,58 +12,67 @@ import Toggle from 'material-ui/Toggle';
 
 import RaisedButton from 'material-ui/RaisedButton';
 import Goalform from "../../components/Goalform";
-/////////////////////
-const io = require('socket.io-client')
+import Goalheader from "../../components/Goalheader";
+import Goalsfollowing from "../../components/Goalsfollowing";
+// import Nav from "../../components/Nav";
 
-const socket = io.connect('http://localhost:3000')
+// const socket = io.connect('http://localhost:3000')
 
-function registerHandler(onMessageReceived) {
-  socket.on('message', onMessageReceived)
-}
+// function registerHandler(onMessageReceived) {
+//   socket.on('message', onMessageReceived)
+// }
 
-function unregisterHandler() {
-  socket.off('message')
-}
+// function unregisterHandler() {
+//   socket.off('message')
+// }
 
-socket.on('error', function (err) {
-  console.log('received socket error:')
-  console.log(err)
-})
+// socket.on('error', function (err) {
+//   console.log('received socket error:')
+//   console.log(err)
+// })
 
-function register(name, cb) {
-  socket.emit('register', name, cb)
-}
+// function register(name, cb) {
+//   socket.emit('register', name, cb)
+// }
 
-function join(chatroomName, cb) {
-  socket.emit('join', chatroomName, cb)
-}
+// function join(chatroomName, cb) {
+//   socket.emit('join', chatroomName, cb)
+// }
 
-function leave(chatroomName, cb) {
-  socket.emit('leave', chatroomName, cb)
-}
+// function leave(chatroomName, cb) {
+//   socket.emit('leave', chatroomName, cb)
+// }
 
-function message(chatroomName, msg, cb) {
-  socket.emit('message', { chatroomName, message: msg }, cb)
-}
+// function message(chatroomName, msg, cb) {
+//   socket.emit('message', { chatroomName, message: msg }, cb)
+// }
 
-function getChatrooms(cb) {
-  socket.emit('chatrooms', null, cb)
-}
+// function getChatrooms(cb) {
+//   socket.emit('chatrooms', null, cb)
+// }
 
-function getAvailableUsers(cb) {
-  socket.emit('availableUsers', null, cb)
-}
-
-
-
+// function getAvailableUsers(cb) {
+//   socket.emit('availableUsers', null, cb)
+// }
 
 
 
 
 
-////////////////////////////
+
+
+
+// ////////////////////////////
 const stylejumbo = {
   backgroundImage: 'url('+image+')'
+}
+
+const color = {
+  backgroundColor: '#00b4ce'
+}
+
+const color2 = {
+  backgroundColor: '#A9A9A9'
 }
 
 function handleClick(e) {
@@ -76,13 +85,9 @@ class UserHome extends Component  {
   constructor(props) {
     super(props);
     this.state = {
-      expanded: false,
+      expanded: false
     };
   }
-
-  handleExpandChange = (expanded) => {
-    this.setState({expanded: expanded});
-  };
 
   handleToggle = (event, toggle) => {
     this.setState({expanded: toggle});
@@ -97,8 +102,10 @@ class UserHome extends Component  {
   };
 
   render() {
+
     return (
       <MuiThemeProvider>
+
       <div style={stylejumbo} className="jumbotron">
         <h1>Set Your Goals!</h1>
         <p>Congratulations on taking the first step!</p>
@@ -107,8 +114,8 @@ class UserHome extends Component  {
         <Goalform />
 
       </div>
-
-      <Card expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
+      <Goalheader />
+      <Card style={color} expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
         <CardHeader
           title="Goal Name"
           subtitle="Fitness"
@@ -136,9 +143,9 @@ class UserHome extends Component  {
         </CardText>
         </Card>
         <br />
-        
+        <Goalsfollowing />
         <div>
-          <Card expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
+          <Card style={color2} expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
           <CardHeader
             title="Goal Name"
             subtitle="Diet"

@@ -68,13 +68,13 @@ class Login extends Component {
 
         const homePage=(<Userhome/>)
         const loginForm =(
-            <div style={background}>
+            <div style={background} className="container">
                 <div id="id01" className="static-modal">
                     <form className="modal-content animate" onSubmit={this.onSubmit}>
                         <div className="imgcontainer">
                             {/* //span needs onlcik button onClick={props.closeModal} */}
                             <span className="close" title="Close Modal" >&times;</span>
-                            <img src="" alt="Avatar" className="avatar" />
+                            <img src="../../images/login.jpg" alt="Avatar" className="avatar" />
                             <h1> Progression Login</h1>
                             <h2>Log in to your Progression account to access all your Goal.</h2>
                         </div>

@@ -10,14 +10,19 @@ router.route("/")
   .get(Controller.findAll)
   .post(Controller.create);
 
-router.route("/")
-  .get(Controller.findAll)
-  .post(Controller.create);
+
   
 // Matches with "/api//:id"
 router
   .route("/:id")
   .get(Controller.findById)
+  .put(Controller.update)
+  .delete(Controller.remove);
+
+
+  router
+  .route("/category/:category")
+  .get(Controller.findByCategory)
   .put(Controller.update)
   .delete(Controller.remove);
 

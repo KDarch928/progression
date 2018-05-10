@@ -65,13 +65,13 @@ class Signup extends Component {
         // const { userName, password} = this.state;
         const homePage = (<Home/>)
         const registrationForm = (
-            <div style={stylejumbo}>
+            <div style={stylejumbo} className="container">
             <div id="id01" className="static-modal">
             {/* {span needs onclick}  onCli<dick={props.closeModal}*/}
             <span  className="close" title="Close Modal" >&times;</span>
             <form className="modal-content" onSubmit ={this.onSubmit} >
             <div className="container">
-            <img src="" alt="Avatar" className="avatar"/>
+            
             <h1> Progression</h1>
             <h2>Sign up to your Progression account to access all your Goal.</h2>
             

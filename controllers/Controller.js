@@ -1,13 +1,15 @@
 /////////////////////////////////////////////////////////
 // controllers/Controller.js                M Jordan
 /////////////////////////////////////////////////////////
-
 const db = require("../models");
+
+
 
 // Defining methods for the Controller
 module.exports  = {
 
   findAll: function(req, res) {
+    console.log("Im in find it all");
     db.Goals
       .find(req.query)
       .sort({ date: -1 })
@@ -21,8 +23,9 @@ module.exports  = {
       .catch(err => res.status(422).json(err));
   },
   findByCategory: function(req, res) {
+    console.log("findByCategory req "+req.params.category)
     db.Goals
-      .findById(req.params.id)
+      .find({gcategory: (req.params.category).toString()})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
