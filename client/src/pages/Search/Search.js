@@ -8,6 +8,7 @@ import image from '../../images/write.jpg';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 
+
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import Toggle from 'material-ui/Toggle';
@@ -29,10 +30,6 @@ const color2 = {
   backgroundColor: '#A9A9A9'
 }
 
-function handleClick(e) {
-  e.preventDefault();
-}
-
 
 class Search extends Component  {
 
@@ -47,7 +44,7 @@ class Search extends Component  {
   handleOpen = () => {
     this.setState({open: !this.state.open});
   }
-
+  
   handleClose = () => {
     this.setState({open: false});
   }
@@ -70,20 +67,20 @@ class Search extends Component  {
 
   render() {
     return (
-      <MuiThemeProvider>
+    <MuiThemeProvider>
     <AppBar
     title="Progression"
     onLeftIconButtonClick={this.handleOpen}
-    onRightIconButtonClick={handleClick}
+    onRightIconButtonClick={this.handleClick}
     />
     <Drawer open={this.state.open} close={this.handleClose}>
-      <MenuItem>Menu Item 1</MenuItem>
-      <MenuItem>Menu Item 2</MenuItem>
-      <IconButton onClick={this.handleClose}/>
+     <a href="/Userhome"><MenuItem>Userhome</MenuItem></a>
+     <a href="/About"><MenuItem>About</MenuItem></a>
+     <MenuItem onClick={this.handleClose}>Close Menu</MenuItem>
     </Drawer>
-      <div style={stylejumbo} className="jumbotron">
-        <h1>Search Goals</h1>
-        <Goalsearchform/>
+    <div style={stylejumbo} className="jumbotron">
+      <h1>Search Goals</h1>
+      <Goalsearchform/>
 
       </div>
       <h2 id="header2">Goal Search Results</h2>

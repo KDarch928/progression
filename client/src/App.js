@@ -17,14 +17,19 @@ import MenuItem from 'material-ui/MenuItem';
 import Login from "./pages/Login";
 import Signup from "./pages/Signup"
 //import injectTapEventPlugin from 'react-tap-event-plugin';
+
 import RaisedButton from 'material-ui/RaisedButton';
 import Drawer from 'material-ui/Drawer';
 import Home from "./pages/Home"
 import Search from './pages/Search';
+import Toggle from 'material-ui/Toggle';
+import { MenuList, MenuItem } from 'material-ui/Menu';
+import Nav from "./components/Nav"
 
 //injectTapEventPlugin();
 function handleClick(e) {
   e.preventDefault();
+  window.location.replace("./search");
 }
 // function handleLoginButton = () =>{
 //   window.location="/login"
@@ -48,9 +53,9 @@ const buttonStyle = {
 
 const rightButtons = (
   <div>
-    <FlatButton label="Sign Up" style={buttonStyle} to="/">
+    <FlatButton label="Sign Up" style={buttonStyle} to="/Search">
     </FlatButton>
-    <FlatButton label="Log In" style={buttonStyle} to="/" />
+    <FlatButton label="Log In" style={buttonStyle} to="/Userhome" />
   </div>
 );
 
@@ -59,10 +64,10 @@ const App = () => (
   <Router>
     <div>
       <MuiThemeProvider>
-    
         <AppBar
           title="Progression"
-          onLeftIconButtonClick={handleClick}
+          onTitleClick={handleClick}
+          iconElementLeft={<IconButton><NavigationClose /></IconButton>}
           iconElementRight={rightButtons}
           onRightIconButtonClick={handleClick}
         />
@@ -79,6 +84,7 @@ const App = () => (
       </Switch>
     </div>
   </Router>
+
 );
 
 export default App;
