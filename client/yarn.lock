@@ -5620,12 +5620,15 @@ react-router@^4.2.0:
     prop-types "^15.5.4"
     warning "^3.0.0"
 
+<<<<<<< HEAD
+=======
 react-s3@^1.2.4:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/react-s3/-/react-s3-1.2.4.tgz#2fe5ef25872d90ea2f1dfad68ab073c63af0d3ea"
   dependencies:
     crypto-js "^3.1.9-1"
 
+>>>>>>> e8cf0aea4fecf1e5363c16a67958bbd6809124ba
 react-scripts@1.1.4:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/react-scripts/-/react-scripts-1.1.4.tgz#d5c230e707918d6dd2d06f303b10f5222d017c88"
