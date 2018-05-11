@@ -19,7 +19,7 @@ render(){
         <ReactRotatingText className='landingRotating' items={['to learn new goals', 'to share goals', 'to check your goals', 'to simplify planning']} />
         <p>
          
-          <Button bsStyle="primary" className="button">Lets get Started!</Button>
+          <Button bsStyle="primary" className="button" to="/signup">Lets get Started!</Button>
         </p>
         </div>
       </Jumbotron >
@@ -54,10 +54,17 @@ render(){
         <Col>
         <br/>
         <br/>
-        <h1> We are here to make you set up your goals easily and more accessible</h1>
+        <h4> We are here to make you set up your goals easily and more accessible</h4>
         </Col>
         </Row>
+        <Row className="show-grid">
+        <Col>
+        <p>Copy Right</p>
+        </Col>
+        </Row>
+      
         </Grid>
+      
     )
 }
 

@@ -25,13 +25,16 @@ import Search from './pages/Search';
 //injectTapEventPlugin();
 function handleClick(e) {
   e.preventDefault();
+  window.location.replace("/login")
 }
-// function handleLoginButton = () =>{
-//   window.location="/login"
-// }
-// function handleSignupButton=()=>{
-//   window.location="/signup"
-// }
+function handleLoginButton (e){
+  e.preventDefault();
+  window.location.replace("/login")
+}
+function handleSignupButton(e){
+  e.preventDefault();
+  window.location.replace("/signup")
+}
 
 const styles = {
   title: {
@@ -48,9 +51,9 @@ const buttonStyle = {
 
 const rightButtons = (
   <div>
-    <FlatButton label="Sign Up" style={buttonStyle} to="/">
+    <FlatButton label="Sign Up" onClick = {this.handleSignupButton} style={buttonStyle} to="/Signup">
     </FlatButton>
-    <FlatButton label="Log In" style={buttonStyle} to="/" />
+    <FlatButton label="Log In" style={buttonStyle} onClick = {this.handleLoginButton} to="/Login" />
   </div>
 );
 
@@ -64,7 +67,7 @@ const App = () => (
           title="Progression"
           onLeftIconButtonClick={handleClick}
           iconElementRight={rightButtons}
-          onRightIconButtonClick={handleClick}
+         
         />
 
       </MuiThemeProvider>
