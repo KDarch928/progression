@@ -4,7 +4,7 @@
 }
 .image{
     /* background-image: url("../../images/wallpaper.jpg"); */
-    background-color: #D0C8DE;
+    background-color: white;
     background-size:contain;
     max-width: 2000px;
     background-blend-mode: lighten;
@@ -54,4 +54,11 @@ h6{
     clear:left;
     float:left;
     width:200px;
+}
+
+#flex {
+    display: flex;
+    text-align: center;
+/*    background-color: #94d4ff;*/
+/*    padding-top: 50px;*/
 }
