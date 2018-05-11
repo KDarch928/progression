@@ -4,7 +4,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
-import image from '../../images/sun.jpg';
+import image from '../../images/wallpaper.jpg';
 
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
@@ -17,6 +17,53 @@ import Goalsfollowing from "../../components/Goalsfollowing";
 import axios from "axios";
 // import Nav from "../../components/Nav";
 
+// const socket = io.connect('http://localhost:3000')
+
+// function registerHandler(onMessageReceived) {
+//   socket.on('message', onMessageReceived)
+// }
+
+// function unregisterHandler() {
+//   socket.off('message')
+// }
+
+// socket.on('error', function (err) {
+//   console.log('received socket error:')
+//   console.log(err)
+// })
+
+// function register(name, cb) {
+//   socket.emit('register', name, cb)
+// }
+
+// function join(chatroomName, cb) {
+//   socket.emit('join', chatroomName, cb)
+// }
+
+// function leave(chatroomName, cb) {
+//   socket.emit('leave', chatroomName, cb)
+// }
+
+// function message(chatroomName, msg, cb) {
+//   socket.emit('message', { chatroomName, message: msg }, cb)
+// }
+
+// function getChatrooms(cb) {
+//   socket.emit('chatrooms', null, cb)
+// }
+
+// function getAvailableUsers(cb) {
+//   socket.emit('availableUsers', null, cb)
+// }
+
+
+
+
+
+
+
+
+// ////////////////////////////
 const stylejumbo = {
   backgroundImage: 'url('+image+')'
 }

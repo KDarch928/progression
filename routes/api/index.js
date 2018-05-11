@@ -19,7 +19,6 @@ aws.config.update({
 });
 
 
-console.log("--- routes/api/index.js")
 // goals routes
 router.use("/goals", goalsRoutes);
 
