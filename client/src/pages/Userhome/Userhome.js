@@ -14,6 +14,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Goalform from "../../components/Goalform";
 import Goalheader from "../../components/Goalheader";
 import Goalsfollowing from "../../components/Goalsfollowing";
+import axios from "axios";
 // import Nav from "../../components/Nav";
 
 // const socket = io.connect('http://localhost:3000')
@@ -85,9 +86,38 @@ class UserHome extends Component  {
   constructor(props) {
     super(props);
     this.state = {
-      expanded: false
+      expanded: false,
+      description: "",
+      category: ""
     };
   }
+
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value 
+    });
+  };
+
+  getGoals = () => {
+    axios.get("/api/goals",{
+      description: this.state.description,
+      category: this.state.category
+    })
+      .then(res =>
+        this.setState({
+          description: res.data,
+          category: res.data
+        })
+      )
+      .catch(err => console.log(err));
+  };
+
+  handleFormSubmit = event => {
+    event.preventDefault();
+    this.getGoals();
+  };
+
 
   handleToggle = (event, toggle) => {
     this.setState({expanded: toggle});
@@ -111,14 +141,19 @@ class UserHome extends Component  {
         <p>Congratulations on taking the first step!</p>
         <p> You are one step closer to your goal!</p>
 
-        <Goalform />
+        <Goalform 
+        handleInputChange={this.handleInputChange}
+        hangleFormSubmit={this.handleFormSubmit}
+        description={this.state.description}
+        category={this.state.category}
+        />
 
       </div>
       <Goalheader />
       <Card style={color} expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
         <CardHeader
           title="Goal Name"
-          subtitle="Fitness"
+          subtitle="Exercise"
           avatar={image}
           actAsExpander={false}
           showExpandableButton={true}
@@ -139,7 +174,8 @@ class UserHome extends Component  {
         
         <CardTitle title="Goal Title" subtitle="Fitness" expandable={true} />
         <CardText expandable={true}>
-          My goal is to increase the amount of daily exercise.
+          {this.state.description}
+          My goal is to exercise daily
         </CardText>
         </Card>
         <br />
