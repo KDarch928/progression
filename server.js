@@ -34,7 +34,11 @@ app.use(passport.initialize());
 app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true}))
 // app.use(fileUpload());
 // Serve up static assets
-app.use(express.static("client/build"));
+// app.use(express.static("client/build"));
+
+if (process.env.NODE_ENV === 'production'){
+	app.use(express.static('client/build'));
+}
 
 // Add routes, both API and view
 
