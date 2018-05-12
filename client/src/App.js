@@ -29,7 +29,7 @@ import Nav from "./components/Nav"
 //injectTapEventPlugin();
 function handleClick(e) {
   e.preventDefault();
-  window.location.replace("./search");
+  window.location.replace("./Login");
 }
 // function handleLoginButton = () =>{
 //   window.location="/login"
@@ -38,45 +38,15 @@ function handleClick(e) {
 //   window.location="/signup"
 // }
 
-const styles = {
-  title: {
-    cursor: 'pointer',
-  },
-};
-
-
-const buttonStyle = {
-  backgroundColor: 'transparent',
-  color: 'white'
-};
-
-
-const rightButtons = (
-  <div>
-    <FlatButton label="Sign Up" style={buttonStyle} to="/Search">
-    </FlatButton>
-    <FlatButton label="Log In" style={buttonStyle} to="/Userhome" />
-  </div>
-);
 
 const App = () => (
 
   <Router>
     <div>
-      <MuiThemeProvider>
-        <AppBar
-          title="Progression"
-          onTitleClick={handleClick}
-          iconElementLeft={<IconButton><NavigationClose /></IconButton>}
-          iconElementRight={rightButtons}
-          onRightIconButtonClick={handleClick}
-        />
-
-      </MuiThemeProvider>
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route exact path="/Home" component={Home} />
         <Route exact path="/userhome" component={Userhome} />
-        <Route exact path="/about" component={About} />
         <Route exact path="/search" component={Search} />
         <Route exact path="/upload" component={Fileupload} />
         <Route exact path="/Login" component={Login}/>

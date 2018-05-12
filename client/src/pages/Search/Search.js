@@ -74,15 +74,17 @@ class Search extends Component  {
     onRightIconButtonClick={this.handleClick}
     />
     <Drawer open={this.state.open} close={this.handleClose}>
-     <a href="/Userhome"><MenuItem>Userhome</MenuItem></a>
-     <a href="/About"><MenuItem>About</MenuItem></a>
-     <MenuItem onClick={this.handleClose}>Close Menu</MenuItem>
+      <a href="/Signup"><MenuItem>Signup</MenuItem></a>
+      <a href="/Login"><MenuItem>Login</MenuItem></a>
+      <a href="/Userhome"><MenuItem>Userhome</MenuItem></a>
+      <a href="/Home"><MenuItem>Main Home Page</MenuItem></a>
+      <a href="/Search"><MenuItem>Logout</MenuItem></a>
+      <MenuItem onClick={this.handleClose}>X Close Menu</MenuItem>
     </Drawer>
     <div style={stylejumbo} className="jumbotron">
-      <h1>Search Goals</h1>
       <Goalsearchform/>
-
       </div>
+      <br/>
       <h2 id="header2">Goal Search Results</h2>
       <Card style={color} expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
         <CardHeader
