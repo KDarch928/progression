@@ -1,5 +1,4 @@
 import axios from 'axios';
-import ReactS3 from "react-s3";
 
 export default {
   signup: function () {
