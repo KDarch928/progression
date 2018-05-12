@@ -7,12 +7,14 @@ import API from "../../utils/API"
 import image from '../../images/wallpaper.jpg';
 import Userhome from "../Userhome/Userhome"
 import Home from "../Home/Home"
+
 const background = {
     backgroundImage: 'url('+image+')'
 
-  }
-class Login extends Component {
+}
 
+class Login extends Component {
+    //this sets states in react for user login info 
     constructor() {
         super();
         this.state = {
@@ -22,59 +24,50 @@ class Login extends Component {
             loginSuccessful: false
         };
         this.onSubmit = this.onSubmit.bind(this);
-    this.onChange = this.onChange.bind(this);
+        this.onChange = this.onChange.bind(this);
     };
-
+    //this function lets you know that if user log in was successful
     completeLogin = () =>{
         this.setState({
             loginSuccessful: true
         })
     }
-    onChange = (e) => {
-  
-    const { name, value } = e.target;
 
-    // Set the state for the appropriate input field
+    onChange = (e) => { 
+    const { name, value } = e.target;
     this.setState({
-    [name]: value
+        [name]: value
     });
-    // }
+  
     }
     onSubmit = (e) => {
         e.preventDefault();
-
         const { username, password } = this.state;
-
-      
-
         API.submitLogin({
             //put value from fields here. 
             username: this.state.username,
             password: this.state.password,
-          })
-          .then(res => {
+        })
+        .then(res => {
             console.log("response from server at login.");
             // TODO add code to redirect 
             console.log(res)
             this.completeLogin();
-          })
-          .catch(err => console.log(err));
+        })
+        .catch(err => console.log(err));
         }
     
 
 
 
     render() {
-
         const homePage=(<Userhome/>)
         const loginForm =(
             <div style={background} className="container">
                 <div id="id01" className="static-modal">
                     <form className="modal-content animate" onSubmit={this.onSubmit}>
                         <div className="imgcontainer">
-                            {/* //span needs onlcik button onClick={props.closeModal} */}
                             <span className="close" title="Close Modal" >&times;</span>
-                            <img src="../../images/login.jpg" alt="Avatar" className="avatar" />
                             <h1> Progression Login</h1>
                             <h2>Log in to your Progression account to access all your Goal.</h2>
                         </div>
@@ -85,13 +78,27 @@ class Login extends Component {
                             <input type="password" placeholder="Enter Password" value ={this.state.password} name="password" onChange={this.onChange} required />
                             <button type="submit">Login</button>
                         </div>
-                    
                     </form>
                 </div>
             </div>
         )
-    return this.state.loginSuccessful? homePage : loginForm
+        return this.state.loginSuccessful? homePage : loginForm
     }
 };
 
+// const mapStateToProps = (state, ownProps) => {
+//     return {user: state.currentUser.user};
+    
+// };
+// const mapDispatchToProps = dispatch => {
+//     return {
+//         onSuccessfullLogin: (user) => {
+//             dispatch(loginUser(user))
+//         }
+//     } 
+// };
+
+
+
 export default Login;
+// export default connect(mapStateToProps,mapDispatchToProps)(Login);

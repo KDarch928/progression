@@ -5,7 +5,9 @@ var exports = module.exports = {};
 exports.home = function(req,res){
 	res.redirect('/');
 }
-
+exports.userhome = function(req,res){
+	res.render("userhome")
+}
 
 
 exports.signup = function(req,res){
@@ -16,6 +18,12 @@ exports.signup = function(req,res){
 exports.login = function(req,res){
 	//res.render('signin');
 	res.redirect('/login');
+} 
+exports.signout = function(req,res){
+	req.session.destroy(function(err){
+		res.redirect("/")
+	})
+
 }
 
 
