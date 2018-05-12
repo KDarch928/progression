@@ -18,3 +18,18 @@
 	text-align: center;
 }
 
+.form-group {
+	font-size: 25px;
+}
+
+#goals {
+	font-size: 35px;
+}
+
+#run-search {
+	width: 100px;
+}
+
+#createGoal {
+	width: 150px;
+}
