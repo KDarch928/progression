@@ -22,6 +22,9 @@ var GoalsSchema = new Schema({
   gpercent: {
     type: Number,
     default: 0
+  },
+  username:{
+    type: String
   }
 });
 
