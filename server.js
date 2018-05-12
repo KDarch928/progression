@@ -83,6 +83,10 @@ app.use(function (req, res, next){
 //   })
 // // 
 
+if (process.env.NODE_ENV === 'production'){
+	app.use(express.static('client/build'));
+}
+
 app.use(routes);
 // Connect to the Mongo DB
 mongoose.connect(
