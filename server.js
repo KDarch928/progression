@@ -35,6 +35,7 @@ app.use(passport.initialize());
 app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true}))
 // app.use(fileUpload());
 // Serve up static assets
+
 if (process.env.NODE_ENV === 'production'){
 	app.use(express.static(path.join(__dirname,"client/build")));
 }
