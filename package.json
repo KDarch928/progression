@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "## About This Boilerplate",
   "engines": {
-    "node": "9.10.1"
+    "node": "9.10.1",
+    "yarn": "1.5.1"
   },
   "main": "server.js",
   "scripts": {
