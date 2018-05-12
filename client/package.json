@@ -12,7 +12,6 @@
     "react-dom": "^16.3.2",
     "react-rotating-text": "^1.2.1",
     "react-router-dom": "^4.2.2",
-    "react-s3": "^1.2.4",
     "react-scripts": "1.1.4",
     "react-tap-event-plugin": "^3.0.2"
   },
