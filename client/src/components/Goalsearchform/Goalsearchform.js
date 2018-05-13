@@ -9,27 +9,18 @@ const stylejumbo = {
 
 const Goalsearchform = props => (
   <div>
-    <div className="container">
-      <div className="row">
-        <div className="col-md-12">
-        <br/>
-          <div className="panel-body">
-            <form role="form">
-              <div className="form-group">
-                <label for="searchCategory">Search by Category:</label>
-                <input type="text" className="form-control" id="searchCategory" />
-              </div>
-              <div className="form-group">
-                <label for="keyword">Search by keyword:</label>
-                <input type="text" className="form-control" id="keyword"/>
-              </div>
-              <button type="submit" className="btn btn-info" id="run-search"> Search</button>
-            </form>
-          </div>
-        </div>
+    <form role="form">
+      <div className="form-group">
+        <label for="searchCategory">Search goals by Category:</label>
+        <input type="text" className="form-control" id="searchCategory" />
       </div>
-   </div>
- </div>
+      <div className="form-group">
+        <label for="keyword">Search by keyword:</label>
+        <input type="text" className="form-control" id="keyword"/>
+      </div>
+      <button type="submit" className="btn btn-info" id="run-search"> Search</button>
+    </form>
+  </div>
 );
 
 export default Goalsearchform;

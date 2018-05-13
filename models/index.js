@@ -8,3 +8,4 @@ module.exports = {
   User: require("./user"),
   Categories: require("./category")
 };
+
