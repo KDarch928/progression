@@ -48,11 +48,16 @@ class Login extends Component {
             username: this.state.username,
             password: this.state.password,
         })
-        .then(res => {
+        .then((res, req) => {
             console.log("response from server at login.");
             // TODO add code to redirect 
-            console.log(res)
+            // console.log("res1"+res)
+            // console.log("req"+ req)
+            const user = this.state.username;
+            console.log(user)
+            const newlink = "./userhome/" + user
             this.completeLogin();
+            window.location.replace(newlink);
         })
         .catch(err => console.log(err));
         }
@@ -67,8 +72,9 @@ class Login extends Component {
                 <div id="id01" className="static-modal">
                     <form className="modal-content animate" onSubmit={this.onSubmit}>
                         <div className="imgcontainer">
-                            <span className="close" title="Close Modal" >&times;</span>
-                            <h1> Progression Login</h1>
+                            <img src="../../images/progression.jpg" alt="Avatar" className="avatar1"/>
+                            {/* <h1> Progression Login</h1> */}
+                            <br/>
                             <h2>Log in to your Progression account to access all your Goal.</h2>
                         </div>
                         <div className="container">

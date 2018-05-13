@@ -6,7 +6,7 @@ exports.home = function(req,res){
 	res.redirect('/');
 }
 exports.userhome = function(req,res){
-	res.render("userhome")
+	res.render("/userhome")
 }
 
 

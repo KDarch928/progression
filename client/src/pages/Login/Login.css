@@ -19,7 +19,7 @@ input[type=text], input[type=password] {
 
 /* Set a style for all buttons */
 button {
-    background-color: #4CAF50;
+    background-color: #00CED1;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -46,9 +46,10 @@ button:hover {
     position: relative;
 }
 
-img.avatar {
-    width: 40%;
-    border-radius: 50%;
+img.avatar1 {
+    width: 20%;
+    border-radius: 14%;
+    margin-left:-14px;
 }
 
 .container {

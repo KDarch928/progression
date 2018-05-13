@@ -98,11 +98,11 @@ const stylejumbo = {
         const registrationForm = (
             <div style={stylejumbo} className="container">
                 <div id="id01" className="static-modal">
-                    <span  className="close" title="Close Modal" >&times;</span>
+                    
                     <form className="modal-content" onSubmit ={this.onSubmit} >
                     <div className="container">
                     
-                        <h1> Progression</h1>
+                        <img src="../../images/progression.jpg" alt="Avatar" className="avatar"/>   
                         <h2>Sign up to your Progression account to access all your Goal.</h2>
                         <p>Please fill in this form to create an account.</p>
                         <hr/>
