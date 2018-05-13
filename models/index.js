@@ -6,5 +6,5 @@
 module.exports = {
   Goals: require("./goals"),
   User: require("./user"),
-  Categories: require("./category")
+  // Categories: require("./category")
 };

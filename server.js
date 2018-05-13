@@ -10,6 +10,7 @@ const logger = require("morgan")
 const cookieParser = require('cookie-parser');
 const models = require("./models")
 const routes= require("./routes");
+const path = require("path");
 var db = require("./models")
 
 
@@ -20,7 +21,7 @@ var db = require("./models")
 // const fileUpload = require("express-fileupload");
 // const routes = require("./routes");
 // Serve up static assets
-app.use(express.static("client/build"));
+// app.use(express.static("client/build"));
 // Add routes, both API and view
 
 
@@ -34,14 +35,12 @@ app.use(passport.initialize());
 app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true}))
 // app.use(fileUpload());
 // Serve up static assets
-app.use(express.static("client/build"));
+
+if (process.env.NODE_ENV === 'production'){
+	app.use(express.static(path.join(__dirname,"client/build")));
+}
 
 // Add routes, both API and view
-
-
-//AWS.config.loadFromPath('./config.json');
-// var s3Bucket = new AWS.S3({params: {Bucket: "progressionapp"}});
-// const baseAWSURL = "https://s3-us-east-2.amazonaws.com/progressionapp/"
 
 app.use(logger("dev"));
 
@@ -81,7 +80,7 @@ app.use(function (req, res, next){
 //       console.log(err)
 //     })
 //   })
-// // 
+// //
 
 app.use(routes);
 // Connect to the Mongo DB
