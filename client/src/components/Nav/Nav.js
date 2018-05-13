@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import AppBar from 'material-ui/AppBar';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Drawer from 'material-ui/Drawer';
