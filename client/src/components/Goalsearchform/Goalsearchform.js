@@ -1,5 +1,5 @@
 import React from "react";
-import FlatButton from 'material-ui/FlatButton';
+//import FlatButton from 'material-ui/FlatButton';
 import image from '../../images/sun.jpg';
 import "../../style.css";
 
@@ -12,9 +12,19 @@ const Goalsearchform = props => (
     <form role="form">
       <div className="form-group">
         <label for="searchCategory">Search goals by Category:</label>
-        <input type="text" className="form-control" id="searchCategory" />
+        <input 
+          type="text" 
+          className="form-control" 
+          id="searchCategory" 
+          onChange={props.handleInputChange}
+        />
       </div>
-      <button type="submit" className="btn btn-info" id="run-search"> Search</button>
+      <button 
+        type="submit" 
+        className="btn btn-info" 
+        id="run-search"
+        onClick={props.handleFormSubmit}
+      > Search</button>
     </form>
   </div>
 );
