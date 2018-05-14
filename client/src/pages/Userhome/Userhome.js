@@ -2,10 +2,13 @@ import React, { Component } from "react";
 import "../../style.css";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import API from "../../utils/API";
+import Drawer from 'material-ui/Drawer';
+import MenuItem from 'material-ui/MenuItem';
+import AppBar from 'material-ui/AppBar';
 
 import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
-import image from '../../images/sun.jpg';
+import image from '../../images/wallpaper.jpg';
 
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
@@ -21,6 +24,7 @@ import axios from "axios";
 
 const stylejumbo = {
   backgroundImage: 'url('+image+')'
+
 }
 
 const color = {
@@ -42,6 +46,7 @@ class UserHome extends Component  {
     super(props);
     this.state = {
       expanded: false,
+      open: false,
       description: "",
       category: "",
       goals: [],
@@ -49,6 +54,14 @@ class UserHome extends Component  {
       percent: "",
       message: "",
     };
+  }
+
+  handleOpen = () => {
+    this.setState({open: !this.state.open});
+  }
+  
+  handleClose = () => {
+    this.setState({open: false});
   }
 
 componentDidMount() {
@@ -229,11 +242,23 @@ componentDidMount() {
 
     return (
       <MuiThemeProvider>
-       <Container>
+        <AppBar
+        title="Progression"
+        onLeftIconButtonClick={this.handleOpen}
+        onRightIconButtonClick={this.handleClick}
+        />
+        <Drawer open={this.state.open} close={this.handleClose}>
+          <a href="/Signup"><MenuItem>Signup</MenuItem></a>
+          <a href="/Login"><MenuItem>Login</MenuItem></a>
+          <a href="/Search"><MenuItem>Search</MenuItem></a>
+          <a href="/Home"><MenuItem>Main Home Page</MenuItem></a>
+          <a href="/Userhome"><MenuItem>Logout</MenuItem></a>
+          <MenuItem onClick={this.handleClose}>X Close Menu</MenuItem>
+       </Drawer>
+
        <div style={stylejumbo} className="jumbotron">
          <h1>Set Your Goals!</h1>
-         <p>Congratulations on taking the first step!</p>
-         <p> You are one step closer to your goal!</p>
+         <p>Congratulations on taking the first step! You are one step closer to your goal!</p>
 
           <Goalform 
           handleInputChange={this.handleInputChange}
@@ -243,10 +268,9 @@ componentDidMount() {
           />
       </div>
 
-      <Goalheader />
-
       <div>
         <List>
+              <Goalheader />
           {this.state.goals.map((goal) => (
           <div>
            {/* <p>{goal.gcategory}</p>
@@ -315,7 +339,7 @@ componentDidMount() {
       </Card>
       <br />
       </div>
-     </Container>
+
     </MuiThemeProvider>
     );
   }
