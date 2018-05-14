@@ -33,3 +33,11 @@
 #createGoal {
 	width: 150px;
 }
+
+.btn-info {
+  margin: 20px;
+}
+
+#exampleFormControlFile1 {
+	margin-left: 500px;
+}
