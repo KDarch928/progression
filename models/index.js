@@ -4,6 +4,8 @@
 // Exporting an object containing all of our models
 
 module.exports = {
-  Goals: require("./Goals"),//,
- User: require("./user")
+  Goals: require("./goals"),
+  User: require("./user"),
+  Categories: require("./category")
 };
+

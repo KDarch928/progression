@@ -1731,10 +1731,6 @@ crypto-browserify@^3.11.0:
     randombytes "^2.0.0"
     randomfill "^1.0.3"
 
-crypto-js@^3.1.9-1:
-  version "3.1.9-1"
-  resolved "https://registry.yarnpkg.com/crypto-js/-/crypto-js-3.1.9-1.tgz#fda19e761fc077e01ffbfdc6e9fdfc59e8806cd8"
-
 crypto-random-string@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/crypto-random-string/-/crypto-random-string-1.0.0.tgz#a230f64f568310e1498009940790ec99545bca7e"
@@ -5683,12 +5679,6 @@ react-router@^4.2.0:
     path-to-regexp "^1.7.0"
     prop-types "^15.5.4"
     warning "^3.0.0"
-
-react-s3@^1.2.4:
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/react-s3/-/react-s3-1.2.4.tgz#2fe5ef25872d90ea2f1dfad68ab073c63af0d3ea"
-  dependencies:
-    crypto-js "^3.1.9-1"
 
 react-scripts@1.1.4:
   version "1.1.4"
