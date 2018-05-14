@@ -8,28 +8,32 @@ const stylejumbo = {
 }
 
 const Goalform = props => (
-  <div>
-    <div className="container">
-      <div className="row">
-        <div className="col-md-12">
-        <br/>
-          <div className="panel-body">
-            <form role="form">
-              <div className="form-group">
-                <label for="goalCategory">Goal Category:</label>
-                <input type="text" className="form-control" id="goalCategory" />
-              </div>
-              <div className="form-group">
-                <label for="Goal">Goal Description:</label>
-                <input type="text" className="form-control" id="Goal"/>
-              </div>
-              <button type="submit" className="btn btn-info" id="run-search"> Create Goal</button>
-            </form>
-          </div>
-        </div>
-      </div>
-   </div>
- </div>
+    <form role="form">
+
+        <label for="goalCategory">Goal Category:</label>
+        <input
+         type="text" 
+         className="form-control" 
+         id="goalCategory"
+         onChange={props.handleInputChange}
+         required
+          />
+
+        <label for="Goal">Goal Description:</label>
+        <input 
+        type="text" 
+        className="form-control" 
+        id="Goal"
+        onChange={props.handleInputChange}
+        required
+        />
+      <button
+      onClick={props.handleFormSubmit}
+      type="submit" 
+      className="btn btn-info" 
+      id="createGoal"> Create Goal</button>
+    </form>
+
 );
 
 export default Goalform;

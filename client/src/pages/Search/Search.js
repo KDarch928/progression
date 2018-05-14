@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import "../../style.css";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-
+import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
-import image from '../../images/write-593333_1920.jpg';
+import image from '../../images/write.jpg';
+import Drawer from 'material-ui/Drawer';
+import MenuItem from 'material-ui/MenuItem';
+
 
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
@@ -27,10 +30,6 @@ const color2 = {
   backgroundColor: '#A9A9A9'
 }
 
-function handleClick(e) {
-  e.preventDefault();
-}
-
 
 class Search extends Component  {
 
@@ -38,7 +37,16 @@ class Search extends Component  {
     super(props);
     this.state = {
       expanded: false,
+      open: false
     };
+  }
+
+  handleOpen = () => {
+    this.setState({open: !this.state.open});
+  }
+  
+  handleClose = () => {
+    this.setState({open: false});
   }
 
   handleExpandChange = (expanded) => {
@@ -59,13 +67,24 @@ class Search extends Component  {
 
   render() {
     return (
-      <MuiThemeProvider>
-      <Nav />
-      <div style={stylejumbo} className="jumbotron">
-        <h1>Search Goals</h1>
-        <Goalsearchform/>
-
+    <MuiThemeProvider>
+    <AppBar
+    title="Progression"
+    onLeftIconButtonClick={this.handleOpen}
+    onRightIconButtonClick={this.handleClick}
+    />
+    <Drawer open={this.state.open} close={this.handleClose}>
+      <a href="/Signup"><MenuItem>Signup</MenuItem></a>
+      <a href="/Login"><MenuItem>Login</MenuItem></a>
+      <a href="/Userhome"><MenuItem>Userhome</MenuItem></a>
+      <a href="/Home"><MenuItem>Main Home Page</MenuItem></a>
+      <a href="/Search"><MenuItem>Logout</MenuItem></a>
+      <MenuItem onClick={this.handleClose}>X Close Menu</MenuItem>
+    </Drawer>
+    <div style={stylejumbo} className="jumbotron">
+      <Goalsearchform/>
       </div>
+      <br/>
       <h2 id="header2">Goal Search Results</h2>
       <Card style={color} expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
         <CardHeader

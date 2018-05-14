@@ -1,30 +1,11 @@
 import React, { Component } from "react";
-import API from "../../utils/API";
 
 class Fileuploader extends Component {
 
     state = {
-        file: null
+        file: null,
+        result: null
     };
-
-    getSignedRequest = (file) => {
-        const xhr = new XMLHttpRequest();
-        const test = xhr.open('GET', `/api/goals/uploads/${file.name}`);
-        console.log(test);
-        xhr.onreadystatechange = () => {
-            if(xhr.readyState === 4){
-                if(xhr.status === 200){
-                    const response = xhr.responseText;
-
-                    //console.log(response);
-                    //this.uploadFile(file, response.signedRequest, response.url);
-                } else {
-                    alert("Could not get signed URL.");
-                }
-            }
-        };
-        xhr.send();
-    }
 
     uploadFile = (file, signedRequest, url) => {
         const xhr = new XMLHttpRequest();
@@ -32,22 +13,40 @@ class Fileuploader extends Component {
         xhr.onreadystatechange = () => {
             if(xhr.readyState === 4){
                 if(xhr.status === 200){
-                    console.log("Connected");
-                    console.log(url);
+                    alert(`File has been uploaded to ${url}`);
                 } else {
-                    alert("Could not upload file.");
+                    alert('Could not upload file.');
                 }
             }
         };
         xhr.send(file);
     }
 
+    getSignedRequest = (file) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', `/api/sign-s3?file-name=${file.name}&file-type=${file.type}`);
+        // xhr.open('GET', `/api/sign-s3`);
+        xhr.onreadystatechange = () => {
+            if(xhr.readyState === 4){
+                if(xhr.status === 200){
+                    const response = JSON.parse(xhr.responseText);
+                    this.uploadFile(file, response.signedRequest, response.url);
+                } else {
+                    alert('Could not get signed URL.');
+                }
+            }
+        };
+        xhr.send();
+    }
+    
     uploadHandler = event => {
         event.preventDefault();
+
+        if(this.state.file == null){
+            return alert("No file selected.");
+        }
+
         this.getSignedRequest(this.state.file);
-        // let formData = new FormData();
-        // formData.append("image", this.state.file);
-        // API.fileUpload(this.state.file);
 
     };
     
