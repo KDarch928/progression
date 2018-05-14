@@ -14,10 +14,6 @@ const Goalsearchform = props => (
         <label for="searchCategory">Search goals by Category:</label>
         <input type="text" className="form-control" id="searchCategory" />
       </div>
-      <div className="form-group">
-        <label for="keyword">Search by keyword:</label>
-        <input type="text" className="form-control" id="keyword"/>
-      </div>
       <button type="submit" className="btn btn-info" id="run-search"> Search</button>
     </form>
   </div>
