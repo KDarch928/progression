@@ -46,9 +46,9 @@ const goalsSeed = [
     date:  '2018/04/01 08:00', 
     guser: 'Angela',
     goal: 'More water!',
-    gcategory: 'Fitness',
+    gcategory: 'Nutrition',
     gpercent: 0,
-    username: ""
+    username: "angela"
    },
   {
     date:  '2018/04/03 09:00',
@@ -56,7 +56,7 @@ const goalsSeed = [
     goal: 'increase daily exercise!',
     gcategory: 'Fitness',
     gpercent: 3,
-    username: ""
+    username: "angela"
   },
     {
     date:  '2018/04/05 11:00', 
@@ -64,7 +64,7 @@ const goalsSeed = [
     goal: 'increase daily exercise!',
     gcategory: 'Fitness',
     gpercent: 5,
-    username: ""
+    username: "angela"
    },
   {
     date:  '2018/04/06 9:30',
@@ -72,7 +72,15 @@ const goalsSeed = [
     goal: 'increase daily exercise!',
     gcategory: 'Fitness',
     gpercent: 7,
-    username: ""
+    username: "angela"
+  },
+  {
+    date:  '2018/04/15 9:30',
+    guser: 'Mary',
+    goal: 'swimming!',
+    gcategory: 'Fitness',
+    gpercent: 7,
+    username: "maj"
   }
 ];
 const CategoriesSeed = [
