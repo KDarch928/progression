@@ -8,7 +8,13 @@ const Controller = require("../../controllers/Controller");
 router.route("/goals")
   .get(Controller.findAll)
   .post(Controller.create);
-  
+
+router
+  .route("/search/:keyword")
+  .get(Controller.findByCategory)
+  .put(Controller.update)
+  .delete(Controller.remove);
+
 // Matches with "/api/goals/:id"
 router
   .route("/:id")
@@ -29,5 +35,7 @@ router
   .get(Controller.findByUser)
   .put(Controller.update)
   .delete(Controller.remove);
+
+
 
 module.exports = router;
