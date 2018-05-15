@@ -258,7 +258,6 @@ componentDidMount() {
 
        <div style={stylejumbo} className="jumbotron">
          <h1>Set Your Goals!</h1>
-         <p>Congratulations on taking the first step! You are one step closer to your goal!</p>
 
           <Goalform 
           handleInputChange={this.handleInputChange}
