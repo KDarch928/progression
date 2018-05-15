@@ -9,12 +9,16 @@ const stylejumbo = {
 
 const Goalsearchform = props => (
   <div>
-    <form role="form">
+    <form role="form" className="menu">
       <div className="form-group">
-        <label for="searchCategory">Search goals by Category:</label>
-        <input type="text" className="form-control" id="searchCategory" />
+        <label for="searchCategory">Search goals by Category:</label><br />
+        <button value="health" className="btn btn-info" id="health">Health</button><br/>
+        <button value="fitness" className="btn btn-info" id="fitness">Fitness </button><br/>
+        <button value="home" className="btn btn-info" id="home">Home </button><br />
+        <button value="hobbies" className="btn btn-info" id="hobbies">Hobbies </button><br/>
+        <button value="social" className="btn btn-info" id="social">Social </button><br />
+        <button value="efficiency" className="btn btn-info" id="efficiency">Efficiency </button> 
       </div>
-      <button type="submit" className="btn btn-info" id="run-search"> Search</button>
     </form>
   </div>
 );
