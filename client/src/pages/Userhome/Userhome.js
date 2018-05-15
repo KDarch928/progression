@@ -50,12 +50,12 @@ class UserHome extends Component  {
       description: "",
       category: "",
       goals: [],
-      user: "Mary",
+      username: "",
       percent: "",
       message: "",
     };
   }
-
+////for drawer
   handleOpen = () => {
     this.setState({open: !this.state.open});
   }
@@ -66,6 +66,11 @@ class UserHome extends Component  {
 
 componentDidMount() {
  this.UserGoals()
+ const patharr =  window.location.pathname.split('/');
+ const id = patharr[patharr.length-1];
+ console.log(id)
+
+
 }
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -257,8 +262,9 @@ componentDidMount() {
        </Drawer>
 
        <div style={stylejumbo} className="jumbotron">
-         <h1>Set Your Goals!</h1>
-         <p>Congratulations on taking the first step! You are one step closer to your goal!</p>
+          <h1>Set Your Goals!</h1>
+          <p>Congratulations on taking the first step! You are one step closer to your goal!</p>
+
 
           <Goalform 
           handleInputChange={this.handleInputChange}

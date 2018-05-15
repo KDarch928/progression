@@ -47,6 +47,7 @@ const App = () => (
         <Route exact path="/" component={Home} />
         <Route exact path="/Home" component={Home} />
         <Route exact path="/userhome/:username?" component={Userhome} />
+        <Route exact path="/category/:keyword" component={Search} />
         <Route exact path="/search" component={Search} />
         <Route exact path="/upload" component={Fileupload} />
         <Route exact path="/Login" component={Login}/>
