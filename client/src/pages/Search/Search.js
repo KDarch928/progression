@@ -200,7 +200,6 @@ class Search extends Component  {
       <MenuItem onClick={this.handleClose}>X Close Menu</MenuItem>
     </Drawer>
     <div style={stylejumbo} className="jumbotron">
-     <h1> Collaborate with others with a similar goal!</h1>
       <Goalsearchform
         handleInputChange={this.handleInputChange}
         handleFormSubmit={this.handleFormSubmit}
