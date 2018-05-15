@@ -20,6 +20,7 @@ import Goalform from "../../components/Goalform";
 import Goalheader from "../../components/Goalheader";
 import Goalsfollowing from "../../components/Goalsfollowing";
 import axios from "axios";
+import Slider from 'material-ui/Slider';
 // import Nav from "../../components/Nav";
 
 const stylejumbo = {
@@ -40,6 +41,7 @@ function handleClick(e) {
 }
 
 
+
 class UserHome extends Component  {
 
   constructor(props) {
@@ -53,8 +55,13 @@ class UserHome extends Component  {
       user: "Mary",
       percent: "",
       message: "",
+      slider: 10
     };
   }
+
+  handleSlider = (event, value) => {
+    this.setState({slider: value});
+  };
 
   handleOpen = () => {
     this.setState({open: !this.state.open});
@@ -281,6 +288,7 @@ componentDidMount() {
                 avatar={image}
                 actAsExpander={false}
                 showExpandableButton={true}
+
               />
               <CardText>
                 <Toggle
@@ -301,6 +309,15 @@ componentDidMount() {
               <CardText expandable={true}>
                 {this.state.description}
                 You are at {goal.gpercent} percent!
+
+        <Slider
+          value={this.state.slider}
+          onChange={this.handleSlider}
+        />
+        <p>
+          <span>{'The value of this slider is: '}</span>
+          <span>{this.state.slider}</span>
+        </p>
               </CardText>
             </Card>
            <br />
@@ -334,6 +351,7 @@ componentDidMount() {
         <CardTitle title="Goal Title" subtitle="Diet" expandable={true} />
         <CardText expandable={true}>
           My goal is to eat more fruits and vegetables.
+          <Slider />
         </CardText>
       </Card>
       <br />
