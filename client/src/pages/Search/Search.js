@@ -56,6 +56,14 @@ class Search extends Component  {
   handleClose = () => {
     this.setState({open: false});
   }
+  handleCategory =(event) => {
+    event.preventDefault();
+    this.setState({
+      category: event.target.value
+    })
+    console.log(this.state.category)
+    this.UserSearch()
+  }
 
   handleExpandChange = (expanded) => {
     this.setState({expanded: expanded});
@@ -80,7 +88,7 @@ class Search extends Component  {
  
   handleFormSubmit = event => {
     event.preventDefault();
-    this.UserSearch()
+    
   };
    
   UserSearch = () => {
