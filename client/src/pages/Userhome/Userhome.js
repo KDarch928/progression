@@ -56,11 +56,14 @@ class UserHome extends Component  {
       awsbaseurl: "https://progressionapp.s3.amazonaws.com/",
       result: null,
       goals: [],
+      username: "",
       user: "",
       percent: "",
       message: "",
       slider: 10
     };
+    this.handleFormSubmit= this.handleFormSubmit.bind(this)
+    this.handleInputChange=this.handleInputChange.bind(this)
   }
 
   handleSlider = (event, value) => {
@@ -70,20 +73,21 @@ class UserHome extends Component  {
   handleOpen = () => {
     this.setState({open: !this.state.open});
   }
-  
+  //////////////
   handleClose = () => {
     this.setState({open: false});
   }
-
+////////////////////
 componentDidMount() {
-  console.log('componentDidMount')
-  console.log(this.state)
-  const patharr =  window.location.pathname.split('/');
-  const id = patharr[patharr.length-1];
-  console.log(id)
-  this.state.user = id;
-  this.UserGoals()
+ 
+ const patharr =  window.location.pathname.split('/');
+ const id = patharr[patharr.length-1];
+ console.log(id)
+ 
+ this.UserGoals(id)
+
 }
+//////////////////////////
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -91,10 +95,17 @@ componentDidMount() {
     });
   };
 
-  UserGoals = () => {
-
-   API.getGoalsUser(this.state.user)        
+//////////////////////////////
+UserGoals = (id) => {
+  console.log("usergaol"+id)
+  this.setState({
+    username: id
+  })
+  console.log(this.state.username)
+   API.getGoalsUser(id)        
     .then(res => {
+
+      console.log("apigetgoaluser"+res)
       let tmpgoal = res.data[0].goal;
       let tmpdata = [];
       let i = 0
@@ -183,12 +194,12 @@ componentDidMount() {
       
       //console.log("#18 after goals data "+JSON.stringify(this.state.goals))
 
-    } // end .then
+     } // end .then
     )
     .catch(err => console.log(err)) 
  
   }
-
+/////////////////
   handleGoal = (id) => {
   //let id = '5af4912e04f888219c1c00b1'
     console.log("handleGoal id "+JSON.stringify(id))
@@ -209,7 +220,7 @@ componentDidMount() {
       .catch(err => console.log(err)) 
    
   }
-
+///////////////
   getGoals = () => {
 
     console.log("getGoals")
@@ -263,6 +274,31 @@ componentDidMount() {
 
   handleFormSubmit = event => {
     event.preventDefault();
+    
+    
+    const patharr =  window.location.pathname.split('/');
+ const id = patharr[patharr.length-1];
+ console.log(id)
+    this.setState({
+      username: id
+    })
+    console.log(this.state.username)
+    
+    console.log("handleFormSubmit")
+    //this.getGoals();
+    //this.UserGoals()
+    console.log(this.state)
+    const{username,category,description} = this.state
+    API.saveGoal({
+      username:this.state.username,
+      category:this.state.category,
+      description:this.state.description
+    })
+    .then(res => {
+      console.log("apisavegoalworked")
+    })
+    .catch(err => console.log(err))
+
     if (this.state.file !== null){
       if(this.state.file == null){
         return alert("No file selected.");
@@ -285,6 +321,14 @@ componentDidMount() {
        // this.handleGoal(id)
 //console.log("handleToggle id "+id)
   };
+
+  handleCategory = (event) =>{
+    event.preventDefault();
+    this.setState({
+      category: event.target.value
+    })
+    console.log(this.state.category)
+  }
 
   handleExpand = () => {
     this.setState({expanded: true});
@@ -321,7 +365,8 @@ componentDidMount() {
 
           <Goalform 
           handleInputChange={this.handleInputChange}
-          hangleFormSubmit={this.handleFormSubmit}
+          handleFormSubmit={this.handleFormSubmit}
+          handleCategory={this.handleCategory}
           description={this.state.description}
           category={this.state.category}
           file={this.fileChangeHandler}

@@ -16,10 +16,10 @@ var GoalsSchema = new Schema({
   goal: {
     type: String
   },
-  gcategory: {
+  category: {
     type: String
   },
-  gpercent: {
+  percent: {
     type: Number,
     default: 0
   },
