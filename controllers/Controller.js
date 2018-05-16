@@ -9,7 +9,7 @@ const db = require("../models");
 module.exports  = {
 
   findAll: function(req, res) {
-    console.log("Controller: Im in find it all");
+    //console.log("Controller: Im in find it all");
     db.Goals
       .find(req.query)
       .sort({ date: -1 })
@@ -33,6 +33,7 @@ module.exports  = {
     console.log("findByUser req "+req.params.user)
     db.Goals
       .find({guser: (req.params.user).toString()})
+      .sort({goal:1,date: 1})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

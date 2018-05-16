@@ -26,10 +26,18 @@
 	font-size: 35px;
 }
 
-#run-search {
+#run-search, .goal {
 	width: 100px;
 }
 
-#createGoal {
+#createGoal, .btn-info {
 	width: 150px;
+}
+
+.goal {
+  margin: 20px;
+}
+
+#exampleFormControlFile1 {
+	margin-left: 500px;
 }
