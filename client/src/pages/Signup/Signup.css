@@ -16,7 +16,11 @@ input[type=text]:focus, input[type=password]:focus {
     background-color: #ddd;
     outline: none;
 }
-
+img.avatar {
+    width: 20%;
+    border-radius: 14%;
+    margin-left:220px;
+}
 /* Set a style for all buttons */
 button {
     background-color: #4CAF50;
@@ -25,8 +29,12 @@ button {
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 100%;
+    width: 200px;
     opacity: 0.9;
+    
+}
+p{
+    text-align:center;
 }
 
 button:hover {
@@ -42,7 +50,7 @@ button:hover {
 /* Float cancel and signup buttons and add an equal width */
 .cancelbtn, .signupbtn {
   float: left;
-  width: 50%;
+  width: 100%;
 }
 
 /* Add padding to container elements */
@@ -63,10 +71,13 @@ button:hover {
     background-color: #474e5d;
     padding-top: 50px;
 }
+.static-modal{
+    width:800px;
+}
 
 /* Modal Content/Box */
 .modal-content {
-    background-color: #fefefe;
+    background-color:white;
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */

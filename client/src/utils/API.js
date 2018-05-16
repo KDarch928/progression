@@ -77,7 +77,7 @@ export default {
   getGoalsCategory: function(category) {
     console.log("API axios.GET(/api/goals/category/" + category);
     return axios.get("/api/goals/category/"+category)
-    /*  .then(data => {
+    .then(data => {
         console.log(data)
         return data
       })
@@ -91,13 +91,23 @@ export default {
         } else {
           console.log("Error getGoalsCategory ", err.message);
         }
-      });*/
+      });
   },
     // Gets the goals with the given user
   getGoalsUser: function(user) {
     console.log("API axios.GET(/api/goals/user/" + user);
-     return axios.get("/api/goals/user/" + user);
+     return axios.get("/api/goals/user/" + user)
+     .then(function (response) {
+     
+      return response.data;
+      console.log("1" +response.data)
+    })
+    .catch(function (error) {
+      console.log(error);
+      console.log('error at get goaluser');
+    });
   },
+
   // Deletes the goal with the given id
   deleteGoal: function(id) {
     console.log("API axios.DELETE(/api/goals/"+id)
@@ -106,6 +116,6 @@ export default {
   // Saves a goal to the database
   saveGoal: function(goalData) {
     console.log("API axios.POST(/api/goals")
-    return axios.post("/api/goals", goalData);
+    return axios.post("/api/goals/user/", goalData);
   }
 };
