@@ -57,6 +57,7 @@ class UserHome extends Component  {
       result: null,
       goals: [],
       username: "",
+      user: "",
       percent: "",
       message: "",
       slider: 10
@@ -85,7 +86,6 @@ componentDidMount() {
  
  this.UserGoals(id)
 
-
 }
 //////////////////////////
   handleInputChange = event => {
@@ -94,6 +94,7 @@ componentDidMount() {
       [name]: value 
     });
   };
+
 //////////////////////////////
   UserGoals = (id) => {
 console.log("usergaol"+id)
