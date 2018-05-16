@@ -50,6 +50,7 @@ class Login extends Component {
         })
         .then((res, req) => {
             console.log("response from server at login.");
+
             // TODO add code to redirect 
             // console.log("res1"+res)
             // console.log("req"+ req)
