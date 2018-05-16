@@ -97,7 +97,7 @@ export default {
   getGoalsUser: function(user) {
     console.log("API axios.GET(/api/goals/user/" + user);
      return axios.get("/api/goals/user/" + user)
-     .then(function (response) {
+  /*   .then(function (response) {
      
       return response.data;
       console.log("1" +response.data)
@@ -105,7 +105,7 @@ export default {
     .catch(function (error) {
       console.log(error);
       console.log('error at get goaluser');
-    });
+    });*/
   },
 
   // Deletes the goal with the given id

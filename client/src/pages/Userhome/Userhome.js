@@ -41,7 +41,6 @@ function handleClick(e) {
 }
 
 
-
 class UserHome extends Component  {
 
   constructor(props) {
@@ -57,7 +56,6 @@ class UserHome extends Component  {
       result: null,
       goals: [],
       username: "",
-      user: "",
       percent: "",
       message: "",
       slider: 10
@@ -97,15 +95,16 @@ componentDidMount() {
 
 //////////////////////////////
 UserGoals = (id) => {
-  console.log("usergaol"+id)
+  console.log("usergoal "+id)
   this.setState({
     username: id
   })
-  console.log(this.state.username)
+
+   //console.log(this.state.username)
    API.getGoalsUser(id)        
     .then(res => {
 
-      console.log("apigetgoaluser"+res)
+      console.log("Userhome: api getgoaluser "+JSON.stringify(res.data))
       let tmpgoal = res.data[0].goal;
       let tmpdata = [];
       let i = 0
@@ -275,13 +274,15 @@ UserGoals = (id) => {
   handleFormSubmit = event => {
     event.preventDefault();
     
-    
     const patharr =  window.location.pathname.split('/');
- const id = patharr[patharr.length-1];
- console.log(id)
+    const id = patharr[patharr.length-1];
+    
+    console.log(id)
+
     this.setState({
       username: id
     })
+    
     console.log(this.state.username)
     
     console.log("handleFormSubmit")
