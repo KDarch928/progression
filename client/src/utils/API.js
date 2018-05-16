@@ -77,7 +77,7 @@ export default {
   getGoalsCategory: function(category) {
     console.log("API axios.GET(/api/goals/category/" + category);
     return axios.get("/api/goals/category/"+category)
-    .then(data => {
+  /* .then(data => {
         console.log(data)
         return data
       })
@@ -91,7 +91,7 @@ export default {
         } else {
           console.log("Error getGoalsCategory ", err.message);
         }
-      });
+      });*/
   },
     // Gets the goals with the given user
   getGoalsUser: function(user) {

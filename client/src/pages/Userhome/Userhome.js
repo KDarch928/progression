@@ -111,7 +111,7 @@ UserGoals = (id) => {
       while ( i < res.data.length ) {
 
         tmpgoal = res.data[i].goal
-        //console.log ( "#1 loop i "+i+" goal "+tmpgoal+" percent "+res.data[i].gpercent)
+        //console.log ( "#1 loop i "+i+" goal "+tmpgoal+" percent "+res.data[i].percent)
         
         if (res.data.length >= 1) 
         {
@@ -132,7 +132,7 @@ UserGoals = (id) => {
             }     
             else
               {
-                //console.log("#6 before while no tmpdata equal i "+i+" tmpgoal "+tmpgoal+"percent "+res.data[i].gpercent)
+                //console.log("#6 before while no tmpdata equal i "+i+" tmpgoal "+tmpgoal+"percent "+res.data[i].percent)
                 //console.log(" length "+res.data.length)
                 while ( i <= res.data.length && res.data[i].goal === tmpgoal ) //res.data[i+1].goal)
                  {
@@ -145,8 +145,8 @@ UserGoals = (id) => {
                  
                    //if ( i < res.data.length ) 
                    // {    
-                   //     console.log("#8 --- while after i inc tmpgoal "+tmpgoal+"percent "+res.data[i].gpercent)                 
-                   //     console.log("#9 *** while no tmpdata equal i "+i+" tmpgoal "+tmpgoal+"percent "+res.data[i].gpercent)
+                   //     console.log("#8 --- while after i inc tmpgoal "+tmpgoal+"percent "+res.data[i].percent)                 
+                   //     console.log("#9 *** while no tmpdata equal i "+i+" tmpgoal "+tmpgoal+"percent "+res.data[i].percent)
                    // }
                  } //end while
 
@@ -156,17 +156,17 @@ UserGoals = (id) => {
                 i++;
               } // end else
             //if ( i < res.data.length)
-            //  console.log("#11 after while goals equal i "+i+" tmpgoal "+tmpgoal+"percent "+res.data[i].gpercent)
+            //  console.log("#11 after while goals equal i "+i+" tmpgoal "+tmpgoal+"percent "+res.data[i].percent)
           
             if ( i < res.data.length-1) 
             {
-              console.log("#12 PUSH after while push i "+i+" percent "+res.data[i].gpercent)
+              console.log("#12 PUSH after while push i "+i+" percent "+res.data[i].percent)
               tmpdata.push(res.data[i])
              
               if (i < res.data.length-1) 
               {
                tmpgoal = res.data[i].goal
-               //console.log("#13 i "+i+" while goal inc bottom percent "+res.data[i].gpercent)
+               //console.log("#13 i "+i+" while goal inc bottom percent "+res.data[i].percent)
               }
             }
 
@@ -175,7 +175,7 @@ UserGoals = (id) => {
         //console.log("#14 i "+i+" after while before if")
         if ( i < res.data.length) 
          {
-            console.log("#15 PUSH after while push i "+i+" "+res.data[i].gpercent+
+            console.log("#15 PUSH after while push i "+i+" "+res.data[i].percent+
             " goal "+res.data[i].goal);
             tmpdata.push(res.data[i])
          }
@@ -379,8 +379,8 @@ UserGoals = (id) => {
               <Goalheader />
           {this.state.goals.map((goal) => (
           <div>
-           {/* <p>{goal.gcategory}</p>
-            <p>{goal.gpercent}</p> */}
+           {/* <p>{goal.category}</p>
+            <p>{goal.percent}</p> */}
             <Card style={color} expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
               <CardHeader
                 title={goal.goal} //"Goal Name"
@@ -405,10 +405,10 @@ UserGoals = (id) => {
               </CardMedia> 
               
               {/*<CardTitle title="Goal Title" subtitle="Fitness" expandable={true} />*/}        
-              <CardTitle title={goal.goal} subtitle={goal.gcategory} expandable={true} />
+              <CardTitle title={goal.goal} subtitle={goal.category} expandable={true} />
               <CardText expandable={true}>
                 {this.state.description}
-                You are at {goal.gpercent} percent!
+                You are at {goal.percent} percent!
 
         <Slider
           value={this.state.slider}
