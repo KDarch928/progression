@@ -51,19 +51,15 @@ class UserHome extends Component  {
       open: false,
       description: "",
       category: "",
-<<<<<<< HEAD
       defaultimg: "start.jpeg",
       file: null,
       awsbaseurl: "https://progressionapp.s3.amazonaws.com/",
-      result: null
-
-=======
+      result: null,
       goals: [],
       user: "Mary",
       percent: "",
       message: "",
       slider: 10
->>>>>>> f1f16469217f0017672a91ea67a9feb6e3a4a1bb
     };
   }
 
