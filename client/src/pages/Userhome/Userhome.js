@@ -299,16 +299,16 @@ UserGoals = (id) => {
     })
     .catch(err => console.log(err))
 
-    if (this.state.file !== null){
-      if(this.state.file == null){
-        return alert("No file selected.");
-      }
+    // if (this.state.file !== null){
+    //   if(this.state.file == null){
+    //     return alert("No file selected.");
+    //   }
 
-      this.getSignedRequest(this.state.file);
-    }
+    //   this.getSignedRequest(this.state.file);
+    // }
 
-    console.log()
-    this.getGoals();
+    // console.log()
+    // this.getGoals();
   };
 
   fileChangeHandler = event => {

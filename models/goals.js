@@ -25,7 +25,11 @@ var GoalsSchema = new Schema({
   },
   username:{
     type: String
+  },
+  description:{
+    type: String
   }
+
 });
 
 // Create the Goals model with the GoalsSchema
