@@ -20,6 +20,7 @@ import Goalform from "../../components/Goalform";
 import Goalheader from "../../components/Goalheader";
 import Goalsfollowing from "../../components/Goalsfollowing";
 import axios from "axios";
+import Slider from 'material-ui/Slider';
 // import Nav from "../../components/Nav";
 
 const stylejumbo = {
@@ -40,6 +41,7 @@ function handleClick(e) {
 }
 
 
+
 class UserHome extends Component  {
 
   constructor(props) {
@@ -53,13 +55,16 @@ class UserHome extends Component  {
       username: "",
       percent: "",
       message: "",
+      slider: 10
     };
     this.handleFormSubmit= this.handleFormSubmit.bind(this)
     this.handleInputChange=this.handleInputChange.bind(this)
   }
 
- 
-////for dra\wer
+  handleSlider = (event, value) => {
+    this.setState({slider: value});
+  };
+
   handleOpen = () => {
     this.setState({open: !this.state.open});
   }
@@ -245,6 +250,7 @@ console.log(this.state.username)
     console.log("handleFormSubmit")
     //this.getGoals();
     //this.UserGoals()
+    console.log(this.state)
     const{username,category,description} = this.state
     API.saveGoal({
       username:this.state.username,
@@ -264,6 +270,14 @@ console.log(this.state.username)
        // this.handleGoal(id)
 //console.log("handleToggle id "+id)
   };
+
+  handleCategory = (event) =>{
+    event.preventDefault();
+    this.setState({
+      category: event.target.value
+    })
+    console.log(this.state.category)
+  }
 
   handleExpand = () => {
     this.setState({expanded: true});
@@ -296,13 +310,12 @@ console.log(this.state.username)
        </Drawer>
 
        <div style={stylejumbo} className="jumbotron">
-          <h1>Set Your Goals!</h1>
-          <p>Congratulations on taking the first step! You are one step closer to your goal!</p>
-
+         <h1>Set Your Goals!</h1>
 
           <Goalform 
           handleInputChange={this.handleInputChange}
-          hangleFormSubmit={this.handleFormSubmit}
+          handleFormSubmit={this.handleFormSubmit}
+          handleCategory={this.handleCategory}
           description={this.state.description}
           category={this.state.category}
           />
@@ -322,6 +335,7 @@ console.log(this.state.username)
                 avatar={image}
                 actAsExpander={false}
                 showExpandableButton={true}
+
               />
               <CardText>
                 <Toggle
@@ -342,6 +356,15 @@ console.log(this.state.username)
               <CardText expandable={true}>
                 {this.state.description}
                 You are at {goal.gpercent} percent!
+
+        <Slider
+          value={this.state.slider}
+          onChange={this.handleSlider}
+        />
+        <p>
+          <span>{'The value of this slider is: '}</span>
+          <span>{this.state.slider}</span>
+        </p>
               </CardText>
             </Card>
            <br />
@@ -375,6 +398,7 @@ console.log(this.state.username)
         <CardTitle title="Goal Title" subtitle="Diet" expandable={true} />
         <CardText expandable={true}>
           My goal is to eat more fruits and vegetables.
+          <Slider />
         </CardText>
       </Card>
       <br />
