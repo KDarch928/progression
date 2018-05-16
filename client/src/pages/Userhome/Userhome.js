@@ -92,7 +92,7 @@ componentDidMount() {
   };
 
   UserGoals = () => {
-
+//console.log("UserGoals "+id)
    API.getGoalsUser(this.state.user)        
     .then(res => {
       let tmpgoal = res.data[0].goal;
