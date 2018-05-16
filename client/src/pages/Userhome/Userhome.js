@@ -5,6 +5,7 @@ import API from "../../utils/API";
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import AppBar from 'material-ui/AppBar';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
@@ -40,6 +41,12 @@ function handleClick(e) {
   e.preventDefault();
 }
 
+const muiTheme = getMuiTheme({
+  slider: {
+    selectionColor: 'yellow'
+  },
+});
+
 
 class UserHome extends Component  {
 
@@ -57,8 +64,7 @@ class UserHome extends Component  {
       goals: [],
       username: "",
       percent: "",
-      message: "",
-      slider: 10
+      message: ""
     };
     this.handleFormSubmit= this.handleFormSubmit.bind(this)
     this.handleInputChange=this.handleInputChange.bind(this)
@@ -75,7 +81,7 @@ class UserHome extends Component  {
   handleClose = () => {
     this.setState({open: false});
   }
-////////////////////
+
 componentDidMount() {
  
  const patharr =  window.location.pathname.split('/');
@@ -85,7 +91,7 @@ componentDidMount() {
  this.UserGoals(id)
 
 }
-//////////////////////////
+
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -93,7 +99,6 @@ componentDidMount() {
     });
   };
 
-//////////////////////////////
 UserGoals = (id) => {
   console.log("usergoal "+id)
   this.setState({
@@ -409,15 +414,20 @@ UserGoals = (id) => {
               <CardText expandable={true}>
                 {this.state.description}
                 You are at {goal.percent} percent!
-
+    <MuiThemeProvider muiTheme={muiTheme}>
         <Slider
           value={this.state.slider}
           onChange={this.handleSlider}
         />
+        </MuiThemeProvider>
         <p>
           <span>{'The value of this slider is: '}</span>
           <span>{this.state.slider}</span>
         </p>
+      <button
+      type="submit" 
+      className="btn btn-light" 
+      id="createGoal"> Save progress</button>
               </CardText>
             </Card>
            <br />
