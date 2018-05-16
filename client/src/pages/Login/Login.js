@@ -53,10 +53,24 @@ class Login extends Component {
             password: this.state.password,
           })
           .then(res => {
+          .then(res => {
             console.log("response from server at login.");
+
             // TODO add code to redirect 
-            console.log(res)
+
+            // console.log("res1"+res)
+
+            // console.log("req"+ req)
+
+            const user = this.state.username;
+
+            console.log(user)
+
+            const newlink = "./Userhome/" + user
+
             this.completeLogin();
+
+            window.location.replace(newlink);
           })
           .catch(err => console.log(err));
         }
