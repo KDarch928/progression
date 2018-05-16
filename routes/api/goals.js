@@ -7,6 +7,7 @@ const Controller = require("../../controllers/Controller");
 // Matches with "/api/goals"
 router.route("/user")
   .get(Controller.findAll)
+  .get(Controller.findById)
   .post(Controller.create);
 
 router
