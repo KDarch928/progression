@@ -56,7 +56,7 @@ class UserHome extends Component  {
       awsbaseurl: "https://progressionapp.s3.amazonaws.com/",
       result: null,
       goals: [],
-      user: "Mary",
+      user: "",
       percent: "",
       message: "",
       slider: 10
@@ -76,7 +76,13 @@ class UserHome extends Component  {
   }
 
 componentDidMount() {
- this.UserGoals()
+  console.log('componentDidMount')
+  console.log(this.state)
+  const patharr =  window.location.pathname.split('/');
+  const id = patharr[patharr.length-1];
+  console.log(id)
+  this.state.user = id;
+  this.UserGoals()
 }
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -87,7 +93,7 @@ componentDidMount() {
 
   UserGoals = () => {
 
-   API.getGoalsUser("Angela")        
+   API.getGoalsUser(this.state.user)        
     .then(res => {
       let tmpgoal = res.data[0].goal;
       let tmpdata = [];
