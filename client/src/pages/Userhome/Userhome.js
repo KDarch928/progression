@@ -51,19 +51,15 @@ class UserHome extends Component  {
       open: false,
       description: "",
       category: "",
-<<<<<<< HEAD
       defaultimg: "start.jpeg",
       file: null,
       awsbaseurl: "https://progressionapp.s3.amazonaws.com/",
-      result: null
-
-=======
+      result: null,
       goals: [],
-      user: "Mary",
+      user: "",
       percent: "",
       message: "",
       slider: 10
->>>>>>> f1f16469217f0017672a91ea67a9feb6e3a4a1bb
     };
   }
 
@@ -82,14 +78,15 @@ class UserHome extends Component  {
 componentDidMount() {
  this.UserGoals()
 }
-  handleInputChange = event => {
+  
+handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
       [name]: value 
     });
-  };
+};
 
-  UserGoals = () => {
+UserGoals = () => {
 
    API.getGoalsUser("Angela")        
     .then(res => {
@@ -261,6 +258,7 @@ componentDidMount() {
 
   handleFormSubmit = event => {
     event.preventDefault();
+    console.log("I made it here");
     if (this.state.file !== null){
       if(this.state.file == null){
         return alert("No file selected.");
@@ -269,7 +267,10 @@ componentDidMount() {
       this.getSignedRequest(this.state.file);
     }
 
-    console.log()
+    console.log(`Category: ${this.category}`);
+    console.log(`des: ${this.state.description}`);
+    console.log(`url: ${this.state.awsbaseurl}/${this.state.defaultimg}`);
+    console.log(`imageupload ${this.state.file.name}`);
     this.getGoals();
   };
 
@@ -312,59 +313,63 @@ componentDidMount() {
           <a href="/Home"><MenuItem>Main Home Page</MenuItem></a>
           <a href="/Userhome"><MenuItem>Logout</MenuItem></a>
           <MenuItem onClick={this.handleClose}>X Close Menu</MenuItem>
-       </Drawer>
+        </Drawer>
 
-       <div style={stylejumbo} className="jumbotron">
+        <div style={stylejumbo} className="jumbotron">
          <h1>Set Your Goals!</h1>
 
           <Goalform 
           handleInputChange={this.handleInputChange}
-          hangleFormSubmit={this.handleFormSubmit}
+          handleFormSubmit={this.handleFormSubmit}
           description={this.state.description}
           category={this.state.category}
           file={this.fileChangeHandler}
           />
-      </div>
+        </div>
 
-      <div>
-        <List>
+        <div>
+          <List>
               <Goalheader />
-          {this.state.goals.map((goal) => (
-          <div>
-           {/* <p>{goal.gcategory}</p>
-            <p>{goal.gpercent}</p> */}
-            <Card style={color} expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
-              <CardHeader
-                title={goal.goal} //"Goal Name"
-                subtitle={goal.category} //"Exercise"
-                avatar={image}
-                actAsExpander={false}
-                showExpandableButton={true}
+            {this.state.goals.map((goal) => (
+            <div>
+            {/* <p>{goal.gcategory}</p>
+              <p>{goal.gpercent}</p> */}
+              <Card style={color} expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
+                <CardHeader
+                  key={goal._id}
+                  title={goal.goal} //"Goal Name"
+                  subtitle={goal.category} //"Exercise"
+                  avatar={image}
+                  actAsExpander={false}
+                  showExpandableButton={true}
 
-              />
-              <CardText>
-                <Toggle
-                  toggled={this.state.expanded}
-                  onToggle={this.handleToggle}
-                  labelPosition="right"
-                  label=""
                 />
-              </CardText>
-              <CardMedia
-                expandable={true}
-                overlay={false}
-              > 
-              </CardMedia> 
+                <CardText>
+                  <Toggle
+                    toggled={this.state.expanded}
+                    onToggle={this.handleToggle}
+                    labelPosition="right"
+                    label=""
+                  />
+                </CardText>
+                <CardMedia
+                  expandable={true}
+                  overlay={false}
+                > 
+                </CardMedia> 
               
-              {/*<CardTitle title="Goal Title" subtitle="Fitness" expandable={true} />*/}        
-              <CardTitle title={goal.goal} subtitle={goal.gcategory} expandable={true} />
-              <CardText expandable={true}>
-                {this.state.description}
-                You are at {goal.gpercent} percent!
+                {/*<CardTitle title="Goal Title" subtitle="Fitness" expandable={true} />*/}        
+                <CardTitle title={goal.goal} subtitle={goal.gcategory} expandable={true} />
+                <CardText expandable={true}>
+                  {this.state.description}
+                  You are at {goal.gpercent} percent!
 
         <Slider
           value={this.state.slider}
           onChange={this.handleSlider}
+          min={0}
+          max={100}
+          step={1}
         />
         <p>
           <span>{'The value of this slider is: '}</span>
@@ -376,8 +381,8 @@ componentDidMount() {
           </div> 
          ))}
        </List>
-   </div>
-        <Goalsfollowing />
+      </div>
+      <Goalsfollowing />
         <div>
           <Card style={color2} expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
           <CardHeader
