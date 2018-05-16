@@ -54,129 +54,142 @@ class UserHome extends Component  {
       percent: "",
       message: "",
     };
+    this.handleFormSubmit= this.handleFormSubmit.bind(this)
+    this.handleInputChange=this.handleInputChange.bind(this)
   }
-////for drawer
+
+ 
+////for dra\wer
   handleOpen = () => {
     this.setState({open: !this.state.open});
   }
-  
+  //////////////
   handleClose = () => {
     this.setState({open: false});
   }
-
+////////////////////
 componentDidMount() {
- this.UserGoals()
+ 
  const patharr =  window.location.pathname.split('/');
  const id = patharr[patharr.length-1];
  console.log(id)
+ 
+ this.UserGoals(id)
 
 
 }
+//////////////////////////
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
       [name]: value 
     });
   };
+//////////////////////////////
+  UserGoals = (id) => {
+console.log("usergaol"+id)
+this.setState({
+  username: id
+})
+console.log(this.state.username)
+  //  API.getGoalsUser(id)        
+  //   .then(res => {
 
-  UserGoals = () => {
+  //     console.log("apigetgoaluser"+res)
+  //     // let tmpgoal = res.data[0].goal;
+  //     // let tmpdata = [];
+  //     // let i = 0
+  //     // while ( i < res.data.length ) {
 
-   API.getGoalsUser("Angela")        
-    .then(res => {
-      let tmpgoal = res.data[0].goal;
-      let tmpdata = [];
-      let i = 0
-      while ( i < res.data.length ) {
-
-        tmpgoal = res.data[i].goal
-        //console.log ( "#1 loop i "+i+" goal "+tmpgoal+" percent "+res.data[i].gpercent)
+  //     //   tmpgoal = res.data[i].goal
+  //     //   //console.log ( "#1 loop i "+i+" goal "+tmpgoal+" percent "+res.data[i].gpercent)
         
-        if (res.data.length >= 1) 
-        {
+  //     //   if (res.data.length >= 1) 
+  //     //   {
           
-          //console.log("#2 datalength "+res.data.length)
+  //     //     //console.log("#2 datalength "+res.data.length)
          
-          if ( i < res.data.length-1
-            && res.data[i+1].goal !== tmpgoal)
-            {
-              if ( i === 0 ) 
-              {
-                tmpdata.push(res.data[0])
-                tmpgoal = res.data[1].goal;
-                console.log("#3 PUSH 0")
-               }
-              i++;
-              continue;         
-            }     
-            else
-              {
-                //console.log("#6 before while no tmpdata equal i "+i+" tmpgoal "+tmpgoal+"percent "+res.data[i].gpercent)
-                //console.log(" length "+res.data.length)
-                while ( i <= res.data.length && res.data[i].goal === tmpgoal ) //res.data[i+1].goal)
-                 {
-                   //console.log("#7 --- while before i inc "+i)
+  //     //     if ( i < res.data.length-1
+  //     //       && res.data[i+1].goal !== tmpgoal)
+  //     //       {
+  //     //         if ( i === 0 ) 
+  //     //         {
+  //     //           tmpdata.push(res.data[0])
+  //     //           tmpgoal = res.data[1].goal;
+  //     //           console.log("#3 PUSH 0")
+  //     //          }
+  //     //         i++;
+  //     //         continue;         
+  //     //       }     
+  //     //       else
+  //     //         {
+  //     //           //console.log("#6 before while no tmpdata equal i "+i+" tmpgoal "+tmpgoal+"percent "+res.data[i].gpercent)
+  //     //           //console.log(" length "+res.data.length)
+  //     //           while ( i <= res.data.length && res.data[i].goal === tmpgoal ) //res.data[i+1].goal)
+  //     //            {
+  //     //              //console.log("#7 --- while before i inc "+i)
 
-                   tmpgoal = res.data[i].goal
-                   if ( i >=res.data.length-1)
-                     break;
-                   i++
+  //     //              tmpgoal = res.data[i].goal
+  //     //              if ( i >=res.data.length-1)
+  //     //                break;
+  //     //              i++
                  
-                   //if ( i < res.data.length ) 
-                   // {    
-                   //     console.log("#8 --- while after i inc tmpgoal "+tmpgoal+"percent "+res.data[i].gpercent)                 
-                   //     console.log("#9 *** while no tmpdata equal i "+i+" tmpgoal "+tmpgoal+"percent "+res.data[i].gpercent)
-                   // }
-                 } //end while
+  //     //              //if ( i < res.data.length ) 
+  //     //              // {    
+  //     //              //     console.log("#8 --- while after i inc tmpgoal "+tmpgoal+"percent "+res.data[i].gpercent)                 
+  //     //              //     console.log("#9 *** while no tmpdata equal i "+i+" tmpgoal "+tmpgoal+"percent "+res.data[i].gpercent)
+  //     //              // }
+  //     //            } //end while
 
-                 //console.log("#10 %%% --- else after while i "+i +" tmpgoal "+tmpgoal)
+  //     //            //console.log("#10 %%% --- else after while i "+i +" tmpgoal "+tmpgoal)
                
-               if ( i < res.data.length-1)
-                i++;
-              } // end else
-            //if ( i < res.data.length)
-            //  console.log("#11 after while goals equal i "+i+" tmpgoal "+tmpgoal+"percent "+res.data[i].gpercent)
+  //     //          if ( i < res.data.length-1)
+  //     //           i++;
+  //     //         } // end else
+  //     //       //if ( i < res.data.length)
+  //     //       //  console.log("#11 after while goals equal i "+i+" tmpgoal "+tmpgoal+"percent "+res.data[i].gpercent)
           
-            if ( i < res.data.length-1) 
-            {
-              console.log("#12 PUSH after while push i "+i+" percent "+res.data[i].gpercent)
-              tmpdata.push(res.data[i])
+  //     //       if ( i < res.data.length-1) 
+  //     //       {
+  //     //         console.log("#12 PUSH after while push i "+i+" percent "+res.data[i].gpercent)
+  //     //         tmpdata.push(res.data[i])
              
-              if (i < res.data.length-1) 
-              {
-               tmpgoal = res.data[i].goal
-               //console.log("#13 i "+i+" while goal inc bottom percent "+res.data[i].gpercent)
-              }
-            }
+  //     //         if (i < res.data.length-1) 
+  //     //         {
+  //     //          tmpgoal = res.data[i].goal
+  //     //          //console.log("#13 i "+i+" while goal inc bottom percent "+res.data[i].gpercent)
+  //     //         }
+  //     //       }
 
-        } // end if large
+  //   //     } // end if large
 
-        //console.log("#14 i "+i+" after while before if")
-        if ( i < res.data.length) 
-         {
-            console.log("#15 PUSH after while push i "+i+" "+res.data[i].gpercent+
-            " goal "+res.data[i].goal);
-            tmpdata.push(res.data[i])
-         }
+  //   //     //console.log("#14 i "+i+" after while before if")
+  //   //     if ( i < res.data.length) 
+  //   //      {
+  //   //         console.log("#15 PUSH after while push i "+i+" "+res.data[i].gpercent+
+  //   //         " goal "+res.data[i].goal);
+  //   //         tmpdata.push(res.data[i])
+  //   //      }
 
-       if (tmpdata.length > 0)
-        {
-          console.log("#16 setState "+JSON.stringify(tmpdata))
-          this.setState({
-           goals: tmpdata
-         })
-        }      
-       i++;
-        //console.log("#17 end of while inc i to "+i)
-      } // end while
+  //   //    if (tmpdata.length > 0)
+  //   //     {
+  //   //       console.log("#16 setState "+JSON.stringify(tmpdata))
+  //   //       this.setState({
+  //   //        goals: tmpdata
+  //   //      })
+  //   //     }      
+  //   //    i++;
+  //   //     //console.log("#17 end of while inc i to "+i)
+  //   //   } // end while
       
-      //console.log("#18 after goals data "+JSON.stringify(this.state.goals))
+  //   //   //console.log("#18 after goals data "+JSON.stringify(this.state.goals))
 
-    } // end .then
-    )
-    .catch(err => console.log(err)) 
+  //    } // end .then
+  //   )
+  //   .catch(err => console.log(err)) 
  
   }
-
+/////////////////
   handleGoal = (id) => {
   //let id = '5af4912e04f888219c1c00b1'
     console.log("handleGoal id "+JSON.stringify(id))
@@ -197,7 +210,7 @@ componentDidMount() {
       .catch(err => console.log(err)) 
    
   }
-
+///////////////
   getGoals = () => {
 
     console.log("getGoals")
@@ -219,9 +232,30 @@ componentDidMount() {
 
   handleFormSubmit = event => {
     event.preventDefault();
+    
+    
+    const patharr =  window.location.pathname.split('/');
+ const id = patharr[patharr.length-1];
+ console.log(id)
+    this.setState({
+      username: id
+    })
+    console.log(this.state.username)
+    
     console.log("handleFormSubmit")
     //this.getGoals();
-    this.UserGoals()
+    //this.UserGoals()
+    const{username,category,description} = this.state
+    API.saveGoal({
+      username:this.state.username,
+      category:this.state.category,
+      description:this.state.description
+    })
+    .then(res => {
+      console.log("apisavegoalworked")
+    })
+    .catch(err => console.log(err))
+
   };
 
 
