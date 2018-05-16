@@ -328,6 +328,29 @@ UserGoals = (id) => {
 //console.log("handleToggle id "+id)
   };
 
+  handleSliderSubmit = (event) =>{
+    //console.log("slider "+this.state.slider)
+        event.preventDefault();
+        console.log("event "+event.target.value)
+    this.setState({
+      //percent: event.target.value,
+      slider: event.target.value
+    })
+    API.saveGoal({
+      username:this.state.username,
+      guser:this.state.username,
+      category:this.state.category,
+      goal:this.state.goal,
+      percent:Math.round(100*this.state.slider)
+    })
+    .then(res => {
+      console.log("button api savegoalworked")
+    })
+    .catch(err => console.log(err))
+    //console.log("goal.id "+goal._id)
+   // console.log("this.state.slider "+this.state.slider)
+  }
+
   handleCategory = (event) =>{
     event.preventDefault();
     this.setState({
@@ -422,19 +445,21 @@ UserGoals = (id) => {
         </MuiThemeProvider>
         <p>
           <span>{'The value of this slider is: '}</span>
-          <span>{this.state.slider}</span>
+          <span>{Math.round(100*this.state.slider)}%</span>
         </p>
       <button
       type="submit" 
       className="btn btn-light" 
-      id="createGoal"> Save progress</button>
+      id="createGoal" type="submit" onClick={this.handleSliderSubmit}
+      > Save progress 
+      </button>
               </CardText>
             </Card>
            <br />
           </div> 
          ))}
        </List>
-   </div>
+     </div>
         <Goalsfollowing />
         <div>
           <Card style={color2} expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
