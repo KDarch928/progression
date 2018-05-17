@@ -24,11 +24,13 @@ const Goalform = props => (
         name="description"
         className="form-control" 
         id="Goal"
+        value={props.description}
+        name="description"
         onChange={props.handleInputChange}
         value={props.description}
         />
       <label for="exampleFormControlFile1">Image upload:</label>
-      <input type="file" className="form-control-file" id="exampleFormControlFile1"/>
+      <input type="file" className="form-control-file" id="exampleFormControlFile1" onChange={props.fileChangeHandler}/>
       <button
       onClick={props.handleFormSubmit}
       type="submit" 

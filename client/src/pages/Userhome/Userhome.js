@@ -99,11 +99,11 @@ componentDidMount() {
     });
   };
 
-UserGoals = (id) => {
-  console.log("usergoal "+id)
-  this.setState({
-    username: id
-  })
+  UserGoals = (id) => {
+    console.log("usergoal "+id)
+    this.setState({
+      username: id
+    })
 
    //console.log(this.state.username)
    API.getGoalsUser(id)        
@@ -225,23 +225,30 @@ UserGoals = (id) => {
    
   }
 ///////////////
-  getGoals = () => {
+  getGoals = (user) => {
 
     console.log("getGoals")
-    axios.get("/api/goals/",{
-      description: this.state.description,
-      category: this.state.category
-    })
-      .then(res => {
-         console.log("res "+res.data)
-        this.setState({
-          description: res.data,
-          category: res.data
-        })
+    // axios.get("/api/goals/",{
+    //   description: this.state.description,
+    //   category: this.state.category
+    // })
+    //   .then(res => {
+    //      console.log("res "+res.data)
+    //     this.setState({
+    //       description: res.data,
+    //       category: res.data
+    //     })
 
-      }
-      )
-      .catch(err => console.log(err));
+    //   }
+    //   )
+    //   .catch(err => console.log(err));
+
+    API.getGoalsUser(user)
+    .then(res => {
+      console.log(res);
+      console.log("got Saved Goals")
+    })
+    .catch(err => console.log(err));
   };
 
   uploadFile = (file, signedRequest, url) => {
@@ -276,17 +283,40 @@ UserGoals = (id) => {
     xhr.send();
   }
 
+  clearForm = () =>{
+    this.setState({
+      description: "",
+      category: "",
+      file: null
+    });
+  }
+
   handleFormSubmit = event => {
     event.preventDefault();
-    
+    console.log("I made it here");
+
     const patharr =  window.location.pathname.split('/');
     const id = patharr[patharr.length-1];
+    var imgFileName;
+
+    //checking to see if the file state is not null
+    if (this.state.file !== null){
+      //set the local var with the file name
+      imgFileName = this.state.file.name;
+      //upload the iamge to AWS S3 bucket
+      this.getSignedRequest(this.state.file);
+      //Let the user know their image was uploaded
+      alert("Image Successfully Uploaded");
+    } else {
+      //if file is null, then set the local var to the default image
+      imgFileName = this.state.defaultimg;
+    }
     
     console.log(id)
 
     this.setState({
       username: id
-    })
+    });
     
     console.log(this.state.username)
     
@@ -294,27 +324,23 @@ UserGoals = (id) => {
     //this.getGoals();
     //this.UserGoals()
     console.log(this.state)
-    const{username,category,description} = this.state
+    const{username,category,description,filename} = this.state
     API.saveGoal({
       username:this.state.username,
       category:this.state.category,
-      description:this.state.description
+      description:this.state.description,
+      filename: imgFileName
     })
     .then(res => {
       console.log("apisavegoalworked")
     })
-    .catch(err => console.log(err))
+    .catch(err => console.log(err));
 
-    // if (this.state.file !== null){
-    //   if(this.state.file == null){
-    //     return alert("No file selected.");
-    //   }
+    //once the data is uploaded to the database, then clear out the form
+    this.clearForm();
 
-    //   this.getSignedRequest(this.state.file);
-    // }
+    // this.getGoals(this.state.username);
 
-    // console.log()
-    // this.getGoals();
   };
 
   fileChangeHandler = event => {
@@ -325,7 +351,7 @@ UserGoals = (id) => {
   handleToggle = (event, toggle) => {
     this.setState({expanded: toggle});
        // this.handleGoal(id)
-//console.log("handleToggle id "+id)
+    //console.log("handleToggle id "+id)
   };
 
   handleSliderSubmit = (event) =>{
@@ -387,22 +413,22 @@ UserGoals = (id) => {
           <a href="/Home"><MenuItem>Main Home Page</MenuItem></a>
           <a href="/Userhome"><MenuItem>Logout</MenuItem></a>
           <MenuItem onClick={this.handleClose}>X Close Menu</MenuItem>
-       </Drawer>
+        </Drawer>
 
-       <div style={stylejumbo} className="jumbotron">
+        <div style={stylejumbo} className="jumbotron">
          <h1>Set Your Goals!</h1>
 
-          <Goalform 
+          <Goalform id="goal-form"
           handleInputChange={this.handleInputChange}
           handleFormSubmit={this.handleFormSubmit}
           handleCategory={this.handleCategory}
           description={this.state.description}
           category={this.state.category}
-          file={this.fileChangeHandler}
+          fileChangeHandler={this.fileChangeHandler}
           />
-      </div>
+        </div>
 
-      <div>
+        <div>
         <List>
               <Goalheader />
           {this.state.goals.map((goal) => (
