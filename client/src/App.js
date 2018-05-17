@@ -1,30 +1,13 @@
 import React, { Component } from "react";
 import "./style.css";
-import AppBar from 'material-ui/AppBar';
-import {Tabs, Tab} from 'material-ui'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Userhome from './pages/Userhome';
 import { BrowserRouter as Router, Route, Switch,Link } from "react-router-dom";
-import NavBar from "./components/Nav"
-
 import Fileupload from "./pages/Fileuploader";
 import About from "./pages/About";
-
-import IconButton from 'material-ui/IconButton';
-import NavigationClose from 'material-ui/svg-icons/navigation/close';
-import FlatButton from 'material-ui/FlatButton';
-// import MenuItem from 'material-ui/MenuItem';
 import Login from "./pages/Login";
 import Signup from "./pages/Signup"
-//import injectTapEventPlugin from 'react-tap-event-plugin';
-
-import RaisedButton from 'material-ui/RaisedButton';
-import Drawer from 'material-ui/Drawer';
 import Home from "./pages/Home"
 import Search from './pages/Search';
-import Toggle from 'material-ui/Toggle';
-import { MenuList, MenuItem } from 'material-ui/Menu';
-import Nav from "./components/Nav"
 
 //injectTapEventPlugin();
 function handleClick(e) {

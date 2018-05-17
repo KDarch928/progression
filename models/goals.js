@@ -28,6 +28,9 @@ var GoalsSchema = new Schema({
   },
   description:{
     type: String
+  },
+  filename: {
+    type: String
   }
 
 });
