@@ -64,7 +64,8 @@ class UserHome extends Component  {
       goals: [],
       username: "",
       percent: "",
-      message: ""
+      message: "",
+      slider: 0
     };
     this.handleFormSubmit= this.handleFormSubmit.bind(this)
     this.handleInputChange=this.handleInputChange.bind(this)
