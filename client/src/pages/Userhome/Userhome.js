@@ -483,9 +483,6 @@ componentDidMount() {
       id="createGoal" type="submit" onClick={this.handleSliderSubmit}
       > Save progress 
       </button>
-
-          <input type="checkbox" id="follow" value="follow"/>
-         <label for="follow">Follow This Goal</label>
               </CardText>
             </Card>
            <br />
