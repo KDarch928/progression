@@ -17,7 +17,7 @@ const goalsSeed = [
     goal: 'increase water',
     category: 'Health',
     percent: 0,
-    username: "maj"
+    username: "Mary"
   },
   {
     date:  '2018/03/03 09:00',
@@ -26,7 +26,7 @@ const goalsSeed = [
     goal: 'increase water',
     category: 'Health',
     percent: 2,
-    username: "maj"
+    username: "Mary"
   },
     {
     date:  '2018/03/05 11:00',
@@ -35,7 +35,7 @@ const goalsSeed = [
     goal: 'increase water',
     category: 'Health',
     percent: 4,
-    username: "maj"
+    username: "Mary"
   },
   {
     date:  '2018/03/06 9:30',
@@ -44,7 +44,7 @@ const goalsSeed = [
     goal: 'Walk 5 miles',
     category: 'Fitness',
     percent: 6,
-    username: "maj"
+    username: "Mary"
   },
   {
     date:  '2018/04/01 08:00', 
@@ -53,7 +53,7 @@ const goalsSeed = [
     goal: 'More water!',
     category: 'Health',
     percent: 0,
-    username: "angela"
+    username: "Angela"
   },
   {
     date:  '2018/04/03 09:00',
@@ -62,7 +62,7 @@ const goalsSeed = [
     goal: 'increase daily exercise!',
     category: 'Fitness',
     percent: 3,
-    username: "angela"
+    username: "Angela"
   },
   {
     date:  '2018/04/05 11:00',
@@ -71,7 +71,7 @@ const goalsSeed = [
     goal: 'increase daily exercise!',
     category: 'Fitness',
     percent: 5,
-    username: "angela"
+    username: "Angela"
   },
   {
     date:  '2018/04/06 9:30',
@@ -80,7 +80,7 @@ const goalsSeed = [
     goal: 'increase daily exercise!',
     category: 'Fitness',
     percent: 7,
-    username: "angela"
+    username: "Angela"
   },
   {
     date:  '2018/04/15 9:30',
@@ -89,7 +89,7 @@ const goalsSeed = [
     goal: 'swimming!',
     category: 'Fitness',
     percent: 7,
-    username: "maj"
+    username: "Mary"
   }
 ];
 

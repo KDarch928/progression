@@ -5,6 +5,7 @@ import API from "../../utils/API";
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import AppBar from 'material-ui/AppBar';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
@@ -40,6 +41,11 @@ function handleClick(e) {
   e.preventDefault();
 }
 
+const muiTheme = getMuiTheme({
+  slider: {
+    selectionColor: 'yellow'
+  },
+});
 
 
 class UserHome extends Component  {
@@ -57,10 +63,8 @@ class UserHome extends Component  {
       result: null,
       goals: [],
       username: "",
-      user: "",
       percent: "",
-      message: "",
-      slider: 10
+      message: ""
     };
     this.handleFormSubmit= this.handleFormSubmit.bind(this)
     this.handleInputChange=this.handleInputChange.bind(this)
@@ -77,7 +81,7 @@ class UserHome extends Component  {
   handleClose = () => {
     this.setState({open: false});
   }
-////////////////////
+
 componentDidMount() {
  
  const patharr =  window.location.pathname.split('/');
@@ -87,7 +91,7 @@ componentDidMount() {
  this.UserGoals(id)
 
 }
-//////////////////////////
+
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -95,24 +99,24 @@ componentDidMount() {
     });
   };
 
-//////////////////////////////
 UserGoals = (id) => {
-  console.log("usergaol"+id)
+  console.log("usergoal "+id)
   this.setState({
     username: id
   })
-  console.log(this.state.username)
+
+   //console.log(this.state.username)
    API.getGoalsUser(id)        
     .then(res => {
 
-      console.log("apigetgoaluser"+res)
+      console.log("Userhome: api getgoaluser "+JSON.stringify(res.data))
       let tmpgoal = res.data[0].goal;
       let tmpdata = [];
       let i = 0
       while ( i < res.data.length ) {
 
         tmpgoal = res.data[i].goal
-        //console.log ( "#1 loop i "+i+" goal "+tmpgoal+" percent "+res.data[i].gpercent)
+        //console.log ( "#1 loop i "+i+" goal "+tmpgoal+" percent "+res.data[i].percent)
         
         if (res.data.length >= 1) 
         {
@@ -133,7 +137,7 @@ UserGoals = (id) => {
             }     
             else
               {
-                //console.log("#6 before while no tmpdata equal i "+i+" tmpgoal "+tmpgoal+"percent "+res.data[i].gpercent)
+                //console.log("#6 before while no tmpdata equal i "+i+" tmpgoal "+tmpgoal+"percent "+res.data[i].percent)
                 //console.log(" length "+res.data.length)
                 while ( i <= res.data.length && res.data[i].goal === tmpgoal ) //res.data[i+1].goal)
                  {
@@ -146,8 +150,8 @@ UserGoals = (id) => {
                  
                    //if ( i < res.data.length ) 
                    // {    
-                   //     console.log("#8 --- while after i inc tmpgoal "+tmpgoal+"percent "+res.data[i].gpercent)                 
-                   //     console.log("#9 *** while no tmpdata equal i "+i+" tmpgoal "+tmpgoal+"percent "+res.data[i].gpercent)
+                   //     console.log("#8 --- while after i inc tmpgoal "+tmpgoal+"percent "+res.data[i].percent)                 
+                   //     console.log("#9 *** while no tmpdata equal i "+i+" tmpgoal "+tmpgoal+"percent "+res.data[i].percent)
                    // }
                  } //end while
 
@@ -157,17 +161,17 @@ UserGoals = (id) => {
                 i++;
               } // end else
             //if ( i < res.data.length)
-            //  console.log("#11 after while goals equal i "+i+" tmpgoal "+tmpgoal+"percent "+res.data[i].gpercent)
+            //  console.log("#11 after while goals equal i "+i+" tmpgoal "+tmpgoal+"percent "+res.data[i].percent)
           
             if ( i < res.data.length-1) 
             {
-              console.log("#12 PUSH after while push i "+i+" percent "+res.data[i].gpercent)
+              console.log("#12 PUSH after while push i "+i+" percent "+res.data[i].percent)
               tmpdata.push(res.data[i])
              
               if (i < res.data.length-1) 
               {
                tmpgoal = res.data[i].goal
-               //console.log("#13 i "+i+" while goal inc bottom percent "+res.data[i].gpercent)
+               //console.log("#13 i "+i+" while goal inc bottom percent "+res.data[i].percent)
               }
             }
 
@@ -176,7 +180,7 @@ UserGoals = (id) => {
         //console.log("#14 i "+i+" after while before if")
         if ( i < res.data.length) 
          {
-            console.log("#15 PUSH after while push i "+i+" "+res.data[i].gpercent+
+            console.log("#15 PUSH after while push i "+i+" "+res.data[i].percent+
             " goal "+res.data[i].goal);
             tmpdata.push(res.data[i])
          }
@@ -275,13 +279,15 @@ UserGoals = (id) => {
   handleFormSubmit = event => {
     event.preventDefault();
     
-    
     const patharr =  window.location.pathname.split('/');
- const id = patharr[patharr.length-1];
- console.log(id)
+    const id = patharr[patharr.length-1];
+    
+    console.log(id)
+
     this.setState({
       username: id
     })
+    
     console.log(this.state.username)
     
     console.log("handleFormSubmit")
@@ -356,7 +362,7 @@ UserGoals = (id) => {
           <a href="/Login"><MenuItem>Login</MenuItem></a>
           <a href="/Search"><MenuItem>Search</MenuItem></a>
           <a href="/Home"><MenuItem>Main Home Page</MenuItem></a>
-          <a href="/Userhome"><MenuItem>Logout</MenuItem></a>
+          <a href="/logout"><MenuItem>Logout</MenuItem></a>
           <MenuItem onClick={this.handleClose}>X Close Menu</MenuItem>
        </Drawer>
 
@@ -378,11 +384,11 @@ UserGoals = (id) => {
               <Goalheader />
           {this.state.goals.map((goal) => (
           <div>
-           {/* <p>{goal.gcategory}</p>
-            <p>{goal.gpercent}</p> */}
+           {/* <p>{goal.category}</p>
+            <p>{goal.percent}</p> */}
             <Card style={color} expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
               <CardHeader
-                title={goal.goal} //"Goal Name"
+                title={goal.description} //"Goal Name"
                 subtitle={goal.category} //"Exercise"
                 avatar={image}
                 actAsExpander={false}
@@ -404,19 +410,24 @@ UserGoals = (id) => {
               </CardMedia> 
               
               {/*<CardTitle title="Goal Title" subtitle="Fitness" expandable={true} />*/}        
-              <CardTitle title={goal.goal} subtitle={goal.gcategory} expandable={true} />
+              <CardTitle title={goal.goal} subtitle={goal.category} expandable={true} />
               <CardText expandable={true}>
                 {this.state.description}
-                You are at {goal.gpercent} percent!
-
+                You are at {goal.percent} percent!
+    <MuiThemeProvider muiTheme={muiTheme}>
         <Slider
           value={this.state.slider}
           onChange={this.handleSlider}
         />
+        </MuiThemeProvider>
         <p>
           <span>{'The value of this slider is: '}</span>
           <span>{this.state.slider}</span>
         </p>
+      <button
+      type="submit" 
+      className="btn btn-light" 
+      id="createGoal"> Save progress</button>
               </CardText>
             </Card>
            <br />
