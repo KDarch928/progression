@@ -1,18 +1,20 @@
 import React, { Component } from "react";
 import "../../style.css";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import image from '../../images/goals_note.png';
+import image from '../../images/sun.jpg';
+import Drawer from 'material-ui/Drawer';
+import MenuItem from 'material-ui/MenuItem';
+import AppBar from 'material-ui/AppBar';
 
 const stylejumbo = {
   backgroundImage: 'url('+image+')'
 }
 
 const hdr = {
-  textAlign: "center"
+  fontSize: 36
 }
 
 const quote = {
-    paddingBottom: 40,
     fontSize: 36
 }
 
@@ -21,32 +23,38 @@ class About extends Component  {
   constructor(props) {
     super(props);
     this.state = {
-      expanded: false,
+      open: false,
     };
   }
 
- /* handleExpandChange = (expanded) => {
-    this.setState({expanded: expanded});
-  };
+  handleOpen = () => {
+    this.setState({open: !this.state.open});
+  }
 
-  handleToggle = (event, toggle) => {
-    this.setState({expanded: toggle});
-  };
+  handleClose = () => {
+    this.setState({open: false});
+  }
 
-  handleExpand = () => {
-    this.setState({expanded: true});
-  };
-
-  handleReduce = () => {
-    this.setState({expanded: false});
-  };
-*/
   render() {
     return (
-      <MuiThemeProvider>
-       <h1 style={hdr}>Set Priorities by reaching your Goals!</h1>
+
+        <MuiThemeProvider>
+        <AppBar
+        title="Progression"
+        onLeftIconButtonClick={this.handleOpen}
+        onRightIconButtonClick={this.handleClick}
+        />
+        <Drawer open={this.state.open} close={this.handleClose}>
+          <a href="/Signup"><MenuItem>Signup</MenuItem></a>
+          <a href="/Login"><MenuItem>Login</MenuItem></a>
+          <a href="/Search"><MenuItem>Search</MenuItem></a>
+          <a href="/Home"><MenuItem>Main Home Page</MenuItem></a>
+          <a href="/Userhome"><MenuItem>Logout</MenuItem></a>
+          <MenuItem onClick={this.handleClose}>X Close Menu</MenuItem>
+        </Drawer>
        <div style={stylejumbo} className="jumbotronabout">
-         <blockquote style={quote}>”What you get by achieving your goals is not as important as what you become by achieving your goals.”
+        <h1 id="about">Set Priorities by reaching your Goals!</h1>
+         <blockquote id="about">”What you get by achieving your goals is not as important as what you become by achieving your goals.”
 – Henry David Thoreau</blockquote>
  
       <br />
