@@ -441,13 +441,14 @@ componentDidMount() {
             <p>{goal.percent}</p> */}
             <Card style={color} key={i} expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
               <CardHeader
-                title={goal.goal} //"Goal Name"
-                subtitle={goal.category} //"Exercise"
+                title={goal.description} 
+                subtitle={goal.category} 
                 avatar={image}
                 actAsExpander={false}
                 showExpandableButton={true}
 
               />
+
               <CardText>
                 <Toggle
                   toggled={this.state.expanded}
@@ -463,9 +464,8 @@ componentDidMount() {
               </CardMedia> 
               
               {/*<CardTitle title="Goal Title" subtitle="Fitness" expandable={true} />*/}        
-              <CardTitle title={goal.goal} subtitle={goal.category} expandable={true} />
+              <CardTitle title={goal.description} subtitle={goal.category} expandable={true} />
               <CardText expandable={true}>
-                {this.state.description}
                 You are at {goal.percent} percent!
     <MuiThemeProvider muiTheme={muiTheme}>
         <Slider

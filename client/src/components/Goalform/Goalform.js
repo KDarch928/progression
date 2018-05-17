@@ -36,6 +36,7 @@ const Goalform = props => (
       type="submit" 
       className="btn btn-info" 
       id="createGoal"> Create Goal</button>
+      <br/>
     </form>
 
 );
