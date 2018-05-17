@@ -68,6 +68,7 @@ class UserHome extends Component  {
     };
     this.handleFormSubmit= this.handleFormSubmit.bind(this)
     this.handleInputChange=this.handleInputChange.bind(this)
+    this.handleSliderSubmit=this.handleSliderSubmit.bind(this)
   }
 
   handleSlider = (event, value) => {
@@ -354,10 +355,11 @@ componentDidMount() {
     //console.log("handleToggle id "+id)
   };
 
-  handleSliderSubmit = (event) =>{
+  handleSliderSubmit = event => {
     //console.log("slider "+this.state.slider)
-        event.preventDefault();
-        console.log("event "+event.target.value)
+    console.log("handleSliderSubmit ") //+index)
+    event.preventDefault();
+    console.log("event "+event.target.value)
     this.setState({
       //percent: event.target.value,
       slider: event.target.value
@@ -430,12 +432,13 @@ componentDidMount() {
 
         <div>
         <List>
-              <Goalheader />
-          {this.state.goals.map((goal) => (
+          <Goalheader />
+          {this.state.goals.map((goal,i) => (
           <div>
+           <p>Index {i}</p>
            {/* <p>{goal.category}</p>
             <p>{goal.percent}</p> */}
-            <Card style={color} expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
+            <Card style={color} key={i} expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
               <CardHeader
                 title={goal.goal} //"Goal Name"
                 subtitle={goal.category} //"Exercise"
@@ -476,6 +479,7 @@ componentDidMount() {
       <button
       type="submit" 
       className="btn btn-light" 
+      key={i}
       id="createGoal" type="submit" onClick={this.handleSliderSubmit}
       > Save progress 
       </button>

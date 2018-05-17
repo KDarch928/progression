@@ -41,3 +41,12 @@
 #exampleFormControlFile1 {
 	margin-left: 500px;
 }
+
+#GoalHeaderDiv {
+	padding-top: 3rem;
+}
+
+#goalheader, #header2 {
+	font-weight: bold;
+	font-size: 3rem;
+}
