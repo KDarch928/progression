@@ -98,6 +98,7 @@ console.log("UserSearch "+this.state.category)
     API.getGoalsCategory(this.state.category)        
     .then(res => {
       console.log("UserSearch data "+JSON.stringify(res.data))
+      console.log(res.data)
       let tmpgoal = res.data[0].goal;
       let tmpdata = [];
       let i = 0
@@ -189,7 +190,7 @@ console.log("UserSearch "+this.state.category)
     } // end .then
     )
     .catch(err => {
-      console.log("UserSearch "+err+" "+JSON.stringify(err.response.data))
+      console.log("UserSearch "+err+" "+JSON.stringify(err.response))
     })
   }
 
@@ -215,6 +216,7 @@ console.log("UserSearch "+this.state.category)
         handleFormSubmit={this.handleFormSubmit}
         description={this.state.description}
         category={this.state.category}
+        handleCategory={this.handleCategory}
       />
       </div>
      <Goalheader />
