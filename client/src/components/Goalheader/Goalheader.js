@@ -3,10 +3,11 @@ import "../../style.css";
 
 
 const Goalheader = () => (
-  <div>
-    <h1 id="header">Your Goals</h1>
+  <div id="GoalHeaderDiv">
+    <h1 id="goalheader">Your Goals</h1>
     <br />
  </div>
 );
+
 
 export default Goalheader;
