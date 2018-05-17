@@ -319,9 +319,12 @@ componentDidMount() {
       username: id
     });
     
-    //console.log(this.state.username)  
-    console.log("handleFormSubmit USER "+this.state.username+" state "+JSON.stringify(this.state))
-
+    console.log(this.state.username)
+    
+    console.log("handleFormSubmit")
+    //this.getGoals();
+    //this.UserGoals()
+    console.log(this.state)
     const{username,category,description,filename} = this.state
     API.saveGoal({
       username:this.state.username,
@@ -330,7 +333,7 @@ componentDidMount() {
       filename: imgFileName
     })
     .then(res => {
-      console.log("apisavegoalworked for file "+this.state.filename)
+      console.log("apisavegoalworked")
     })
     .catch(err => console.log(err));
 
@@ -480,9 +483,6 @@ componentDidMount() {
       id="createGoal" type="submit" onClick={this.handleSliderSubmit}
       > Save progress 
       </button>
-
-          <input type="checkbox" id="follow" value="follow"/>
-         <label for="follow">Follow This Goal</label>
               </CardText>
             </Card>
            <br />
