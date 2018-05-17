@@ -319,12 +319,9 @@ componentDidMount() {
       username: id
     });
     
-    console.log(this.state.username)
-    
-    console.log("handleFormSubmit")
-    //this.getGoals();
-    //this.UserGoals()
-    console.log(this.state)
+    //console.log(this.state.username)  
+    console.log("handleFormSubmit USER "+this.state.username+" state "+JSON.stringify(this.state))
+
     const{username,category,description,filename} = this.state
     API.saveGoal({
       username:this.state.username,
@@ -333,7 +330,7 @@ componentDidMount() {
       filename: imgFileName
     })
     .then(res => {
-      console.log("apisavegoalworked")
+      console.log("apisavegoalworked for file "+this.state.filename)
     })
     .catch(err => console.log(err));
 

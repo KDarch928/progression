@@ -19,7 +19,8 @@ const goalsSeed = [
     category: 'Health',
     percent: 0,
     username: "Mary",
-    filename: ""
+    filename: "",
+    follow: "Angela"
   },
   {
     date:  '2018/03/03 09:00',
@@ -30,7 +31,8 @@ const goalsSeed = [
     category: 'Health',
     percent: 2,
     username: "Mary",
-    filename: ""
+    filename: "",
+    follow: "Angela"
   },
   {
     date:  '2018/03/05 11:00',
@@ -41,7 +43,8 @@ const goalsSeed = [
     category: 'Health',
     percent: 4,
     username: "Mary",
-    filename: ""
+    filename: "",
+    follow: "Angela"
   },
   {
     date:  '2018/03/06 9:30',
@@ -63,7 +66,8 @@ const goalsSeed = [
     category: 'Health',
     percent: 0,
     username: "Angela",
-    filename: ""
+    filename: "",
+    follow: "Mary"
   },
   {
     date:  '2018/04/03 09:00',
