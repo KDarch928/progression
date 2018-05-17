@@ -58,13 +58,15 @@ class Search extends Component  {
   }
 
   handleCategory =(event) => {
-    console.log("handleCategory event")
+    //console.log("handleCategory event")
     event.preventDefault();
+    //this is not working
     this.setState({
       category: event.target.value
     })
-    console.log("handleCategory "+this.state.category)
-    this.UserSearch()
+    console.log("handleCategory value "+event.target.value)
+    console.log("handleCategory state "+this.state.category)
+    this.UserSearch(event.target.value)
   }
 
   handleExpandChange = (expanded) => {
@@ -93,9 +95,14 @@ class Search extends Component  {
     
   };
    
-  UserSearch = () => {
-console.log("UserSearch "+this.state.category)
-    API.getGoalsCategory(this.state.category)        
+  UserSearch = (searchCategory) => {
+    console.log("UserSearch "+searchCategory)
+    //reset state not working in handler
+    this.setState({
+      category: searchCategory
+    })
+    console.log("UserSearch "+this.state.category)
+    API.getGoalsCategory(searchCategory)        
     .then(res => {
       console.log("UserSearch data "+JSON.stringify(res.data))
       let tmpgoal = res.data[0].goal;
@@ -189,7 +196,9 @@ console.log("UserSearch "+this.state.category)
     } // end .then
     )
     .catch(err => {
-      console.log("UserSearch "+err+" "+JSON.stringify(err.response.data))
+      console.log("UserSearch "+err);
+      //if (err.response.data)
+      //  console.log("data "+JSON.stringify(err.response.data))
     })
   }
 
@@ -215,6 +224,7 @@ console.log("UserSearch "+this.state.category)
         handleFormSubmit={this.handleFormSubmit}
         description={this.state.description}
         category={this.state.category}
+        handleCategory={this.handleCategory}
       />
       </div>
      <Goalheader />
