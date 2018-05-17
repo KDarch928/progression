@@ -25,23 +25,25 @@ module.exports  = {
   findByCategory: function(req, res) {
     console.log("findByCategory req "+req.params.category)
     db.Goals
-      .find({gcategory: (req.params.category).toString()})
+      .find({category: (req.params.category).toString()})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   findByUser: function(req, res) {
     console.log("findByUser req "+req.params.user)
     db.Goals
-      .find({guser: (req.params.user).toString()})
+      .find({username: (req.params.user).toString()})
       .sort({goal:1,date: 1})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    db.Goals
-      .create(req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+    console.log("create goals")
+    console.log(res.body);
+    // db.Goals
+    //   .create(req.body)
+    //   .then(dbModel => res.json(dbModel))
+    //   .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
     db.Goals

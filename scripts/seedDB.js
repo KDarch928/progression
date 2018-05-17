@@ -11,87 +11,106 @@ mongoose.connect(
 
 const goalsSeed = [
   {
-    date:  '2018/03/01 08:00', 
+    date:  '2018/03/01 08:00',
+    goalNum: 1, 
     guser: 'Mary',
     goal: 'increase water',
-    gcategory: 'Nutrition',
-    gpercent: 0,
-    username: "maj"
-   },
+    category: 'Health',
+    percent: 0,
+    username: "Mary"
+  },
   {
     date:  '2018/03/03 09:00',
+    goalNum: 1, 
     guser: 'Mary',
     goal: 'increase water',
-    gcategory: 'Nutrition',
-    gpercent: 2,
-    username: "maj"
+    category: 'Health',
+    percent: 2,
+    username: "Mary"
   },
     {
-    date:  '2018/03/05 11:00', 
+    date:  '2018/03/05 11:00',
+    goalNum: 1,  
     guser: 'Mary',
     goal: 'increase water',
-    gcategory: 'Nutrition',
-    gpercent: 4,
-    username: "maj"
-   },
+    category: 'Health',
+    percent: 4,
+    username: "Mary"
+  },
   {
     date:  '2018/03/06 9:30',
+    goalNum: 2, 
     guser: 'Mary',
     goal: 'Walk 5 miles',
-    gcategory: 'Fitness',
-    gpercent: 6,
-    username: "maj"
+    category: 'Fitness',
+    percent: 6,
+    username: "Mary"
   },
-   {
+  {
     date:  '2018/04/01 08:00', 
+    goalNum: 3, 
     guser: 'Angela',
     goal: 'More water!',
-    gcategory: 'Nutrition',
-    gpercent: 0,
-    username: "angela"
-   },
+    category: 'Health',
+    percent: 0,
+    username: "Angela"
+  },
   {
     date:  '2018/04/03 09:00',
+    goalNum: 4, 
     guser: 'Angela',
     goal: 'increase daily exercise!',
-    gcategory: 'Fitness',
-    gpercent: 3,
-    username: "angela"
+    category: 'Fitness',
+    percent: 3,
+    username: "Angela"
   },
-    {
-    date:  '2018/04/05 11:00', 
+  {
+    date:  '2018/04/05 11:00',
+    goalNum: 4,  
     guser: 'Angela',
     goal: 'increase daily exercise!',
-    gcategory: 'Fitness',
-    gpercent: 5,
-    username: "angela"
-   },
+    category: 'Fitness',
+    percent: 5,
+    username: "Angela"
+  },
   {
     date:  '2018/04/06 9:30',
+    goalNum: 4, 
     guser: 'Angela',
     goal: 'increase daily exercise!',
-    gcategory: 'Fitness',
-    gpercent: 7,
-    username: "angela"
+    category: 'Fitness',
+    percent: 7,
+    username: "Angela"
   },
   {
     date:  '2018/04/15 9:30',
+    goalNum: 5, 
     guser: 'Mary',
     goal: 'swimming!',
-    gcategory: 'Fitness',
-    gpercent: 7,
-    username: "maj"
+    category: 'Fitness',
+    percent: 7,
+    username: "Mary"
   }
 ];
+
 const CategoriesSeed = [
   {
-    catDesc: 'Nutrition'
+    catDesc: 'Health'
   },
   {
     catDesc: 'Fitness'
   },
   {
-    catDesc: 'Study'
+    catDesc: 'Home'
+  },
+  {
+    catDesc: 'Hobbies'
+  },
+  {
+    catDesc: 'Social'
+  },
+  {
+    catDesc: 'Efficiency'
   }
 ];
 

@@ -5,11 +5,10 @@ const router = require("express").Router();
 const User = require('../models/user');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-
+const authController = require("../controllers/auth_controller.js")
 const apiRoutes = require("./api");
 
-console.log("--- routes/index.js router.use /api")
-// API Routes
+
 router.use("/api", apiRoutes);
 
 // If no API routes are hit, send the React app
@@ -131,14 +130,14 @@ router.post('/login', passport.authenticate('local'), function(req, res) {
 });
 
 // logout - might not need this. 
-// router.get('/logout', function(req, res){
-// 	// code to handle logout. 
-// 	req.logout();
+router.get('/logout', function(req, res){
+	// code to handle logout. 
+	req.logout();
 
-// 	req.flash('success_msg', 'You are logged out.');
-// 	res.send(console.log("logged out"));
+	req.flash('success_msg', 'You are logged out.');
+	res.send(console.log("logged out"));
 
-// });
+});
 
 // If no API routes are hit, send the React app
 // router.use(function (req, res) {
@@ -156,5 +155,7 @@ function ensureAuthenticated(req, res, next){
         res.json({loggedin: false});
     }
 }
+
+router.get("/userhome/:username?",ensureAuthenticated, authController.userhome)
 
 module.exports = router ;

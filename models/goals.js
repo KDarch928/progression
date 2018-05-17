@@ -16,16 +16,23 @@ var GoalsSchema = new Schema({
   goal: {
     type: String
   },
-  gcategory: {
+  category: {
     type: String
   },
-  gpercent: {
+  percent: {
     type: Number,
     default: 0
   },
   username:{
     type: String
+  },
+  description:{
+    type: String
+  },
+  filename: {
+    type: String
   }
+
 });
 
 // Create the Goals model with the GoalsSchema

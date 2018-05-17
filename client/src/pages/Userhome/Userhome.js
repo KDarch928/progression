@@ -5,6 +5,7 @@ import API from "../../utils/API";
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import AppBar from 'material-ui/AppBar';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
@@ -40,6 +41,11 @@ function handleClick(e) {
   e.preventDefault();
 }
 
+const muiTheme = getMuiTheme({
+  slider: {
+    selectionColor: 'yellow'
+  },
+});
 
 
 class UserHome extends Component  {
@@ -56,11 +62,12 @@ class UserHome extends Component  {
       awsbaseurl: "https://progressionapp.s3.amazonaws.com/",
       result: null,
       goals: [],
-      user: "",
+      username: "",
       percent: "",
-      message: "",
-      slider: 10
+      message: ""
     };
+    this.handleFormSubmit= this.handleFormSubmit.bind(this)
+    this.handleInputChange=this.handleInputChange.bind(this)
   }
 
   handleSlider = (event, value) => {
@@ -70,33 +77,46 @@ class UserHome extends Component  {
   handleOpen = () => {
     this.setState({open: !this.state.open});
   }
-  
+  //////////////
   handleClose = () => {
     this.setState({open: false});
   }
 
 componentDidMount() {
- this.UserGoals()
+ 
+ const patharr =  window.location.pathname.split('/');
+ const id = patharr[patharr.length-1];
+ console.log(id)
+ 
+ this.UserGoals(id)
+
 }
-  
-handleInputChange = event => {
+
+  handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
       [name]: value 
     });
-};
+  };
 
-UserGoals = () => {
+  UserGoals = (id) => {
+    console.log("usergoal "+id)
+    this.setState({
+      username: id
+    })
 
-   API.getGoalsUser("Angela")        
+   //console.log(this.state.username)
+   API.getGoalsUser(id)        
     .then(res => {
+
+      console.log("Userhome: api getgoaluser "+JSON.stringify(res.data))
       let tmpgoal = res.data[0].goal;
       let tmpdata = [];
       let i = 0
       while ( i < res.data.length ) {
 
         tmpgoal = res.data[i].goal
-        //console.log ( "#1 loop i "+i+" goal "+tmpgoal+" percent "+res.data[i].gpercent)
+        //console.log ( "#1 loop i "+i+" goal "+tmpgoal+" percent "+res.data[i].percent)
         
         if (res.data.length >= 1) 
         {
@@ -117,7 +137,7 @@ UserGoals = () => {
             }     
             else
               {
-                //console.log("#6 before while no tmpdata equal i "+i+" tmpgoal "+tmpgoal+"percent "+res.data[i].gpercent)
+                //console.log("#6 before while no tmpdata equal i "+i+" tmpgoal "+tmpgoal+"percent "+res.data[i].percent)
                 //console.log(" length "+res.data.length)
                 while ( i <= res.data.length && res.data[i].goal === tmpgoal ) //res.data[i+1].goal)
                  {
@@ -130,8 +150,8 @@ UserGoals = () => {
                  
                    //if ( i < res.data.length ) 
                    // {    
-                   //     console.log("#8 --- while after i inc tmpgoal "+tmpgoal+"percent "+res.data[i].gpercent)                 
-                   //     console.log("#9 *** while no tmpdata equal i "+i+" tmpgoal "+tmpgoal+"percent "+res.data[i].gpercent)
+                   //     console.log("#8 --- while after i inc tmpgoal "+tmpgoal+"percent "+res.data[i].percent)                 
+                   //     console.log("#9 *** while no tmpdata equal i "+i+" tmpgoal "+tmpgoal+"percent "+res.data[i].percent)
                    // }
                  } //end while
 
@@ -141,17 +161,17 @@ UserGoals = () => {
                 i++;
               } // end else
             //if ( i < res.data.length)
-            //  console.log("#11 after while goals equal i "+i+" tmpgoal "+tmpgoal+"percent "+res.data[i].gpercent)
+            //  console.log("#11 after while goals equal i "+i+" tmpgoal "+tmpgoal+"percent "+res.data[i].percent)
           
             if ( i < res.data.length-1) 
             {
-              console.log("#12 PUSH after while push i "+i+" percent "+res.data[i].gpercent)
+              console.log("#12 PUSH after while push i "+i+" percent "+res.data[i].percent)
               tmpdata.push(res.data[i])
              
               if (i < res.data.length-1) 
               {
                tmpgoal = res.data[i].goal
-               //console.log("#13 i "+i+" while goal inc bottom percent "+res.data[i].gpercent)
+               //console.log("#13 i "+i+" while goal inc bottom percent "+res.data[i].percent)
               }
             }
 
@@ -160,7 +180,7 @@ UserGoals = () => {
         //console.log("#14 i "+i+" after while before if")
         if ( i < res.data.length) 
          {
-            console.log("#15 PUSH after while push i "+i+" "+res.data[i].gpercent+
+            console.log("#15 PUSH after while push i "+i+" "+res.data[i].percent+
             " goal "+res.data[i].goal);
             tmpdata.push(res.data[i])
          }
@@ -178,12 +198,12 @@ UserGoals = () => {
       
       //console.log("#18 after goals data "+JSON.stringify(this.state.goals))
 
-    } // end .then
+     } // end .then
     )
     .catch(err => console.log(err)) 
  
   }
-
+/////////////////
   handleGoal = (id) => {
   //let id = '5af4912e04f888219c1c00b1'
     console.log("handleGoal id "+JSON.stringify(id))
@@ -204,24 +224,31 @@ UserGoals = () => {
       .catch(err => console.log(err)) 
    
   }
-
-  getGoals = () => {
+///////////////
+  getGoals = (user) => {
 
     console.log("getGoals")
-    axios.get("/api/goals/",{
-      description: this.state.description,
-      category: this.state.category
-    })
-      .then(res => {
-         console.log("res "+res.data)
-        this.setState({
-          description: res.data,
-          category: res.data
-        })
+    // axios.get("/api/goals/",{
+    //   description: this.state.description,
+    //   category: this.state.category
+    // })
+    //   .then(res => {
+    //      console.log("res "+res.data)
+    //     this.setState({
+    //       description: res.data,
+    //       category: res.data
+    //     })
 
-      }
-      )
-      .catch(err => console.log(err));
+    //   }
+    //   )
+    //   .catch(err => console.log(err));
+
+    API.getGoalsUser(user)
+    .then(res => {
+      console.log(res);
+      console.log("got Saved Goals")
+    })
+    .catch(err => console.log(err));
   };
 
   uploadFile = (file, signedRequest, url) => {
@@ -256,22 +283,64 @@ UserGoals = () => {
     xhr.send();
   }
 
+  clearForm = () =>{
+    this.setState({
+      description: "",
+      category: "",
+      file: null
+    });
+  }
+
   handleFormSubmit = event => {
     event.preventDefault();
     console.log("I made it here");
+
+    const patharr =  window.location.pathname.split('/');
+    const id = patharr[patharr.length-1];
+    var imgFileName;
+
+    //checking to see if the file state is not null
     if (this.state.file !== null){
-      if(this.state.file == null){
-        return alert("No file selected.");
-      }
-
+      //set the local var with the file name
+      imgFileName = this.state.file.name;
+      //upload the iamge to AWS S3 bucket
       this.getSignedRequest(this.state.file);
+      //Let the user know their image was uploaded
+      alert("Image Successfully Uploaded");
+    } else {
+      //if file is null, then set the local var to the default image
+      imgFileName = this.state.defaultimg;
     }
+    
+    console.log(id)
 
-    console.log(`Category: ${this.category}`);
-    console.log(`des: ${this.state.description}`);
-    console.log(`url: ${this.state.awsbaseurl}/${this.state.defaultimg}`);
-    console.log(`imageupload ${this.state.file.name}`);
-    this.getGoals();
+    this.setState({
+      username: id
+    });
+    
+    console.log(this.state.username)
+    
+    console.log("handleFormSubmit")
+    //this.getGoals();
+    //this.UserGoals()
+    console.log(this.state)
+    const{username,category,description,filename} = this.state
+    API.saveGoal({
+      username:this.state.username,
+      category:this.state.category,
+      description:this.state.description,
+      filename: imgFileName
+    })
+    .then(res => {
+      console.log("apisavegoalworked")
+    })
+    .catch(err => console.log(err));
+
+    //once the data is uploaded to the database, then clear out the form
+    this.clearForm();
+
+    // this.getGoals(this.state.username);
+
   };
 
   fileChangeHandler = event => {
@@ -282,8 +351,16 @@ UserGoals = () => {
   handleToggle = (event, toggle) => {
     this.setState({expanded: toggle});
        // this.handleGoal(id)
-//console.log("handleToggle id "+id)
+    //console.log("handleToggle id "+id)
   };
+
+  handleCategory = (event) =>{
+    event.preventDefault();
+    this.setState({
+      category: event.target.value
+    })
+    console.log(this.state.category)
+  }
 
   handleExpand = () => {
     this.setState({expanded: true});
@@ -318,71 +395,73 @@ UserGoals = () => {
         <div style={stylejumbo} className="jumbotron">
          <h1>Set Your Goals!</h1>
 
-          <Goalform 
+          <Goalform id="goal-form"
           handleInputChange={this.handleInputChange}
           handleFormSubmit={this.handleFormSubmit}
+          handleCategory={this.handleCategory}
           description={this.state.description}
           category={this.state.category}
-          file={this.fileChangeHandler}
+          fileChangeHandler={this.fileChangeHandler}
           />
         </div>
 
         <div>
-          <List>
+        <List>
               <Goalheader />
-            {this.state.goals.map((goal) => (
-            <div>
-            {/* <p>{goal.gcategory}</p>
-              <p>{goal.gpercent}</p> */}
-              <Card style={color} expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
-                <CardHeader
-                  key={goal._id}
-                  title={goal.goal} //"Goal Name"
-                  subtitle={goal.category} //"Exercise"
-                  avatar={image}
-                  actAsExpander={false}
-                  showExpandableButton={true}
+          {this.state.goals.map((goal) => (
+          <div>
+           {/* <p>{goal.category}</p>
+            <p>{goal.percent}</p> */}
+            <Card style={color} expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
+              <CardHeader
+                title={goal.goal} //"Goal Name"
+                subtitle={goal.category} //"Exercise"
+                avatar={image}
+                actAsExpander={false}
+                showExpandableButton={true}
 
+              />
+              <CardText>
+                <Toggle
+                  toggled={this.state.expanded}
+                  onToggle={this.handleToggle}
+                  labelPosition="right"
+                  label=""
                 />
-                <CardText>
-                  <Toggle
-                    toggled={this.state.expanded}
-                    onToggle={this.handleToggle}
-                    labelPosition="right"
-                    label=""
-                  />
-                </CardText>
-                <CardMedia
-                  expandable={true}
-                  overlay={false}
-                > 
-                </CardMedia> 
+              </CardText>
+              <CardMedia
+                expandable={true}
+                overlay={false}
+              > 
+              </CardMedia> 
               
-                {/*<CardTitle title="Goal Title" subtitle="Fitness" expandable={true} />*/}        
-                <CardTitle title={goal.goal} subtitle={goal.gcategory} expandable={true} />
-                <CardText expandable={true}>
-                  {this.state.description}
-                  You are at {goal.gpercent} percent!
-
+              {/*<CardTitle title="Goal Title" subtitle="Fitness" expandable={true} />*/}        
+              <CardTitle title={goal.goal} subtitle={goal.category} expandable={true} />
+              <CardText expandable={true}>
+                {this.state.description}
+                You are at {goal.percent} percent!
+    <MuiThemeProvider muiTheme={muiTheme}>
         <Slider
           value={this.state.slider}
           onChange={this.handleSlider}
-          min={0}
-          max={100}
-          step={1}
         />
+        </MuiThemeProvider>
         <p>
           <span>{'The value of this slider is: '}</span>
           <span>{this.state.slider}</span>
         </p>
+      <button
+      type="submit" 
+      className="btn btn-light" 
+      id="createGoal"> Save progress</button>
               </CardText>
             </Card>
            <br />
           </div> 
          ))}
        </List>
-      </div>
-      <Goalsfollowing />
+   </div>
+        <Goalsfollowing />
         <div>
           <Card style={color2} expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
           <CardHeader

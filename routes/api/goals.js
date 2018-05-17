@@ -5,7 +5,7 @@ const router = require("express").Router();
 const Controller = require("../../controllers/Controller");
 
 // Matches with "/api/goals"
-router.route("/goals")
+router.route("/user")
   .get(Controller.findAll)
   .post(Controller.create);
 
