@@ -12,12 +12,12 @@ const Goalsearchform = props => (
     <form role="form" className="menu">
       <div className="form-group">
         <label for="searchCategory">Search goals by Category:</label><br />
-        <button value="health" className="btn btn-info" onClick={props.handleCategory} id="health">Health</button><br/>
-        <button value="fitness" className="btn btn-info" onClick={props.handleCategory} id="fitness">Fitness </button><br/>
-        <button value="home" className="btn btn-info" onClick={props.handleCategory} id="home">Home </button><br />
-        <button value="hobbies" className="btn btn-info" onClick={props.handleCategory} id="hobbies">Hobbies </button><br/>
-        <button value="social" className="btn btn-info" onClick={props.handleCategory} id="social">Social </button><br />
-        <button value="efficiency" className="btn btn-info" onClick={props.handleCategory} id="efficiency">Efficiency </button> 
+        <button value="Health" className="btn btn-info" onClick={props.handleCategory} id="health">Health</button><br/>
+        <button value="Fitness" className="btn btn-info" onClick={props.handleCategory} id="fitness">Fitness </button><br/>
+        <button value="Home" className="btn btn-info" onClick={props.handleCategory} id="home">Home </button><br />
+        <button value="Hobbies" className="btn btn-info" onClick={props.handleCategory} id="hobbies">Hobbies </button><br/>
+        <button value="Social" className="btn btn-info" onClick={props.handleCategory} id="social">Social </button><br />
+        <button value="Efficiency" className="btn btn-info" onClick={props.handleCategory} id="efficiency">Efficiency </button> 
       </div>
     </form>
   </div>

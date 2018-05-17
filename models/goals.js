@@ -31,8 +31,10 @@ var GoalsSchema = new Schema({
   },
   filename: {
     type: String
+  },
+  follow: {
+    type: String
   }
-
 });
 
 // Create the Goals model with the GoalsSchema
