@@ -42,20 +42,6 @@ router
   .delete(Controller.remove);
 
 router
-<<<<<<< HEAD
-    .route("/update")
-    // .get(Controller.findById)
-    // .get(function(req, res, next) {
-    //   console.log('we are in the route')
-    // })
-    .post(Controller.update);
-// .put(function(req, res, next) {
-//   console.log('we are in the route')
-// })
-//.delete(Controller.remove);
-
-
-=======
   .route("/update")
   // .get(Controller.findById)
   // .get(function(req, res, next) {
@@ -66,6 +52,5 @@ router
   //   console.log('we are in the route')
   // })
   //.delete(Controller.remove);
->>>>>>> d3b046540f4e7f67cb62bbf987fa6eda4b11892f
 
 module.exports = router;

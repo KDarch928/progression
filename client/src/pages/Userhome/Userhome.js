@@ -90,10 +90,11 @@ class UserHome extends Component  {
  
     const patharr =  window.location.pathname.split('/');
     const id = patharr[patharr.length-1];
-    console.log(id)
+    console.log("this is the the ID: " + id)
+    this.getGoals(id);
     localStorage.setItem("username",id)
       
-    this.getGoals(id);
+    // this.getGoals(id);
 
   }
 
@@ -233,25 +234,11 @@ class UserHome extends Component  {
   getGoals = (user) => {
 
     console.log("getGoals")
-    // axios.get("/api/goals/",{
-    //   description: this.state.description,
-    //   category: this.state.category
-    // })
-    //   .then(res => {
-    //      console.log("res "+res.data)
-    //     this.setState({
-    //       description: res.data,
-    //       category: res.data
-    //     })
-
-    //   }
-    //   )
-    //   .catch(err => console.log(err));
 
     API.getGoalsUser(user)
     .then(res => {
-      console.log(res);
-      console.log("got Saved Goals");
+      console.log(res.data);
+      
       this.setState({
         goals: res.data
       });
@@ -322,13 +309,13 @@ class UserHome extends Component  {
       imgFileName = this.state.defaultimg;
     }
     
-    console.log(id)
+    console.log("User id when submitted" + id)
 
     this.setState({
       username: id
     });
     
-    console.log(this.state.username)
+    console.log("I am the user" + this.state.username)
     
     console.log("handleFormSubmit")
     //this.getGoals();
@@ -336,7 +323,7 @@ class UserHome extends Component  {
     console.log(this.state)
     const{username,category,description,filename} = this.state
     API.saveGoal({
-      username:this.state.username,
+      username:id,
       category:this.state.category,
       description:this.state.description,
       filename: imgFileName
@@ -347,6 +334,7 @@ class UserHome extends Component  {
     .catch(err => console.log(err));
 
     //once the data is uploaded to the database, then clear out the form
+    console.log(this.state.username);
     this.getGoals(this.state.username);
     this.clearForm();
 
