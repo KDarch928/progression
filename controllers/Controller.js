@@ -6,7 +6,7 @@ const db = require("../models");
 
 
 // Defining methods for the Controller
-module.exports  = {
+var Controller = module.exports = {
 
   findAll: function(req, res) {
     //console.log("Controller: Im in find it all");
@@ -61,11 +61,18 @@ module.exports  = {
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
+    console.log("i made it here to update");
+    console.log(req.body);
+ /*   db.products.update(
+   { _id: 100 },
+   { $set: { "details.make": "zzz" } }
+)*/
     db.Goals
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
-      .then(dbModel => 
-        res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+      .findOneAndUpdate({ _id: req.body._id }, {percent: req.body.percent})
+      .then(dbModel => {
+        res.json(dbModel) 
+        console.log("we updated database")} )
+      .catch(err => console.log(err)) //res.status(422).json(err));
   },
 
   remove: function(req, res) {

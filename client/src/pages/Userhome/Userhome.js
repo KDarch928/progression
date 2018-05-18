@@ -23,6 +23,7 @@ import Goalsfollowing from "../../components/Goalsfollowing";
 import axios from "axios";
 import Slider from 'material-ui/Slider';
 // import Nav from "../../components/Nav";
+//var ObjectId = require('mongoose').Types.ObjectId;
 
 const stylejumbo = {
   backgroundImage: 'url('+image+')'
@@ -65,11 +66,16 @@ class UserHome extends Component  {
       username: "",
       percent: "",
       message: "",
-      slider: 0
+      slider: 0,
+      _id: 0
     };
     this.handleFormSubmit= this.handleFormSubmit.bind(this)
     this.handleInputChange=this.handleInputChange.bind(this)
+<<<<<<< HEAD
     // this.handleSliderSubmit=this.handleSliderSubmit.bind(this)
+=======
+    //this.handleSliderSubmit=this.handleSliderSubmit.bind(this)
+>>>>>>> d3b046540f4e7f67cb62bbf987fa6eda4b11892f
   }
 
   handleSlider = (event, value) => {
@@ -410,6 +416,7 @@ class UserHome extends Component  {
 
   handleSliderClick = (id) => {
 
+<<<<<<< HEAD
         console.log("handleSliderClick "+id)
         //console.log("state "+JSON.stringify(this.state))
         // this.state._id = id;
@@ -427,6 +434,25 @@ class UserHome extends Component  {
                 console.log(res)
             })
             .catch(err => console.log(err));
+=======
+    console.log("handleSliderClick "+id)
+    //console.log("state "+JSON.stringify(this.state))
+    // this.state._id = id;
+    //this.state.percent = 
+    let tmp = Math.round(100*this.state.slider)
+    //let tmp2 = id.match('/^[0-9a-fA-F]{24}$/')
+    //console.log("id valid "+tmp2)
+  // Yes, it's a valid ObjectId, proceed with `findById` call
+    console.log(tmp)
+    API.updateGoal({
+      _id: id,
+      percent: tmp
+    })
+    .then(res => {
+      console.log(res)
+    })
+    .catch(err => console.log(err));
+>>>>>>> d3b046540f4e7f67cb62bbf987fa6eda4b11892f
   }
 
   render() {
@@ -465,7 +491,8 @@ class UserHome extends Component  {
           <Goalheader />
           {this.state.goals.map((goal,i) => (
           <div>
-           {/*<p>Index {i}</p>*/}
+
+
            {/* <p>{goal.category}</p>
             <p>{goal.percent}</p> */}
             <Card style={color} key={i} expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
@@ -492,12 +519,12 @@ class UserHome extends Component  {
               > 
               </CardMedia> 
               
-              {/*<CardTitle title="Goal Title" subtitle="Fitness" expandable={true} />*/}        
+
               <CardTitle title={goal.description} subtitle={goal.category} expandable={true} />
               <CardMedia
                   expandable={true} style={{maxWidth:"30%", marginRight:"auto", marginLeft:"auto"}}
               >
-                <img src= {this.state.awsbaseurl + goal.filename} alt={goal.goal} />
+                <img src= {this.state.awsbaseurl + goal.filename} alt={goal.description} />
               </CardMedia>
               <CardText expandable={true}>
                 You are at {goal.percent} percent!
@@ -511,12 +538,21 @@ class UserHome extends Component  {
           <span>{'The value of this slider is: '}</span>
           <span>{Math.round(100*this.state.slider)}%</span>
         </p>
+<<<<<<< HEAD
                   <button
                       type="submit"
                       className="btn btn-light"
                       key={i}
 
                       id={goal._id} type="submit" onClick={() => this.handleSliderClick(goal._id)}
+=======
+      <button
+      type="submit" 
+      className="btn btn-light" 
+      key={i}
+
+      id={goal._id} type="submit" onClick={() => this.handleSliderClick(goal._id)}
+>>>>>>> d3b046540f4e7f67cb62bbf987fa6eda4b11892f
       > Save progress 
       </button>
               </CardText>
