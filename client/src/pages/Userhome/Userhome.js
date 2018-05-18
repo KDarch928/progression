@@ -79,20 +79,20 @@ class UserHome extends Component  {
   handleOpen = () => {
     this.setState({open: !this.state.open});
   }
-  //////////////
+  
   handleClose = () => {
     this.setState({open: false});
   }
 
-componentDidMount() {
+  componentDidMount() {
  
- const patharr =  window.location.pathname.split('/');
- const id = patharr[patharr.length-1];
- console.log(id)
+    const patharr =  window.location.pathname.split('/');
+    const id = patharr[patharr.length-1];
+    console.log(id)
  
- this.UserGoals(id)
+    this.UserGoals(id)
 
-}
+  }
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -405,11 +405,6 @@ componentDidMount() {
     this.setState({expanded: expanded});
   };
 
-  handleSliderClick = (props) => {
-
-    console.log("handleSliderClick "+props.i)
-  }
-
   render() {
 
     return (
@@ -473,9 +468,10 @@ componentDidMount() {
               > 
               </CardMedia> 
               
+              {/*<CardTitle title="Goal Title" subtitle="Fitness" expandable={true} />*/}        
               <CardTitle title={goal.goal} subtitle={goal.category} expandable={true} />
               <CardMedia
-                  expandable={true}
+                  expandable={true} 
                   // overlay={<CardTitle title="Overlay title" subtitle="Overlay subtitle" />}
               >
                 <img src= {this.state.awsbaseurl + goal.filename} alt={goal.goal} />
@@ -493,9 +489,10 @@ componentDidMount() {
           <span>{Math.round(100*this.state.slider)}%</span>
         </p>
       <button
+      type="submit" 
       className="btn btn-light" 
       key={i}
-      id="createGoal" type="submit" onClick={() => this.handleSliderClick({i})}
+      id="createGoal" type="submit" onClick={this.handleSliderSubmit}
       > Save progress 
       </button>
               </CardText>
