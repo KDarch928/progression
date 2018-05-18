@@ -84,15 +84,15 @@ class UserHome extends Component  {
     this.setState({open: false});
   }
 
-componentDidMount() {
+    componentDidMount() {
  
- const patharr =  window.location.pathname.split('/');
- const id = patharr[patharr.length-1];
- console.log(id)
- 
- this.UserGoals(id)
+        const patharr =  window.location.pathname.split('/');
+        const id = patharr[patharr.length-1];
 
-}
+ 
+        this.getGoals(id);
+
+    }
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -205,7 +205,7 @@ componentDidMount() {
     .catch(err => console.log(err)) 
  
   }
-/////////////////
+
   handleGoal = (id) => {
   //let id = '5af4912e04f888219c1c00b1'
     console.log("handleGoal id "+JSON.stringify(id))
@@ -226,29 +226,11 @@ componentDidMount() {
       .catch(err => console.log(err)) 
    
   }
-///////////////
+
   getGoals = (user) => {
-
-    console.log("getGoals")
-    // axios.get("/api/goals/",{
-    //   description: this.state.description,
-    //   category: this.state.category
-    // })
-    //   .then(res => {
-    //      console.log("res "+res.data)
-    //     this.setState({
-    //       description: res.data,
-    //       category: res.data
-    //     })
-
-    //   }
-    //   )
-    //   .catch(err => console.log(err));
 
     API.getGoalsUser(user)
     .then(res => {
-      console.log(res);
-      console.log("got Saved Goals");
       this.setState({
         goals: res.data
       });
@@ -469,17 +451,13 @@ componentDidMount() {
               </CardMedia> 
               
               {/*<CardTitle title="Goal Title" subtitle="Fitness" expandable={true} />*/}        
-<<<<<<< HEAD
-              <CardTitle title={goal.goal} subtitle={goal.category} expandable={true} />
+              <CardTitle title={goal.description} subtitle={goal.category} expandable={true} />
               <CardMedia
-                  expandable={true}
+                  expandable={true} style={{maxWidth:"30%",marginLeft:"auto",marginRight:"auto"}}
                   // overlay={<CardTitle title="Overlay title" subtitle="Overlay subtitle" />}
               >
                 <img src= {this.state.awsbaseurl + goal.filename} alt={goal.goal} />
               </CardMedia>
-=======
-              <CardTitle title={goal.description} subtitle={goal.category} expandable={true} />
->>>>>>> c57baa6f2933995b687d3dda8f83c3f260bd1e93
               <CardText expandable={true}>
                 You are at {goal.percent} percent!
     <MuiThemeProvider muiTheme={muiTheme}>
