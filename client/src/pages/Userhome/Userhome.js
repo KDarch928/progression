@@ -248,7 +248,10 @@ componentDidMount() {
     API.getGoalsUser(user)
     .then(res => {
       console.log(res);
-      console.log("got Saved Goals")
+      console.log("got Saved Goals");
+      this.setState({
+        goals: res.data
+      });
     })
     .catch(err => console.log(err));
   };
@@ -339,8 +342,10 @@ componentDidMount() {
     .catch(err => console.log(err));
 
     //once the data is uploaded to the database, then clear out the form
+    this.getGoals(this.state.username);
     this.clearForm();
 
+    // this.UserGoals(this.state.username);
     // this.getGoals(this.state.username);
 
   };
@@ -464,7 +469,17 @@ componentDidMount() {
               </CardMedia> 
               
               {/*<CardTitle title="Goal Title" subtitle="Fitness" expandable={true} />*/}        
+<<<<<<< HEAD
+              <CardTitle title={goal.goal} subtitle={goal.category} expandable={true} />
+              <CardMedia
+                  expandable={true}
+                  // overlay={<CardTitle title="Overlay title" subtitle="Overlay subtitle" />}
+              >
+                <img src= {this.state.awsbaseurl + goal.filename} alt={goal.goal} />
+              </CardMedia>
+=======
               <CardTitle title={goal.description} subtitle={goal.category} expandable={true} />
+>>>>>>> c57baa6f2933995b687d3dda8f83c3f260bd1e93
               <CardText expandable={true}>
                 You are at {goal.percent} percent!
     <MuiThemeProvider muiTheme={muiTheme}>
