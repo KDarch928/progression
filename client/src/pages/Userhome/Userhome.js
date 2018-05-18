@@ -71,11 +71,7 @@ class UserHome extends Component  {
     };
     this.handleFormSubmit= this.handleFormSubmit.bind(this)
     this.handleInputChange=this.handleInputChange.bind(this)
-<<<<<<< HEAD
-    // this.handleSliderSubmit=this.handleSliderSubmit.bind(this)
-=======
     //this.handleSliderSubmit=this.handleSliderSubmit.bind(this)
->>>>>>> d3b046540f4e7f67cb62bbf987fa6eda4b11892f
   }
 
   handleSlider = (event, value) => {
@@ -416,25 +412,6 @@ class UserHome extends Component  {
 
   handleSliderClick = (id) => {
 
-<<<<<<< HEAD
-        console.log("handleSliderClick "+id)
-        //console.log("state "+JSON.stringify(this.state))
-        // this.state._id = id;
-        //this.state.percent =
-        let tmp = Math.round(100*this.state.slider)
-        //let tmp2 = id.match('/^[0-9a-fA-F]{24}$/')
-        //console.log("id valid "+tmp2)
-        // Yes, it's a valid ObjectId, proceed with `findById` call
-        console.log(tmp)
-        API.updateGoal({
-            _id: id,
-            percent: tmp
-        })
-            .then(res => {
-                console.log(res)
-            })
-            .catch(err => console.log(err));
-=======
     console.log("handleSliderClick "+id)
     //console.log("state "+JSON.stringify(this.state))
     // this.state._id = id;
@@ -452,7 +429,6 @@ class UserHome extends Component  {
       console.log(res)
     })
     .catch(err => console.log(err));
->>>>>>> d3b046540f4e7f67cb62bbf987fa6eda4b11892f
   }
 
   render() {
@@ -538,21 +514,12 @@ class UserHome extends Component  {
           <span>{'The value of this slider is: '}</span>
           <span>{Math.round(100*this.state.slider)}%</span>
         </p>
-<<<<<<< HEAD
-                  <button
-                      type="submit"
-                      className="btn btn-light"
-                      key={i}
-
-                      id={goal._id} type="submit" onClick={() => this.handleSliderClick(goal._id)}
-=======
       <button
       type="submit" 
       className="btn btn-light" 
       key={i}
 
       id={goal._id} type="submit" onClick={() => this.handleSliderClick(goal._id)}
->>>>>>> d3b046540f4e7f67cb62bbf987fa6eda4b11892f
       > Save progress 
       </button>
               </CardText>
