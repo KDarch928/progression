@@ -41,6 +41,18 @@ router
   .put(Controller.update)
   .delete(Controller.remove);
 
+router
+    .route("/update")
+    // .get(Controller.findById)
+    // .get(function(req, res, next) {
+    //   console.log('we are in the route')
+    // })
+    .post(Controller.update);
+// .put(function(req, res, next) {
+//   console.log('we are in the route')
+// })
+//.delete(Controller.remove);
+
 
 
 module.exports = router;

@@ -119,7 +119,14 @@ export default {
   followOthersGoal: function(_id){
     console.log("following others goal in api")
     return axios.post("/api/goals/follow/",_id)
-  }
+  },
+    // Saves a goal to the database
+    updateGoal: function(percentData) {
+        console.log("API axios.POST(/api/goals/")
+        //console.log("goalData "+JSON.stringify(goalData))
+        console.log(percentData)
+        return axios.put("/api/goals/update/", percentData);
+    }
 
 
 };

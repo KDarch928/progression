@@ -69,7 +69,7 @@ class UserHome extends Component  {
     };
     this.handleFormSubmit= this.handleFormSubmit.bind(this)
     this.handleInputChange=this.handleInputChange.bind(this)
-    this.handleSliderSubmit=this.handleSliderSubmit.bind(this)
+    // this.handleSliderSubmit=this.handleSliderSubmit.bind(this)
   }
 
   handleSlider = (event, value) => {
@@ -227,7 +227,7 @@ class UserHome extends Component  {
       .catch(err => console.log(err)) 
    
   }
-///////////////
+
   getGoals = (user) => {
 
     console.log("getGoals")
@@ -364,29 +364,29 @@ class UserHome extends Component  {
     //console.log("handleToggle id "+id)
   };
 
-  handleSliderSubmit = event => {
-    //console.log("slider "+this.state.slider)
-    console.log("handleSliderSubmit ") //+index)
-    event.preventDefault();
-    console.log("event "+event.target.value)
-    this.setState({
-      //percent: event.target.value,
-      slider: event.target.value
-    })
-    API.saveGoal({
-      username:this.state.username,
-      guser:this.state.username,
-      category:this.state.category,
-      goal:this.state.goal,
-      percent:Math.round(100*this.state.slider)
-    })
-    .then(res => {
-      console.log("button api savegoalworked")
-    })
-    .catch(err => console.log(err))
-    //console.log("goal.id "+goal._id)
-   // console.log("this.state.slider "+this.state.slider)
-  }
+  // handleSliderSubmit = event => {
+  //   //console.log("slider "+this.state.slider)
+  //   console.log("handleSliderSubmit ") //+index)
+  //   event.preventDefault();
+  //   console.log("event "+event.target.value)
+  //   this.setState({
+  //     //percent: event.target.value,
+  //     slider: event.target.value
+  //   })
+  //   API.saveGoal({
+  //     username:this.state.username,
+  //     guser:this.state.username,
+  //     category:this.state.category,
+  //     goal:this.state.goal,
+  //     percent:Math.round(100*this.state.slider)
+  //   })
+  //   .then(res => {
+  //     console.log("button api savegoalworked")
+  //   })
+  //   .catch(err => console.log(err))
+  //   //console.log("goal.id "+goal._id)
+  //  // console.log("this.state.slider "+this.state.slider)
+  // }
 
   handleCategory = (event) =>{
     event.preventDefault();
@@ -407,6 +407,27 @@ class UserHome extends Component  {
   handleExpandChange = (expanded) => {
     this.setState({expanded: expanded});
   };
+
+  handleSliderClick = (id) => {
+
+        console.log("handleSliderClick "+id)
+        //console.log("state "+JSON.stringify(this.state))
+        // this.state._id = id;
+        //this.state.percent =
+        let tmp = Math.round(100*this.state.slider)
+        //let tmp2 = id.match('/^[0-9a-fA-F]{24}$/')
+        //console.log("id valid "+tmp2)
+        // Yes, it's a valid ObjectId, proceed with `findById` call
+        console.log(tmp)
+        API.updateGoal({
+            _id: id,
+            percent: tmp
+        })
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => console.log(err));
+  }
 
   render() {
 
@@ -490,11 +511,12 @@ class UserHome extends Component  {
           <span>{'The value of this slider is: '}</span>
           <span>{Math.round(100*this.state.slider)}%</span>
         </p>
-      <button
-      type="submit" 
-      className="btn btn-light" 
-      key={i}
-      id="createGoal" type="submit" onClick={this.handleSliderSubmit}
+                  <button
+                      type="submit"
+                      className="btn btn-light"
+                      key={i}
+
+                      id={goal._id} type="submit" onClick={() => this.handleSliderClick(goal._id)}
       > Save progress 
       </button>
               </CardText>
