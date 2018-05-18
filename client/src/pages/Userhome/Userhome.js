@@ -81,20 +81,21 @@ class UserHome extends Component  {
   handleOpen = () => {
     this.setState({open: !this.state.open});
   }
-  //////////////
+  
   handleClose = () => {
     this.setState({open: false});
   }
 
-componentDidMount() {
+  componentDidMount() {
  
- const patharr =  window.location.pathname.split('/');
- const id = patharr[patharr.length-1];
- console.log(id)
- 
- this.UserGoals(id)
+    const patharr =  window.location.pathname.split('/');
+    const id = patharr[patharr.length-1];
+    // console.log(id)
+    //
+    // this.UserGoals(id);
+    this.getGoals(id);
 
-}
+  }
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -298,6 +299,7 @@ componentDidMount() {
     });
   }
 
+
   handleFormSubmit = event => {
     event.preventDefault();
     console.log("I made it here");
@@ -464,6 +466,8 @@ componentDidMount() {
           <Goalheader />
           {this.state.goals.map((goal,i) => (
           <div>
+
+
            {/* <p>{goal.category}</p>
             <p>{goal.percent}</p> */}
             <Card style={color} key={i} expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
@@ -490,10 +494,10 @@ componentDidMount() {
               > 
               </CardMedia> 
               
+
               <CardTitle title={goal.description} subtitle={goal.category} expandable={true} />
               <CardMedia
-                  expandable={true}
-                  // overlay={<CardTitle title="Overlay title" subtitle="Overlay subtitle" />}
+                  expandable={true} style={{maxWidth:"30%", marginRight:"auto", marginLeft:"auto"}}
               >
                 <img src= {this.state.awsbaseurl + goal.filename} alt={goal.description} />
               </CardMedia>
@@ -510,8 +514,10 @@ componentDidMount() {
           <span>{Math.round(100*this.state.slider)}%</span>
         </p>
       <button
+      type="submit" 
       className="btn btn-light" 
       key={i}
+
       id={goal._id} type="submit" onClick={() => this.handleSliderClick(goal._id)}
       > Save progress 
       </button>
