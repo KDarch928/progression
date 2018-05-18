@@ -400,6 +400,11 @@ componentDidMount() {
     this.setState({expanded: expanded});
   };
 
+  handleSliderClick = (props) => {
+
+    console.log("handleSliderClick "+props.i)
+  }
+
   render() {
 
     return (
@@ -463,7 +468,6 @@ componentDidMount() {
               > 
               </CardMedia> 
               
-              {/*<CardTitle title="Goal Title" subtitle="Fitness" expandable={true} />*/}        
               <CardTitle title={goal.description} subtitle={goal.category} expandable={true} />
               <CardText expandable={true}>
                 You are at {goal.percent} percent!
@@ -478,10 +482,9 @@ componentDidMount() {
           <span>{Math.round(100*this.state.slider)}%</span>
         </p>
       <button
-      type="submit" 
       className="btn btn-light" 
       key={i}
-      id="createGoal" type="submit" onClick={this.handleSliderSubmit}
+      id="createGoal" type="submit" onClick={() => this.handleSliderClick({i})}
       > Save progress 
       </button>
               </CardText>
