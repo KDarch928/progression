@@ -23,6 +23,7 @@ import Goalsfollowing from "../../components/Goalsfollowing";
 import axios from "axios";
 import Slider from 'material-ui/Slider';
 // import Nav from "../../components/Nav";
+//var ObjectId = require('mongoose').Types.ObjectId;
 
 const stylejumbo = {
   backgroundImage: 'url('+image+')'
@@ -65,11 +66,12 @@ class UserHome extends Component  {
       username: "",
       percent: "",
       message: "",
-      slider: 0
+      slider: 0,
+      _id: 0
     };
     this.handleFormSubmit= this.handleFormSubmit.bind(this)
     this.handleInputChange=this.handleInputChange.bind(this)
-    this.handleSliderSubmit=this.handleSliderSubmit.bind(this)
+    //this.handleSliderSubmit=this.handleSliderSubmit.bind(this)
   }
 
   handleSlider = (event, value) => {
@@ -405,9 +407,25 @@ componentDidMount() {
     this.setState({expanded: expanded});
   };
 
-  handleSliderClick = (props) => {
+  handleSliderClick = (id) => {
 
-    console.log("handleSliderClick "+props.i)
+    console.log("handleSliderClick "+id)
+    //console.log("state "+JSON.stringify(this.state))
+    // this.state._id = id;
+    //this.state.percent = 
+    let tmp = Math.round(100*this.state.slider)
+    //let tmp2 = id.match('/^[0-9a-fA-F]{24}$/')
+    //console.log("id valid "+tmp2)
+  // Yes, it's a valid ObjectId, proceed with `findById` call
+    console.log(tmp)
+    API.updateGoal({
+      _id: id,
+      percent: tmp
+    })
+    .then(res => {
+      console.log(res)
+    })
+    .catch(err => console.log(err));
   }
 
   render() {
@@ -446,7 +464,6 @@ componentDidMount() {
           <Goalheader />
           {this.state.goals.map((goal,i) => (
           <div>
-           <p>Index {i}</p>
            {/* <p>{goal.category}</p>
             <p>{goal.percent}</p> */}
             <Card style={color} key={i} expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
@@ -473,12 +490,12 @@ componentDidMount() {
               > 
               </CardMedia> 
               
-              <CardTitle title={goal.goal} subtitle={goal.category} expandable={true} />
+              <CardTitle title={goal.description} subtitle={goal.category} expandable={true} />
               <CardMedia
                   expandable={true}
                   // overlay={<CardTitle title="Overlay title" subtitle="Overlay subtitle" />}
               >
-                <img src= {this.state.awsbaseurl + goal.filename} alt={goal.goal} />
+                <img src= {this.state.awsbaseurl + goal.filename} alt={goal.description} />
               </CardMedia>
               <CardText expandable={true}>
                 You are at {goal.percent} percent!
@@ -495,7 +512,7 @@ componentDidMount() {
       <button
       className="btn btn-light" 
       key={i}
-      id="createGoal" type="submit" onClick={() => this.handleSliderClick({i})}
+      id={goal._id} type="submit" onClick={() => this.handleSliderClick(goal._id)}
       > Save progress 
       </button>
               </CardText>
