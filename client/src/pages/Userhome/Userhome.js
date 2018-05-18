@@ -405,6 +405,11 @@ componentDidMount() {
     this.setState({expanded: expanded});
   };
 
+  handleSliderClick = (props) => {
+
+    console.log("handleSliderClick "+props.i)
+  }
+
   render() {
 
     return (
@@ -468,8 +473,6 @@ componentDidMount() {
               > 
               </CardMedia> 
               
-              {/*<CardTitle title="Goal Title" subtitle="Fitness" expandable={true} />*/}        
-<<<<<<< HEAD
               <CardTitle title={goal.goal} subtitle={goal.category} expandable={true} />
               <CardMedia
                   expandable={true}
@@ -477,9 +480,6 @@ componentDidMount() {
               >
                 <img src= {this.state.awsbaseurl + goal.filename} alt={goal.goal} />
               </CardMedia>
-=======
-              <CardTitle title={goal.description} subtitle={goal.category} expandable={true} />
->>>>>>> c57baa6f2933995b687d3dda8f83c3f260bd1e93
               <CardText expandable={true}>
                 You are at {goal.percent} percent!
     <MuiThemeProvider muiTheme={muiTheme}>
@@ -493,10 +493,9 @@ componentDidMount() {
           <span>{Math.round(100*this.state.slider)}%</span>
         </p>
       <button
-      type="submit" 
       className="btn btn-light" 
       key={i}
-      id="createGoal" type="submit" onClick={this.handleSliderSubmit}
+      id="createGoal" type="submit" onClick={() => this.handleSliderClick({i})}
       > Save progress 
       </button>
               </CardText>
