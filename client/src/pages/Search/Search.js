@@ -46,10 +46,30 @@ class Search extends Component  {
       user: "",
       percent: "",
       message: "",
-      follow:""
+      follow:"",
+      username: "",
+      userpath: ""
     };
   }
+  componentDidMount() {
+ 
+    let localId = localStorage.getItem("username")
+    console.log(localId)
+    this.setState({
+      //category: event.target.value,
+      username: localId
+    })
 
+    this.state.userpath = "/userhome/".concat(localId);
+    console.log("path "+this.state.userpath)
+    //console.log(" value "+event.target.value)
+    //console.log("handleCategory state "+this.state.category)
+    //this.UserSearch(event.target.value)
+    //localStorage.getItem("username",id)
+      
+    // this.getGoals(id);
+
+  }
   handleOpen = () => {
     this.setState({open: !this.state.open});
   }
@@ -239,7 +259,7 @@ class Search extends Component  {
     <Drawer open={this.state.open} close={this.handleClose}>
       <a href="/Signup"><MenuItem>Signup</MenuItem></a>
       <a href="/Login"><MenuItem>Login</MenuItem></a>
-      <a href="/userhome/:username"><MenuItem>Userhome</MenuItem></a>
+      <a href={this.state.userpath}><MenuItem>Userhome</MenuItem></a>
       <a href="/Home"><MenuItem>Main Home Page</MenuItem></a>
       <a href="/Search"><MenuItem>Logout</MenuItem></a>
       <MenuItem onClick={this.handleClose}>X Close Menu</MenuItem>
