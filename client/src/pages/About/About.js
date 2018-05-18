@@ -24,6 +24,7 @@ class About extends Component  {
     super(props);
     this.state = {
       open: false,
+      userpath: ""
     };
   }
 
@@ -33,6 +34,18 @@ class About extends Component  {
 
   handleClose = () => {
     this.setState({open: false});
+  }
+  componentDidMount() {
+ 
+    let localId = localStorage.getItem("username")
+    console.log(localId)
+    this.setState({
+      //category: event.target.value,
+      username: localId
+    })
+
+    this.state.userpath = "/userhome/".concat(localId);
+    console.log("about path "+this.state.userpath)
   }
 
   render() {
@@ -47,9 +60,9 @@ class About extends Component  {
         <Drawer open={this.state.open} close={this.handleClose}>
           <a href="/Signup"><MenuItem>Signup</MenuItem></a>
           <a href="/Login"><MenuItem>Login</MenuItem></a>
+          <a href={this.state.userpath}><MenuItem>Userhome</MenuItem></a>
           <a href="/Search"><MenuItem>Search</MenuItem></a>
           <a href="/Home"><MenuItem>Main Home Page</MenuItem></a>
-          <a href="/Userhome"><MenuItem>Logout</MenuItem></a>
           <MenuItem onClick={this.handleClose}>X Close Menu</MenuItem>
         </Drawer>
        <div style={stylejumbo} className="jumbotronabout">
