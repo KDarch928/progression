@@ -79,20 +79,20 @@ class UserHome extends Component  {
   handleOpen = () => {
     this.setState({open: !this.state.open});
   }
-  //////////////
+  
   handleClose = () => {
     this.setState({open: false});
   }
 
-    componentDidMount() {
+  componentDidMount() {
  
-        const patharr =  window.location.pathname.split('/');
-        const id = patharr[patharr.length-1];
-
+    const patharr =  window.location.pathname.split('/');
+    const id = patharr[patharr.length-1];
+    console.log(id)
  
-        this.getGoals(id);
+    this.UserGoals(id)
 
-    }
+  }
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -205,7 +205,7 @@ class UserHome extends Component  {
     .catch(err => console.log(err)) 
  
   }
-
+/////////////////
   handleGoal = (id) => {
   //let id = '5af4912e04f888219c1c00b1'
     console.log("handleGoal id "+JSON.stringify(id))
@@ -226,11 +226,29 @@ class UserHome extends Component  {
       .catch(err => console.log(err)) 
    
   }
-
+///////////////
   getGoals = (user) => {
+
+    console.log("getGoals")
+    // axios.get("/api/goals/",{
+    //   description: this.state.description,
+    //   category: this.state.category
+    // })
+    //   .then(res => {
+    //      console.log("res "+res.data)
+    //     this.setState({
+    //       description: res.data,
+    //       category: res.data
+    //     })
+
+    //   }
+    //   )
+    //   .catch(err => console.log(err));
 
     API.getGoalsUser(user)
     .then(res => {
+      console.log(res);
+      console.log("got Saved Goals");
       this.setState({
         goals: res.data
       });
@@ -451,9 +469,9 @@ class UserHome extends Component  {
               </CardMedia> 
               
               {/*<CardTitle title="Goal Title" subtitle="Fitness" expandable={true} />*/}        
-              <CardTitle title={goal.description} subtitle={goal.category} expandable={true} />
+              <CardTitle title={goal.goal} subtitle={goal.category} expandable={true} />
               <CardMedia
-                  expandable={true} style={{maxWidth:"30%",marginLeft:"auto",marginRight:"auto"}}
+                  expandable={true} 
                   // overlay={<CardTitle title="Overlay title" subtitle="Overlay subtitle" />}
               >
                 <img src= {this.state.awsbaseurl + goal.filename} alt={goal.goal} />
