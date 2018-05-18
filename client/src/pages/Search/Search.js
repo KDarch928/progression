@@ -261,7 +261,7 @@ class Search extends Component  {
       <a href="/Login"><MenuItem>Login</MenuItem></a>
       <a href={this.state.userpath}><MenuItem>Userhome</MenuItem></a>
       <a href="/Home"><MenuItem>Main Home Page</MenuItem></a>
-      <a href="/Search"><MenuItem>Logout</MenuItem></a>
+      <a href="/Logout"><MenuItem>Logout</MenuItem></a>
       <MenuItem onClick={this.handleClose}>X Close Menu</MenuItem>
     </Drawer>
     <div style={stylejumbo} className="jumbotron">
