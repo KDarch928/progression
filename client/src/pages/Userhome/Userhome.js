@@ -84,18 +84,13 @@ class UserHome extends Component  {
     this.setState({open: false});
   }
 
-componentDidMount() {
- 
- const patharr =  window.location.pathname.split('/');
- const id = patharr[patharr.length-1];
- console.log(id)
- localStorage.setItem("username",id)
+  componentDidMount() {
  
     const patharr =  window.location.pathname.split('/');
     const id = patharr[patharr.length-1];
-    // console.log(id)
-    //
-    // this.UserGoals(id);
+    console.log(id)
+    localStorage.setItem("username",id)
+      
     this.getGoals(id);
 
   }
