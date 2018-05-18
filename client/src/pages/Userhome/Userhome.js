@@ -64,7 +64,8 @@ class UserHome extends Component  {
       goals: [],
       username: "",
       percent: "",
-      message: ""
+      message: "",
+      slider: 0
     };
     this.handleFormSubmit= this.handleFormSubmit.bind(this)
     this.handleInputChange=this.handleInputChange.bind(this)
@@ -445,13 +446,14 @@ componentDidMount() {
             <p>{goal.percent}</p> */}
             <Card style={color} key={i} expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
               <CardHeader
-                title={goal.goal} //"Goal Name"
-                subtitle={goal.category} //"Exercise"
+                title={goal.description} 
+                subtitle={goal.category} 
                 avatar={image}
                 actAsExpander={false}
                 showExpandableButton={true}
 
               />
+
               <CardText>
                 <Toggle
                   toggled={this.state.expanded}
@@ -467,6 +469,7 @@ componentDidMount() {
               </CardMedia> 
               
               {/*<CardTitle title="Goal Title" subtitle="Fitness" expandable={true} />*/}        
+<<<<<<< HEAD
               <CardTitle title={goal.goal} subtitle={goal.category} expandable={true} />
               <CardMedia
                   expandable={true}
@@ -474,8 +477,10 @@ componentDidMount() {
               >
                 <img src= {this.state.awsbaseurl + goal.filename} alt={goal.goal} />
               </CardMedia>
+=======
+              <CardTitle title={goal.description} subtitle={goal.category} expandable={true} />
+>>>>>>> c57baa6f2933995b687d3dda8f83c3f260bd1e93
               <CardText expandable={true}>
-                {this.state.description}
                 You are at {goal.percent} percent!
     <MuiThemeProvider muiTheme={muiTheme}>
         <Slider

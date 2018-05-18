@@ -46,7 +46,17 @@
 	padding-top: 3rem;
 }
 
-#goalheader, #header2 {
+#goalheader, #header2, #goalsearchheader {
 	font-weight: bold;
 	font-size: 3rem;
+}
+
+#follow {
+	margin: 10px;
+	font-size: 35px;
+}
+
+#about {
+	color: white;
+	font-size: 36px;
 }

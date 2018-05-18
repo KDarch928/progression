@@ -11,12 +11,12 @@ const Goalform = props => (
     <form role="form">
 
         <label for="goalCategory">Goal Category:</label><br/>
-        <button value="health" onClick={props.handleCategory} className="btn btn-info goal" id="health-goal">Health</button>
-        <button value="fitness" onClick={props.handleCategory} className="btn btn-info goal" id="fitness-goal">Fitness </button>
-        <button value="home" onClick={props.handleCategory} className="btn btn-info goal" id="home-goal">Home </button>
-        <button value="hobbies" onClick={props.handleCategory} className="btn btn-info goal" id="hobbies">Hobbies </button>
-        <button value="social" onClick={props.handleCategory} className="btn btn-info goal" id="social-goal">Social </button>
-        <button value="efficiency"  onClick={props.handleCategory} className="btn btn-info goal" id="efficiency-goal">Efficiency </button> 
+        <button value="Health" onClick={props.handleCategory} className="btn btn-info goal" id="health-goal">Health</button>
+        <button value="Fitness" onClick={props.handleCategory} className="btn btn-info goal" id="fitness-goal">Fitness </button>
+        <button value="Home" onClick={props.handleCategory} className="btn btn-info goal" id="home-goal">Home </button>
+        <button value="Hobbies" onClick={props.handleCategory} className="btn btn-info goal" id="hobbies">Hobbies </button>
+        <button value="Social" onClick={props.handleCategory} className="btn btn-info goal" id="social-goal">Social </button>
+        <button value="Efficiency"  onClick={props.handleCategory} className="btn btn-info goal" id="efficiency-goal">Efficiency </button> 
         <br/>
         <label for="Goal">Goal Description:</label>
         <input 
@@ -36,6 +36,7 @@ const Goalform = props => (
       type="submit" 
       className="btn btn-info" 
       id="createGoal"> Create Goal</button>
+      <br/>
     </form>
 
 );

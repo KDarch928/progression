@@ -14,7 +14,7 @@ import {List,ListItem} from "../../components/List";
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 //import FlatButton from 'material-ui/FlatButton';
 import Toggle from 'material-ui/Toggle';
-import Goalheader from "../../components/Goalheader";
+import GoalSearchheader from "../../components/Goalheader/GoalSearchheader";
 //import RaisedButton from 'material-ui/RaisedButton';
 import Goalsfollowing from "../../components/Goalsfollowing";
 //import Nav from "../../components/Nav";
@@ -58,13 +58,15 @@ class Search extends Component  {
   }
 
   handleCategory =(event) => {
-    console.log("handleCategory event")
+    //console.log("handleCategory event")
     event.preventDefault();
+    //this is not working
     this.setState({
       category: event.target.value
     })
-    console.log("handleCategory "+this.state.category)
-    this.UserSearch()
+    console.log("handleCategory value "+event.target.value)
+    console.log("handleCategory state "+this.state.category)
+    this.UserSearch(event.target.value)
   }
 
   handleExpandChange = (expanded) => {
@@ -93,11 +95,21 @@ class Search extends Component  {
     
   };
    
-  UserSearch = () => {
-console.log("UserSearch "+this.state.category)
-    API.getGoalsCategory(this.state.category)        
+  UserSearch = (searchCategory) => {
+    console.log("UserSearch "+searchCategory+" user "+this.state.user)
+    //reset state not working in handler
+    this.setState({
+      category: searchCategory
+    })
+    console.log("UserSearch "+this.state.category)
+    API.getGoalsCategory(searchCategory)        
     .then(res => {
       console.log("UserSearch data "+JSON.stringify(res.data))
+      if ( !res.data )
+      {
+        this.setState({"message":"Sorry No Goals Found"})
+        return
+      }
       let tmpgoal = res.data[0].goal;
       let tmpdata = [];
       let i = 0
@@ -189,7 +201,9 @@ console.log("UserSearch "+this.state.category)
     } // end .then
     )
     .catch(err => {
-      console.log("UserSearch "+err+" "+JSON.stringify(err.response.data))
+      console.log("UserSearch "+err);
+      //if (err.response.data)
+      //  console.log("data "+JSON.stringify(err.response.data))
     })
   }
 
@@ -215,9 +229,10 @@ console.log("UserSearch "+this.state.category)
         handleFormSubmit={this.handleFormSubmit}
         description={this.state.description}
         category={this.state.category}
+        handleCategory={this.handleCategory}
       />
       </div>
-     <Goalheader />
+     <GoalSearchheader />
 
       <div>
         <List>
@@ -227,7 +242,7 @@ console.log("UserSearch "+this.state.category)
             <p>{goal.percent}</p> 
             <Card style={color} expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
               <CardHeader
-                title={goal.goal} //"Goal Name"
+                title={goal.description} //"Goal Name"
                 subtitle={goal.category} //"Exercise"
                 avatar={image}
                 actAsExpander={false}
@@ -248,11 +263,13 @@ console.log("UserSearch "+this.state.category)
               </CardMedia> 
               
               {/*<CardTitle title="Goal Title" subtitle="Fitness" expandable={true} />*/}        
-              <CardTitle title={goal.goal} subtitle={goal.category} expandable={true} />
+              <CardTitle title={goal.description} subtitle={goal.category} expandable={true} />
               <CardText expandable={true}>
                 {this.state.description}
                 You are at {goal.percent} percent!
               </CardText>
+              <input type="checkbox" id="follow" value="follow"/>
+              <label for="follow">Follow This Goal</label>
             </Card>
            <br />
           </div> 
