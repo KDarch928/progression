@@ -70,6 +70,7 @@ class Search extends Component  {
     // this.getGoals(id);
 
   }
+
   handleOpen = () => {
     this.setState({open: !this.state.open});
   }
@@ -261,7 +262,9 @@ class Search extends Component  {
       <a href="/Login"><MenuItem>Login</MenuItem></a>
       <a href={this.state.userpath}><MenuItem>Userhome</MenuItem></a>
       <a href="/Home"><MenuItem>Main Home Page</MenuItem></a>
+      <a href="/About"><MenuItem>About</MenuItem></a>
       <a href="/Logout"><MenuItem>Logout</MenuItem></a>
+
       <MenuItem onClick={this.handleClose}>X Close Menu</MenuItem>
     </Drawer>
     <div style={stylejumbo} className="jumbotron">
@@ -279,8 +282,7 @@ class Search extends Component  {
         <List>
           {this.state.goals.map((goal) => (
           <div>
-            <p>{goal.category}</p>
-            <p>{goal.percent}</p> 
+ 
             <Card style={color} expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
               <CardHeader
                 title={goal.description} //"Goal Name"
