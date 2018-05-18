@@ -443,7 +443,7 @@ class UserHome extends Component  {
           <Goalheader />
           {this.state.goals.map((goal,i) => (
           <div>
-           <p>Index {i}</p>
+           {/*<p>Index {i}</p>*/}
            {/* <p>{goal.category}</p>
             <p>{goal.percent}</p> */}
             <Card style={color} key={i} expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
