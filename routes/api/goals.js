@@ -10,6 +10,10 @@ router.route("/user")
   .get(Controller.findById)
   .post(Controller.create);
 
+router.route("/follow/")
+  .post(Controller.updateGoalFollow)
+  .delete(Controller.remove)
+
 router
   .route("/search/:keyword")
   .get(Controller.findByCategory)

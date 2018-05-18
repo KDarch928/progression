@@ -89,6 +89,7 @@ componentDidMount() {
  const patharr =  window.location.pathname.split('/');
  const id = patharr[patharr.length-1];
  console.log(id)
+ localStorage.setItem("username",id)
  
  this.UserGoals(id)
 
@@ -302,6 +303,7 @@ componentDidMount() {
 
     const patharr =  window.location.pathname.split('/');
     const id = patharr[patharr.length-1];
+
     var imgFileName;
 
     //checking to see if the file state is not null
@@ -469,17 +471,13 @@ componentDidMount() {
               </CardMedia> 
               
               {/*<CardTitle title="Goal Title" subtitle="Fitness" expandable={true} />*/}        
-<<<<<<< HEAD
-              <CardTitle title={goal.goal} subtitle={goal.category} expandable={true} />
+              <CardTitle title={goal.description} subtitle={goal.category} expandable={true} />
               <CardMedia
                   expandable={true}
                   // overlay={<CardTitle title="Overlay title" subtitle="Overlay subtitle" />}
               >
                 <img src= {this.state.awsbaseurl + goal.filename} alt={goal.goal} />
               </CardMedia>
-=======
-              <CardTitle title={goal.description} subtitle={goal.category} expandable={true} />
->>>>>>> c57baa6f2933995b687d3dda8f83c3f260bd1e93
               <CardText expandable={true}>
                 You are at {goal.percent} percent!
     <MuiThemeProvider muiTheme={muiTheme}>
