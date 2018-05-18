@@ -10,7 +10,7 @@ mongoose.connect(
 );
 
 const goalsSeed = [
-  {
+/*  {
     date:  '2018/03/01 08:00',
     goalNum: 1, 
     guser: 'Mary',
@@ -33,7 +33,7 @@ const goalsSeed = [
     username: "Mary",
     filename: "",
     follow: "Angela"
-  },
+  },*/
   {
     date:  '2018/03/05 11:00',
     goalNum: 1,  
@@ -69,6 +69,7 @@ const goalsSeed = [
     filename: "",
     follow: "Mary"
   },
+  /*
   {
     date:  '2018/04/03 09:00',
     goalNum: 4, 
@@ -91,6 +92,7 @@ const goalsSeed = [
     username: "Angela",
     filename: ""
   },
+  */
   {
     date:  '2018/04/06 9:30',
     goalNum: 4, 

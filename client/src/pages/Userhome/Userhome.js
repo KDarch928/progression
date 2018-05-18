@@ -79,7 +79,7 @@ class UserHome extends Component  {
   handleOpen = () => {
     this.setState({open: !this.state.open});
   }
-  //////////////
+  
   handleClose = () => {
     this.setState({open: false});
   }
@@ -91,9 +91,14 @@ componentDidMount() {
  console.log(id)
  localStorage.setItem("username",id)
  
- this.UserGoals(id)
+    const patharr =  window.location.pathname.split('/');
+    const id = patharr[patharr.length-1];
+    // console.log(id)
+    //
+    // this.UserGoals(id);
+    this.getGoals(id);
 
-}
+  }
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -206,7 +211,7 @@ componentDidMount() {
     .catch(err => console.log(err)) 
  
   }
-/////////////////
+
   handleGoal = (id) => {
   //let id = '5af4912e04f888219c1c00b1'
     console.log("handleGoal id "+JSON.stringify(id))
@@ -296,6 +301,7 @@ componentDidMount() {
       file: null
     });
   }
+
 
   handleFormSubmit = event => {
     event.preventDefault();
@@ -443,7 +449,7 @@ componentDidMount() {
           <Goalheader />
           {this.state.goals.map((goal,i) => (
           <div>
-           <p>Index {i}</p>
+           {/*<p>Index {i}</p>*/}
            {/* <p>{goal.category}</p>
             <p>{goal.percent}</p> */}
             <Card style={color} key={i} expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
@@ -473,8 +479,7 @@ componentDidMount() {
               {/*<CardTitle title="Goal Title" subtitle="Fitness" expandable={true} />*/}        
               <CardTitle title={goal.description} subtitle={goal.category} expandable={true} />
               <CardMedia
-                  expandable={true}
-                  // overlay={<CardTitle title="Overlay title" subtitle="Overlay subtitle" />}
+                  expandable={true} style={{maxWidth:"30%", marginRight:"auto", marginLeft:"auto"}}
               >
                 <img src= {this.state.awsbaseurl + goal.filename} alt={goal.goal} />
               </CardMedia>
