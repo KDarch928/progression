@@ -40,10 +40,10 @@ module.exports  = {
   create: function(req, res) {
     console.log("create goals")
     console.log(res.body);
-    // db.Goals
-    //   .create(req.body)
-    //   .then(dbModel => res.json(dbModel))
-    //   .catch(err => res.status(422).json(err));
+    db.Goals
+      .create(req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
     db.Goals
