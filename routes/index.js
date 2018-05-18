@@ -130,14 +130,7 @@ router.post('/login', passport.authenticate('local'), function(req, res) {
 });
 
 // logout - might not need this. 
-router.get('/logout', function(req, res){
-	// code to handle logout. 
-	req.logout();
-
-	req.flash('success_msg', 'You are logged out.');
-	res.send(console.log("logged out"));
-
-});
+router.get('/logout', authController.signout)
 
 // If no API routes are hit, send the React app
 // router.use(function (req, res) {
