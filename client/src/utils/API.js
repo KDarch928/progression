@@ -99,9 +99,6 @@ export default {
      return axios.get("/api/goals/user/" + user)
   /*   .then(function (response) {
      
-      return response.data;
-      console.log("1" +response.data)
-    })
     .catch(function (error) {
       console.log(error);
       console.log('error at get goaluser');
@@ -118,5 +115,11 @@ export default {
     console.log("API axios.POST(/api/goals")
     console.log("goalData "+JSON.stringify(goalData))
     return axios.post("/api/goals/user/", goalData);
+  },
+  followOthersGoal: function(_id){
+    console.log("following others goal in api")
+    return axios.post("/api/goals/follow/",_id)
   }
+
+
 };

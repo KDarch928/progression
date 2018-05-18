@@ -1,10 +1,25 @@
-# Create React Express App
+# Progression
+Progression is full MERN Stack app that helps users to set their goals, and find other peoples goal.
 
-## About This Boilerplate
+## Technology
+-HTML
+-CSS
+-Bootstrap
+-Javascript
+-Axios
+-Bcrypt
+-MongoDB
+-NODE.js
+-Express.js
+-Material-UI
+-AWS S3
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
+##Local deployment
+1. clone the folder
+2. yarn install on client folder
+3. yarn install on root folder
+4. yarn start
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
 
 ## Starting the app locally
 
@@ -17,8 +32,7 @@ yarn install
 cd ..
 ``
 
-After both installations complete, run the following command in your terminal:
-
+After both installations complete, run the following command
 ```
 yarn start
 ```
@@ -39,4 +53,5 @@ yarn build
 
 3. Push to Heroku
 
-If all previous steps were followed correctly, your application should be deployed to Heroku!
+If all previous steps were followed correctly, your application should be deployed to Heroku! in your terminal:
+

@@ -46,6 +46,7 @@ class Search extends Component  {
       user: "",
       percent: "",
       message: "",
+      follow:""
     };
   }
 
@@ -61,8 +62,11 @@ class Search extends Component  {
     //console.log("handleCategory event")
     event.preventDefault();
     //this is not working
+    let localId = localStorage.getItem("username")
+    console.log(localId)
     this.setState({
-      category: event.target.value
+      category: event.target.value,
+      username: localId
     })
     console.log("handleCategory value "+event.target.value)
     console.log("handleCategory state "+this.state.category)
@@ -88,6 +92,23 @@ class Search extends Component  {
 
   handleInputChange = (e) => {
     this.setState({category: e.target.value});
+  }
+  handleChecked=(e) => {
+    this.setState({
+      follow: e.target.value
+    })
+  }
+  handleFollowGoals=event =>{
+    event.preventDefault();
+    console.log(this.state.follow)
+    API.followOthersGoal({
+      username:this.state.username,
+      follow: this.state.follow
+    })
+    .then(res =>{
+      console.log("you just followed new goal in api")
+    })
+    .catch(err => console.log(err));
   }
  
   handleFormSubmit = event => {
@@ -268,8 +289,12 @@ class Search extends Component  {
                 {this.state.description}
                 You are at {goal.percent} percent!
               </CardText>
-              <input type="checkbox" id="follow" value="follow"/>
-              <label for="follow">Follow This Goal</label>
+              <form>
+              <input type="checkbox" id="follow" onChange={this.handleChecked} value={goal._id} checked={this.state.follow}/>
+              {/* <label for="follow">Follow This Goal</label> */}
+              <button type="submit" onClick={this.handleFollowGoals} >Follow this goal</button>
+              </form>
+
             </Card>
            <br />
           </div> 

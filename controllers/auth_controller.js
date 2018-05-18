@@ -20,8 +20,10 @@ exports.login = function(req,res){
 	res.redirect('/login');
 } 
 exports.signout = function(req,res){
+	console.log("signingout")
 	req.session.destroy(function(err){
 		res.redirect("/")
+		console.log("redirectto home")
 	})
 
 }
