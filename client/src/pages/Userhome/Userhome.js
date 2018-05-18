@@ -88,9 +88,10 @@ class UserHome extends Component  {
  
     const patharr =  window.location.pathname.split('/');
     const id = patharr[patharr.length-1];
-    console.log(id)
- 
-    this.UserGoals(id)
+    // console.log(id)
+    //
+    // this.UserGoals(id);
+    this.getGoals(id);
 
   }
 
@@ -296,6 +297,7 @@ class UserHome extends Component  {
     });
   }
 
+
   handleFormSubmit = event => {
     event.preventDefault();
     console.log("I made it here");
@@ -469,10 +471,9 @@ class UserHome extends Component  {
               </CardMedia> 
               
               {/*<CardTitle title="Goal Title" subtitle="Fitness" expandable={true} />*/}        
-              <CardTitle title={goal.goal} subtitle={goal.category} expandable={true} />
+              <CardTitle title={goal.description} subtitle={goal.category} expandable={true} />
               <CardMedia
-                  expandable={true} 
-                  // overlay={<CardTitle title="Overlay title" subtitle="Overlay subtitle" />}
+                  expandable={true} style={{maxWidth:"30%", marginRight:"auto", marginLeft:"auto"}}
               >
                 <img src= {this.state.awsbaseurl + goal.filename} alt={goal.goal} />
               </CardMedia>
