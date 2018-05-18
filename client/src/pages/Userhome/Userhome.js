@@ -433,6 +433,7 @@ class UserHome extends Component  {
           <a href="/Login"><MenuItem>Login</MenuItem></a>
           <a href="/Search"><MenuItem>Search</MenuItem></a>
           <a href="/Home"><MenuItem>Main Home Page</MenuItem></a>
+          <a href="/About"><MenuItem>About</MenuItem></a>
           <a href="/logout"><MenuItem>Logout</MenuItem></a>
           <MenuItem onClick={this.handleClose}>X Close Menu</MenuItem>
         </Drawer>

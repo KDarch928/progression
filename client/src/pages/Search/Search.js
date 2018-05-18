@@ -239,7 +239,7 @@ class Search extends Component  {
     <Drawer open={this.state.open} close={this.handleClose}>
       <a href="/Signup"><MenuItem>Signup</MenuItem></a>
       <a href="/Login"><MenuItem>Login</MenuItem></a>
-      <a href="/Userhome"><MenuItem>Userhome</MenuItem></a>
+      <a href="/userhome/:username"><MenuItem>Userhome</MenuItem></a>
       <a href="/Home"><MenuItem>Main Home Page</MenuItem></a>
       <a href="/Search"><MenuItem>Logout</MenuItem></a>
       <MenuItem onClick={this.handleClose}>X Close Menu</MenuItem>

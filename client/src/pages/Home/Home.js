@@ -56,7 +56,7 @@ render () {
     <Drawer open={this.state.open} close={this.handleClose}>
       <a href="/Signup"><MenuItem>Signup</MenuItem></a>
       <a href="/Login"><MenuItem>Login</MenuItem></a>
-      <a href="/Userhome"><MenuItem>Userhome</MenuItem></a>
+      <a href="/About"><MenuItem>About</MenuItem></a>
       <a href="/Search"><MenuItem>Search</MenuItem></a>
       <MenuItem onClick={this.handleClose}>X Close Menu</MenuItem>
     </Drawer>
