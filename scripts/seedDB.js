@@ -10,72 +10,131 @@ mongoose.connect(
 );
 
 const goalsSeed = [
-  {
-    date:  '2018/03/01 08:00', 
+/*  {
+    date:  '2018/03/01 08:00',
+    goalNum: 1, 
     guser: 'Mary',
     goal: 'increase water',
-    gcategory: 'Nutrition',
-    gpercent: 0
-   },
+    description: 'increase water',
+    category: 'Health',
+    percent: 0,
+    username: "Mary",
+    filename: "",
+    follow: "Angela"
+  },
   {
     date:  '2018/03/03 09:00',
+    goalNum: 1, 
     guser: 'Mary',
     goal: 'increase water',
-    gcategory: 'Nutrition',
-    gpercent: 2
+    description: 'increase water',
+    category: 'Health',
+    percent: 2,
+    username: "Mary",
+    filename: "",
+    follow: "Angela"
+  },*/
+  {
+    date:  '2018/03/05 11:00',
+    goalNum: 1,  
+    guser: 'Mary',
+    goal: 'increase water',
+    description: 'increase water',
+    category: 'Health',
+    percent: 4,
+    username: "Mary",
+    filename: "",
+    follow: "Angela"
   },
-    {
-    date:  '2018/03/05 11:00', 
-    guser: 'Mary',
-    goal: 'increase water',
-    gcategory: 'Nutrition',
-    gpercent: 4
-   },
   {
     date:  '2018/03/06 9:30',
+    goalNum: 2, 
     guser: 'Mary',
     goal: 'Walk 5 miles',
-    gcategory: 'Fitness',
-    gpercent: 6
+    description: 'Walk 5 miles',
+    category: 'Fitness',
+    percent: 6,
+    username: "Mary",
+    filename: ""
   },
-   {
+  {
     date:  '2018/04/01 08:00', 
+    goalNum: 3, 
     guser: 'Angela',
     goal: 'More water!',
-    gcategory: 'Fitness',
-    gpercent: 0
-   },
+    description: 'More water!',
+    category: 'Health',
+    percent: 0,
+    username: "Angela",
+    filename: "",
+    follow: "Mary"
+  },
+  /*
   {
     date:  '2018/04/03 09:00',
+    goalNum: 4, 
     guser: 'Angela',
     goal: 'increase daily exercise!',
-    gcategory: 'Fitness',
-    gpercent: 3
+    description: 'increase daily exercise!',
+    category: 'Fitness',
+    percent: 3,
+    username: "Angela",
+    filename: ""
   },
-    {
-    date:  '2018/04/05 11:00', 
+  {
+    date:  '2018/04/05 11:00',
+    goalNum: 4,  
     guser: 'Angela',
     goal: 'increase daily exercise!',
-    gcategory: 'Fitness',
-    gpercent: 5
-   },
+    description: 'increase daily exercise!',
+    category: 'Fitness',
+    percent: 5,
+    username: "Angela",
+    filename: ""
+  },
+  */
   {
     date:  '2018/04/06 9:30',
+    goalNum: 4, 
     guser: 'Angela',
     goal: 'increase daily exercise!',
-    gcategory: 'Fitness',
-    gpercent: 7
+    description: 'increase daily exercise!',
+    category: 'Fitness',
+    percent: 7,
+    username: "Angela",
+    filename: ""
+  },
+  {
+    date:  '2018/04/15 9:30',
+    goalNum: 5, 
+    guser: 'Mary',
+    goal: 'swimming!',
+    description: 'swimming!',
+    category: 'Fitness',
+    percent: 7,
+    username: "Mary",
+    filename: ""
   }
 ];
+
 const CategoriesSeed = [
   {
-    catDesc: 'Nutrition'
+    catDesc: 'Health'
   },
   {
     catDesc: 'Fitness'
   },
   {
-    catDesc: 'Study'
+    catDesc: 'Home'
+  },
+  {
+    catDesc: 'Hobbies'
+  },
+  {
+    catDesc: 'Social'
+  },
+  {
+    catDesc: 'Efficiency'
   }
 ];
 

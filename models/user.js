@@ -42,6 +42,12 @@ const userSchema = new Schema({
         type: String,
         default: "active"
     }
+    // goals: [
+    //     {
+    //     type: Schema.Types.objectId,
+    //     ref:"Goals"
+    //     }
+    // ]
     
 })
 userSchema.plugin(passportLocalMongoose);
