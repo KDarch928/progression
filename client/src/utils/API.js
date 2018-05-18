@@ -99,9 +99,6 @@ export default {
      return axios.get("/api/goals/user/" + user)
   /*   .then(function (response) {
      
-      return response.data;
-      console.log("1" +response.data)
-    })
     .catch(function (error) {
       console.log(error);
       console.log('error at get goaluser');
@@ -117,6 +114,7 @@ export default {
   saveGoal: function(goalData) {
     console.log("API axios.POST(/api/goals/user")
     console.log("goalData "+JSON.stringify(goalData))
+
     return axios.post("/api/goals/user/",goalData);
   },
   // Saves a goal to the database
@@ -125,5 +123,14 @@ export default {
     //console.log("goalData "+JSON.stringify(goalData))
     console.log(percentData)
     return axios.put("/api/goals/update/", percentData);
+
+    return axios.post("/api/goals/user/", goalData);
+  },
+  followOthersGoal: function(_id){
+    console.log("following others goal in api")
+    return axios.post("/api/goals/follow/",_id)
+
   }
+
+
 };

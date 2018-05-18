@@ -7,7 +7,12 @@ const Controller = require("../../controllers/Controller");
 // Matches with "/api/goals"
 router.route("/user")
   .get(Controller.findAll)
+  .get(Controller.findById)
   .post(Controller.create);
+
+router.route("/follow/")
+  .post(Controller.updateGoalFollow)
+  .delete(Controller.remove)
 
 router
   .route("/search/:keyword")

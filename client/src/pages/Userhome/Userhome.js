@@ -90,9 +90,9 @@ class UserHome extends Component  {
  
     const patharr =  window.location.pathname.split('/');
     const id = patharr[patharr.length-1];
-    // console.log(id)
-    //
-    // this.UserGoals(id);
+    console.log(id)
+    localStorage.setItem("username",id)
+      
     this.getGoals(id);
 
   }
@@ -208,7 +208,7 @@ class UserHome extends Component  {
     .catch(err => console.log(err)) 
  
   }
-/////////////////
+
   handleGoal = (id) => {
   //let id = '5af4912e04f888219c1c00b1'
     console.log("handleGoal id "+JSON.stringify(id))
@@ -306,6 +306,7 @@ class UserHome extends Component  {
 
     const patharr =  window.location.pathname.split('/');
     const id = patharr[patharr.length-1];
+
     var imgFileName;
 
     //checking to see if the file state is not null
@@ -444,7 +445,7 @@ class UserHome extends Component  {
           <a href="/Login"><MenuItem>Login</MenuItem></a>
           <a href="/Search"><MenuItem>Search</MenuItem></a>
           <a href="/Home"><MenuItem>Main Home Page</MenuItem></a>
-          <a href="/Userhome"><MenuItem>Logout</MenuItem></a>
+          <a href="/logout"><MenuItem>Logout</MenuItem></a>
           <MenuItem onClick={this.handleClose}>X Close Menu</MenuItem>
         </Drawer>
 

@@ -45,6 +45,21 @@ var Controller = module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  updateGoalFollow: function(req, res) {
+    // JSON.parse(req.body)
+    console.log( JSON.stringify(req.body.username));
+    console.log( JSON.stringify(req.body.follow));
+    // console.log(JSON.parse(req.params))
+    console.log( JSON.stringify(req.params));
+    
+    
+    db.Goals
+      .findOneAndUpdate({ username: req.body.username }, {follow: req.body.follow}, { new: true })
+      .then(dbModel => 
+        res.json(dbModel))
+        console.log("update successfu")
+      .catch(err => res.status(422).json(err));
+  },
   update: function(req, res) {
     console.log("i made it here to update");
     console.log(req.body);
@@ -59,6 +74,7 @@ var Controller = module.exports = {
         console.log("we updated database")} )
       .catch(err => console.log(err)) //res.status(422).json(err));
   },
+
   remove: function(req, res) {
     db.Goals
       .findById({ _id: req.params.id })
