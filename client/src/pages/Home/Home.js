@@ -56,7 +56,7 @@ render () {
     <Drawer open={this.state.open} close={this.handleClose}>
       <a href="/Signup"><MenuItem>Signup</MenuItem></a>
       <a href="/Login"><MenuItem>Login</MenuItem></a>
-      <a href="/Userhome"><MenuItem>Userhome</MenuItem></a>
+      <a href="/About"><MenuItem>About</MenuItem></a>
       <a href="/Search"><MenuItem>Search</MenuItem></a>
       <MenuItem onClick={this.handleClose}>X Close Menu</MenuItem>
     </Drawer>
@@ -101,8 +101,10 @@ render () {
         <Col>
         <br/>
         <br/>
-        <h1> We are here to make you set up your goals easily and more accessible</h1>
+        <h1 style={{marginLeft:"36px"}}> We are here to make you set up your goals easily and more accessible! <br/><br/>PROGRESSION TEAM<br/><br/>Kayle, Angela, Daniel, Maryann</h1>        
         </Col>
+         <Image style={{marginLeft:"36px",marginTop:"24px"}} src="../../images/progression.jpg" className="intro" thumbnail/>
+         <br/>
         </Row>
         </Grid>
         </div>

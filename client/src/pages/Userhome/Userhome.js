@@ -93,7 +93,8 @@ class UserHome extends Component  {
     console.log("this is the the ID: " + id)
     this.getGoals(id);
     localStorage.setItem("username",id)
-      
+    if (id)
+      this.state.username = id;
     // this.getGoals(id);
 
   }
@@ -322,10 +323,12 @@ class UserHome extends Component  {
     //this.UserGoals()
     console.log(this.state)
     const{username,category,description,filename} = this.state
+    let tmp = this.state.description.toUpperCase();
+    console.log("tmp desc "+tmp)
     API.saveGoal({
       username:id,
       category:this.state.category,
-      description:this.state.description,
+      description: tmp,              //this.state.description,
       filename: imgFileName
     })
     .then(res => {
@@ -401,13 +404,10 @@ class UserHome extends Component  {
   handleSliderClick = (id) => {
 
     console.log("handleSliderClick "+id)
-    //console.log("state "+JSON.stringify(this.state))
-    // this.state._id = id;
-    //this.state.percent = 
+
     let tmp = Math.round(100*this.state.slider)
-    //let tmp2 = id.match('/^[0-9a-fA-F]{24}$/')
-    //console.log("id valid "+tmp2)
-  // Yes, it's a valid ObjectId, proceed with `findById` call
+    this.state.percent = tmp
+
     console.log(tmp)
     API.updateGoal({
       _id: id,
@@ -433,12 +433,13 @@ class UserHome extends Component  {
           <a href="/Login"><MenuItem>Login</MenuItem></a>
           <a href="/Search"><MenuItem>Search</MenuItem></a>
           <a href="/Home"><MenuItem>Main Home Page</MenuItem></a>
+          <a href="/About"><MenuItem>About</MenuItem></a>
           <a href="/logout"><MenuItem>Logout</MenuItem></a>
           <MenuItem onClick={this.handleClose}>X Close Menu</MenuItem>
         </Drawer>
 
         <div style={stylejumbo} className="jumbotron">
-         <h1>Set Your Goals!</h1>
+         <h1>{this.state.username} Set Your Goals!</h1>
 
           <Goalform id="goal-form"
           handleInputChange={this.handleInputChange}
@@ -456,9 +457,6 @@ class UserHome extends Component  {
           {this.state.goals.map((goal,i) => (
           <div>
 
-
-           {/* <p>{goal.category}</p>
-            <p>{goal.percent}</p> */}
             <Card style={color} key={i} expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
               <CardHeader
                 title={goal.description} 
@@ -466,7 +464,6 @@ class UserHome extends Component  {
                 avatar={image}
                 actAsExpander={false}
                 showExpandableButton={true}
-
               />
 
               <CardText>
@@ -476,6 +473,7 @@ class UserHome extends Component  {
                   labelPosition="right"
                   label=""
                 />
+
               </CardText>
               <CardMedia
                 expandable={true}
@@ -483,15 +481,15 @@ class UserHome extends Component  {
               > 
               </CardMedia> 
               
-
-              <CardTitle title={goal.description} subtitle={goal.category} expandable={true} />
-              <CardMedia
-                  expandable={true} style={{maxWidth:"30%", marginRight:"auto", marginLeft:"auto"}}
+              <CardTitle title={goal.description} subtitle={goal.category} expandable={true} style={{padding:'0 16px'}} />
+              <CardMedia expandable={true} style={{maxWidth:"25%", marginRight:"auto", marginLeft:"auto"}}
               >
                 <img src= {this.state.awsbaseurl + goal.filename} alt={goal.description} />
               </CardMedia>
-              <CardText expandable={true}>
-                You are at {goal.percent} percent!
+              
+              <CardText expandable={true} style={{fontSize: "1.25em"}}>
+                You are at {goal.percent} percent of your goal!
+                <br/><br/>Move your slider bar to set recent progress!
     <MuiThemeProvider muiTheme={muiTheme}>
         <Slider
           value={this.state.slider}
@@ -499,8 +497,9 @@ class UserHome extends Component  {
         />
         </MuiThemeProvider>
         <p>
-          <span>{'The value of this slider is: '}</span>
+          <span>{'You are setting your percentage to: '}</span>
           <span>{Math.round(100*this.state.slider)}%</span>
+          <br/><span style={{fontSize:"1rem"}}>Select Save Progress to update!</span>
         </p>
       <button
       type="submit" 

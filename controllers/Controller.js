@@ -54,11 +54,11 @@ var Controller = module.exports = {
     
     
     db.Goals
-      .findOneAndUpdate({ username: req.body.username }, {follow: req.body.follow}, { new: true })
-      .then(dbModel => 
-        res.json(dbModel))
-        console.log("update successfu")
-      .catch(err => res.status(422).json(err));
+      .findOneAndUpdate({ username: req.body.username }, {follow: req.body.follow})
+      .then(dbModel =>{ 
+        res.json(dbModel)
+        console.log("update successfu")})
+      .catch(err => console.log(err));
   },
   update: function(req, res) {
     console.log("i made it here to update");
