@@ -24,7 +24,7 @@
     "nodemon": "^1.11.0"
   },
   "dependencies": {
-    "aws-sdk": "^2.236.1",
+    "aws-sdk": "^2.814.0",
     "axios": "^0.16.2",
     "bcrypt": "^2.0.1",
     "bcrypt-nodejs": "0.0.3",
